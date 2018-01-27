@@ -9,13 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>写字楼时空数据展示</title>
+    <title>热 力 图</title>
 
     <!-- Loading Bootstrap -->
     <link href="Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Loading Flat UI -->
     <link href="Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
     <link rel="shortcut icon" href="Flat-UI-master/dist/img/favicon.ico">
+
+
     <!-- 加载leaflet-->
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js"></script>
@@ -24,9 +26,21 @@
 
     <link href="map.css" rel="stylesheet">
 
+    <style>
+        #map {
+            position: absolute;
+            top: 50px;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+    </style>
 </head>
 
 <body>
+    <script src="leaflet/leaflet-heat.js"></script>
+    <script src="esri/esri-leaflet-heatmap.js"></script>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -37,9 +51,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">写字楼时空数据展示</a>
+                <a class="navbar-brand" href="index.html">写字楼时空数据展示</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="overview.html">Home</a></li>
+                    <li><a href="#">statistics</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
                         <input type="text" placeholder="Email" class="form-control">
@@ -54,57 +84,30 @@
         </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="overview.html" role="button">Learn more &raquo;</a></p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="mapView" id="mapDiv">
-                </div>
-            </div>
-        </div>
-        <footer>
-            <p>&copy; Leppard</p>
-        </footer>
-    </div>
-    <!-- /container -->
+    <div id="map"></div>
 
     <script>
-        var map = L.map("mapDiv", {
-            center: [31.23, 121.40],
-            zoom: 9
-        });
+        var map = L.map('map').setView([31.237, 121.457], 11);
+
+        L.esri.basemapLayer('Gray').addTo(map);
+
+        // new constructor syntax at 2.0.0
+        L.esri.Heat.featureLayer({
+            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0',
+            radius: 40
+        }).addTo(map);
+
+       
         L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
             maxZoom: 18,
             minZoom: 5
         }).addTo(map);
-        var buildingLayer = L.esri.featureLayer({
-            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
-        });
-        buildingLayer.addTo(map);
-
-        buildingLayer.bindPopup(function(layer) {
-            console.log(layer.feature.properties);
-            return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²</p>', layer.feature.properties);
-        });
-
-        //初始化使计算Map控件大小
-        document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
-        //当网页变化是重新计算地图控件的大小
-        window.onresize = function() {
-            document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
-        }
-
+        
     </script>
+
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
+
 </body>
 
 </html>
