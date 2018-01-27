@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>热 力 图</title>
+    <title>聚 合 图</title>
 
     <!-- Loading Bootstrap -->
     <link href="Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,12 @@
     <script src="leaflet/leaflet.js"></script>
     <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
     <script src="esri/esri-leaflet.js"></script>
+
+    <!-- 加载leaflet markercluster-->
+    <link rel="stylesheet" type="text/css" href="leaflet/MarkerCluster.Default.css">
+    <link rel="stylesheet" type="text/css" href="leaflet/MarkerCluster.css">
+    <script src="leaflet/leaflet.markercluster.js"></script>
+    <script src="esri/esri-leaflet-cluster.js"></script>
 
     <link href="map.css" rel="stylesheet">
 
@@ -39,8 +45,7 @@
 </head>
 
 <body>
-    <script src="leaflet/leaflet-heat.js"></script>
-    <script src="esri/esri-leaflet-heatmap.js"></script>
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -58,10 +63,10 @@
                     <li><a href="overview.html">Home</a></li>
                     <li><a href="statistics.html">statistics</a></li>
                     <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">heatmap <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">clustering <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">heatmap</a></li>
-                            <li><a href="clustering.html">clustering</a></li>
+                            <li><a href="heatmap.html">heatmap</a></li>
+                            <li><a href="#">clustering</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li class="divider"></li>
                             <li class="dropdown-header">Nav header</li>
@@ -91,18 +96,18 @@
 
         L.esri.basemapLayer('Gray').addTo(map);
 
-        // new constructor syntax at 2.0.0
-        L.esri.Heat.featureLayer({
-            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0',
-            radius: 40
-        }).addTo(map);
 
-       
         L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
             maxZoom: 18,
             minZoom: 5
         }).addTo(map);
-        
+
+        // new constructor syntax at 2.0.0
+        L.esri.Cluster.featureLayer({
+            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0',
+            radius: 40
+        }).addTo(map);
+
     </script>
 
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
