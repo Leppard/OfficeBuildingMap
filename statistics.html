@@ -22,8 +22,12 @@
     <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
     <script src="esri/esri-leaflet.js"></script>
 
-
     <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+
+    <!--   引入图表导出功能相关的文件-->
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/modules/offline-exporting.js"></script>
 
     <link href="map.css" rel="stylesheet">
 </head>
@@ -352,7 +356,7 @@
                 }
             });
 
-            Highcharts.chart('container2',{
+            Highcharts.chart('container2', {
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,
