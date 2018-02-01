@@ -19,16 +19,25 @@
     <!-- 加载leaflet-->
 
     <!--普通图表/热力图/树形图-->
-    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-    <script src="http://cdn.hcharts.cn/highcharts/modules/heatmap.js"></script>
-    <script src="http://cdn.hcharts.cn/highcharts/modules/treemap.js"></script>
+    <script src="code/highcharts.js"></script>
+    <!--    <script src="../../code/modules/heatmap.js"></script>-->
+    <!--    <script src="../../code/modules/treemap.js"></script>-->
+    <script src="code/modules/sunburst.js"></script>
 
     <!--   引入图表导出功能相关的文件-->
-    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
-    <script src="http://cdn.hcharts.cn/highcharts/modules/offline-exporting.js"></script>
+    <script src="code/modules/exporting.js"></script>
+    <script src="code/modules/offline-exporting.js"></script>
 
     <link href="map.css" rel="stylesheet">
+
+    <style type="text/css">
+        #container3 {
+            min-width: 310px;
+            max-width: 800px;
+            margin: 0 auto
+        }
+
+    </style>
 </head>
 
 <body>
@@ -98,7 +107,22 @@
             </div>
         </div>
 
-<!--矩形树图待定
+<!--旭日图失败
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #2980B9; border-radius: 0px">
+                        <h3 class="panel-title" style="text-align: center"> 旭日图 </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="container3" style="text-align: center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+
+        <!--矩形树图待定
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-primary">
@@ -118,7 +142,7 @@
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
 
-    <script src="data.js"></script>
+    <script src="sunburst.js"></script>
     <script language="JavaScript">
         $(function() {
             // 柱状图
@@ -265,82 +289,60 @@
                 }]
             });
 
-//            // 矩形树图, 待定......
-//            var data = this_data[0];
-//            var points = [],
-//                region_p,
-//                region_val,
-//                region_i,
-//                country_p,
-//                country_i,
-//                cause_p,
-//                cause_i,
-//                cause_name = [];
-//            cause_name['Communicable & other Group I'] = 'Communicable diseases';
-//            cause_name['Noncommunicable diseases'] = 'Non-communicable diseases';
-//            cause_name['Injuries'] = 'Injuries';
-//            region_i = 0;
-//            for (var region in data) {
-//                region_val = 0;
-//                region_p = {
-//                    id: "id_" + region_i,
-//                    name: region,
-//                    color: Highcharts.getOptions().colors[region_i]
-//                };
-//                country_i = 0;
-//                for (var country in data[region]) {
-//                    country_p = {
-//                        id: region_p.id + "_" + country_i,
-//                        name: country,
-//                        parent: region_p.id
-//                    };
-//                    points.push(country_p);
-//                    cause_i = 0;
-//                    for (var cause in data[region][country]) {
-//                        cause_p = {
-//                            id: country_p.id + "_" + cause_i,
-//                            name: cause_name[cause],
-//                            parent: country_p.id,
-//                            value: Math.round(+data[region][country][cause])
-//                        };
-//                        region_val += cause_p.value;
-//                        points.push(cause_p);
-//                        cause_i++;
-//                    }
-//                    country_i++;
-//                }
-//                region_p.value = Math.round(region_val / country_i);
-//                points.push(region_p);
-//                region_i++;
-//            }
-//            var chart = new Highcharts.Chart({
-//                chart: {
-//                    renderTo: 'container3'
-//                },
-//                series: [{
-//                    type: "treemap",
-//                    layoutAlgorithm: 'squarified',
-//                    allowDrillToNode: true,
-//                    dataLabels: {
-//                        enabled: false
-//                    },
-//                    levelIsConstant: false,
-//                    levels: [{
-//                        level: 1,
-//                        dataLabels: {
-//                            enabled: true
-//                        },
-//                        borderWidth: 3
-//                    }],
-//                    data: points
-//                }],
-//                subtitle: {
-//                    text: '点击下钻. 数据来源: <a href="https://apps.who.int/gho/data/node.main.12?lang=en">WHO</a>.'
-//                },
-//                title: {
-//                    text: '2012年，全球每10w人口死亡率'
-//                }
-//            });
+            // 旭日图
+            // Splice in transparent for the center circle
+            Highcharts.getOptions().colors.splice(0, 0, 'transparent');
+            Highcharts.chart('container3', {
+                chart: {
+                    height: '100%'
+                },
+                title: {
+                    text: 'World population 2017'
+                },
+                subtitle: {
+                    text: 'Source <href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>'
+                },
+                series: [{
+                    type: "sunburst",
+                    data: sunburst_data,
+                    allowDrillToNode: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        format: '{point.name}',
+                        filter: {
+                            property: 'innerArcLength',
+                            operator: '<',
+                            value: 16
+                        }
+                    },
+                    levels: [{
+                        level: 2,
+                        colorByPoint: true,
+                        dataLabels: {
+                            rotationMode: 'parallel'
+                        }
+                    }, {
+                        level: 3,
+                        colorVariation: {
+                            key: 'brightness',
+                            to: -0.5
+                        }
+                    }, {
+                        level: 4,
+                        colorVariation: {
+                            key: 'brightness',
+                            to: 0.5
+                        }
+                    }]
+
+                }],
+                tooltip: {
+                    headerFormat: "",
+                    pointFormat: 'The population of <b>{point.name}</b> is <b>{point.value}</b>'
+                }
+            });
+
+            //  矩形树图, 待定......
         });
 
     </script>
