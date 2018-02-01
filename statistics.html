@@ -112,17 +112,17 @@
                     type: 'column'
                 },
                 title: {
-                    text: '2015年1月-5月，各浏览器的市场份额'
+                    text: '上海市各区县待租写字楼数目'
                 },
                 subtitle: {
-                    text: '点击可查看具体的版本数据，数据来源: <a href="https://netmarketshare.com">netmarketshare.com</a>.'
+                    text: '数据来源: <a href="https://xzl.anjuke.com/zu/?pi=PZ-baidu-pc-all-sydc-zl1">anjuke.com</a>.'
                 },
                 xAxis: {
                     type: 'category'
                 },
                 yAxis: {
                     title: {
-                        text: '总的市场份额'
+                        text: '写字楼数目'
                     }
                 },
                 legend: {
@@ -133,227 +133,67 @@
                         borderWidth: 0,
                         dataLabels: {
                             enabled: true,
-                            format: '{point.y:.1f}%'
+                            format: '{point.y:.0f}'
                         }
                     }
                 },
                 tooltip: {
                     headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b><br/>'
                 },
                 series: [{
-                    name: '浏览器品牌',
+                    name: '区/县',
                     colorByPoint: true,
                     data: [{
-                        name: 'Microsoft Internet Explorer',
-                        y: 56.33,
-                        drilldown: 'Microsoft Internet Explorer'
+                        name: '卢湾',
+                        y: 47,
                     }, {
-                        name: 'Chrome',
-                        y: 24.03,
-                        drilldown: 'Chrome'
+                        name: '嘉定',
+                        y: 20,
                     }, {
-                        name: 'Firefox',
-                        y: 10.38,
-                        drilldown: 'Firefox'
+                        name: '宝山',
+                        y: 23,
                     }, {
-                        name: 'Safari',
-                        y: 4.77,
-                        drilldown: 'Safari'
+                        name: '徐汇',
+                        y: 146,
                     }, {
-                        name: 'Opera',
-                        y: 0.91,
-                        drilldown: 'Opera'
+                        name: '普陀',
+                        y: 91,
                     }, {
-                        name: 'Proprietary or Undetectable',
-                        y: 0.2,
-                        drilldown: null
+                        name: '杨浦',
+                        y: 66,
+                    }, {
+                        name: '松江',
+                        y: 13,
+                    }, {
+                        name: '浦东',
+                        y: 224,
+                    }, {
+                        name: '虹口',
+                        y: 62,
+                    }, {
+                        name: '长宁',
+                        y: 98,
+                    }, {
+                        name: '闵行',
+                        y: 102,
+                    }, {
+                        name: '闸北',
+                        y: 55,
+                    }, {
+                        name: '静安',
+                        y: 72,
+                    }, {
+                        name: '黄浦',
+                        y: 72,
+                    }, {
+                        name: '青浦',
+                        y: 3,
+                    }, {
+                        name: '金山',
+                        y: 1,
                     }]
                 }],
-                drilldown: {
-                    series: [{
-                        name: 'Microsoft Internet Explorer',
-                        id: 'Microsoft Internet Explorer',
-                        data: [
-                            [
-                                'v11.0',
-                                24.13
-                            ],
-                            [
-                                'v8.0',
-                                17.2
-                            ],
-                            [
-                                'v9.0',
-                                8.11
-                            ],
-                            [
-                                'v10.0',
-                                5.33
-                            ],
-                            [
-                                'v6.0',
-                                1.06
-                            ],
-                            [
-                                'v7.0',
-                                0.5
-                            ]
-                        ]
-                    }, {
-                        name: 'Chrome',
-                        id: 'Chrome',
-                        data: [
-                            [
-                                'v40.0',
-                                5
-                            ],
-                            [
-                                'v41.0',
-                                4.32
-                            ],
-                            [
-                                'v42.0',
-                                3.68
-                            ],
-                            [
-                                'v39.0',
-                                2.96
-                            ],
-                            [
-                                'v36.0',
-                                2.53
-                            ],
-                            [
-                                'v43.0',
-                                1.45
-                            ],
-                            [
-                                'v31.0',
-                                1.24
-                            ],
-                            [
-                                'v35.0',
-                                0.85
-                            ],
-                            [
-                                'v38.0',
-                                0.6
-                            ],
-                            [
-                                'v32.0',
-                                0.55
-                            ],
-                            [
-                                'v37.0',
-                                0.38
-                            ],
-                            [
-                                'v33.0',
-                                0.19
-                            ],
-                            [
-                                'v34.0',
-                                0.14
-                            ],
-                            [
-                                'v30.0',
-                                0.14
-                            ]
-                        ]
-                    }, {
-                        name: 'Firefox',
-                        id: 'Firefox',
-                        data: [
-                            [
-                                'v35',
-                                2.76
-                            ],
-                            [
-                                'v36',
-                                2.32
-                            ],
-                            [
-                                'v37',
-                                2.31
-                            ],
-                            [
-                                'v34',
-                                1.27
-                            ],
-                            [
-                                'v38',
-                                1.02
-                            ],
-                            [
-                                'v31',
-                                0.33
-                            ],
-                            [
-                                'v33',
-                                0.22
-                            ],
-                            [
-                                'v32',
-                                0.15
-                            ]
-                        ]
-                    }, {
-                        name: 'Safari',
-                        id: 'Safari',
-                        data: [
-                            [
-                                'v8.0',
-                                2.56
-                            ],
-                            [
-                                'v7.1',
-                                0.77
-                            ],
-                            [
-                                'v5.1',
-                                0.42
-                            ],
-                            [
-                                'v5.0',
-                                0.3
-                            ],
-                            [
-                                'v6.1',
-                                0.29
-                            ],
-                            [
-                                'v7.0',
-                                0.26
-                            ],
-                            [
-                                'v6.2',
-                                0.17
-                            ]
-                        ]
-                    }, {
-                        name: 'Opera',
-                        id: 'Opera',
-                        data: [
-                            [
-                                'v12.x',
-                                0.34
-                            ],
-                            [
-                                'v28',
-                                0.24
-                            ],
-                            [
-                                'v27',
-                                0.17
-                            ],
-                            [
-                                'v29',
-                                0.16
-                            ]
-                        ]
-                    }]
-                }
             });
 
             Highcharts.chart('container2', {
@@ -363,7 +203,7 @@
                     plotShadow: false
                 },
                 title: {
-                    text: '2014 某网站各浏览器浏览量占比'
+                    text: '上海市各区县待租写字楼占比'
                 },
                 tooltip: {
                     headerFormat: '{series.name}<br>',
@@ -384,18 +224,27 @@
                 },
                 series: [{
                     type: 'pie',
-                    name: '浏览器访问量占比',
+                    name: '写字楼占比',
                     data: [
-                        ['Firefox', 45.0],
-                        ['IE', 26.8], {
-                            name: 'Chrome',
-                            y: 12.8,
+                        ['卢湾', 47],
+                        ['嘉定', 20],
+                        ['宝山', 23],
+                        ['徐汇', 146], {
+                            name: '浦东',
+                            y: 224,
                             sliced: true,
                             selected: true
                         },
-                        ['Safari', 8.5],
-                        ['Opera', 6.2],
-                        ['其他', 0.7]
+                        ['普陀', 91],
+                        ['杨浦', 66],
+                        ['松江', 13],
+                        ['虹口', 62],
+                        ['长宁', 98],
+                        ['闵行', 102],
+                        ['闸北', 55],
+                        ['静安', 72],
+                        ['黄浦', 72],
+                        ['其他', 4]
                     ]
                 }]
             });
