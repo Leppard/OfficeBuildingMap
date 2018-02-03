@@ -4,7 +4,7 @@ var sql = require('mssql');
 function queryData(callback) {
 	sql.connect("mssql://sa:123456@10.60.38.147:1433/OfficeBuilding").then(function() {
     	// Query
-	    new sql.Request().query('select top(10) * from crawler').then(function(recordset) {
+	    new sql.Request().query('select * from crawler').then(function(recordset) {
 	       callback(recordset['recordset']);
 	    }).catch(function(err) {
 	       console.log(err);
