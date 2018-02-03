@@ -2,6 +2,8 @@ var express = require('express');
 var nodeExcel = require('excel-export');
 var app = express();
  
+app.use(express.static('../'));
+
 app.get('/queryData', function (req, res) {
 	var query = require('./dbConnector');
 	query.queryData(function(recordset) {
