@@ -533,7 +533,8 @@ var this_data = [{
     "美国": {
         "加拿大": {
             "非传染性疾病": "318.0",
-            "受伤": "31.3",
+            "受伤": "10",
+            "传染性组": "22.6",
             "传染性疾病及其他组": "22.6"
         },
         "玻利维亚 (多民族国家)": {
@@ -871,1382 +872,1339 @@ var this_data = [{
             "非传染性疾病": "302.1"
         }
     }
-    }];
+}];
 
-var that_data = [{
-        'id': '0.0',
-        'parent': '',
-        'name': 'The World'
-            }, {
-        'id': '1.3',
-        'parent': '0.0',
-        'name': 'Asia'
-            }, {
-        'id': '1.1',
-        'parent': '0.0',
-        'name': 'Africa'
-            }, {
-        'id': '1.2',
-        'parent': '0.0',
-        'name': 'America'
-            }, {
-        'id': '1.4',
-        'parent': '0.0',
-        'name': 'Europe'
-            }, {
-        'id': '1.5',
-        'parent': '0.0',
-        'name': 'Oceanic'
-            },
-
-            /* Africa */
-    {
-        'id': '2.1',
-        'parent': '1.1',
-        'name': 'Eastern Africa'
-            },
-
-    {
-        'id': '3.1',
-        'parent': '2.1',
-        'name': 'Ethiopia',
-        'value': 104957438
-            }, {
-        'id': '3.2',
-        'parent': '2.1',
-        'name': 'Tanzania',
-        'value': 57310019
-            }, {
-        'id': '3.3',
-        'parent': '2.1',
-        'name': 'Kenya',
-        'value': 49699862
-            }, {
-        'id': '3.4',
-        'parent': '2.1',
-        'name': 'Uganda',
-        'value': 42862958
-            }, {
-        'id': '3.5',
-        'parent': '2.1',
-        'name': 'Mozambique',
-        'value': 29668834
-            }, {
-        'id': '3.6',
-        'parent': '2.1',
-        'name': 'Madagascar',
-        'value': 25570895
-            }, {
-        'id': '3.7',
-        'parent': '2.1',
-        'name': 'Malawi',
-        'value': 18622104
-            }, {
-        'id': '3.8',
-        'parent': '2.1',
-        'name': 'Zambia',
-        'value': 17094130
-            }, {
-        'id': '3.9',
-        'parent': '2.1',
-        'name': 'Zimbabwe',
-        'value': 16529904
-            }, {
-        'id': '3.10',
-        'parent': '2.1',
-        'name': 'Somalia',
-        'value': 14742523
-            }, {
-        'id': '3.11',
-        'parent': '2.1',
-        'name': 'South Sudan',
-        'value': 12575714
-            }, {
-        'id': '3.12',
-        'parent': '2.1',
-        'name': 'Rwanda',
-        'value': 12208407
-            }, {
-        'id': '3.13',
-        'parent': '2.1',
-        'name': 'Burundi',
-        'value': 10864245
-            }, {
-        'id': '3.14',
-        'parent': '2.1',
-        'name': 'Eritrea',
-        'value': 5068831
-            }, {
-        'id': '3.15',
-        'parent': '2.1',
-        'name': 'Mauritius',
-        'value': 1265138
-            }, {
-        'id': '3.16',
-        'parent': '2.1',
-        'name': 'Djibouti',
-        'value': 956985
-            }, {
-        'id': '3.17',
-        'parent': '2.1',
-        'name': 'Réunion',
-        'value': 876562
-            }, {
-        'id': '3.18',
-        'parent': '2.1',
-        'name': 'Comoros',
-        'value': 813912
-            }, {
-        'id': '3.19',
-        'parent': '2.1',
-        'name': 'Mayotte',
-        'value': 253045
-            }, {
-        'id': '3.20',
-        'parent': '2.1',
-        'name': 'Seychelles',
-        'value': 94737
-            },
-
-    {
-        'id': '2.5',
-        'parent': '1.1',
-        'name': 'Western Africa'
-            },
-
-    {
-        'id': '3.42',
-        'parent': '2.5',
-        'name': 'Nigeria',
-        'value': 190886311
-            }, {
-        'id': '3.43',
-        'parent': '2.5',
-        'name': 'Ghana',
-        'value': 28833629
-            }, {
-        'id': '3.44',
-        'parent': '2.5',
-        'name': 'Côte Ivoire',
-        'value': 24294750
-            }, {
-        'id': '3.45',
-        'parent': '2.5',
-        'name': 'Niger',
-        'value': 21477348
-            }, {
-        'id': '3.46',
-        'parent': '2.5',
-        'name': 'Burkina Faso',
-        'value': 19193382
-            }, {
-        'id': '3.47',
-        'parent': '2.5',
-        'name': 'Mali',
-        'value': 18541980
-            }, {
-        'id': '3.48',
-        'parent': '2.5',
-        'name': 'Senegal',
-        'value': 15850567
-            }, {
-        'id': '3.49',
-        'parent': '2.5',
-        'name': 'Guinea',
-        'value': 12717176
-            }, {
-        'id': '3.50',
-        'parent': '2.5',
-        'name': 'Benin',
-        'value': 11175692
-            }, {
-        'id': '3.51',
-        'parent': '2.5',
-        'name': 'Togo',
-        'value': 7797694
-            }, {
-        'id': '3.52',
-        'parent': '2.5',
-        'name': 'Sierra Leone',
-        'value': 7557212
-            }, {
-        'id': '3.53',
-        'parent': '2.5',
-        'name': 'Liberia',
-        'value': 4731906
-            }, {
-        'id': '3.54',
-        'parent': '2.5',
-        'name': 'Mauritania',
-        'value': 4420184
-            }, {
-        'id': '3.55',
-        'parent': '2.5',
-        'name': 'The Gambia',
-        'value': 2100568
-            }, {
-        'id': '3.56',
-        'parent': '2.5',
-        'name': 'Guinea-Bissau',
-        'value': 1861283
-            }, {
-        'id': '3.57',
-        'parent': '2.5',
-        'name': 'Cabo Verde',
-        'value': 546388
-            }, {
-        'id': '3.58',
-        'parent': '2.5',
-        'name': 'Saint Helena, Ascension and Tristan da Cunha',
-        'value': 4049
-            },
-
-    {
-        'id': '2.3',
-        'parent': '1.1',
-        'name': 'North Africa'
-            },
-
-    {
-        'id': '3.30',
-        'parent': '2.3',
-        'name': 'Egypt',
-        'value': 97553151
-            }, {
-        'id': '3.31',
-        'parent': '2.3',
-        'name': 'Algeria',
-        'value': 41318142
-            }, {
-        'id': '3.32',
-        'parent': '2.3',
-        'name': 'Sudan',
-        'value': 40533330
-            }, {
-        'id': '3.33',
-        'parent': '2.3',
-        'name': 'Morocco',
-        'value': 35739580
-            }, {
-        'id': '3.34',
-        'parent': '2.3',
-        'name': 'Tunisia',
-        'value': 11532127
-            }, {
-        'id': '3.35',
-        'parent': '2.3',
-        'name': 'Libya',
-        'value': 6374616
-            }, {
-        'id': '3.36',
-        'parent': '2.3',
-        'name': 'Western Sahara',
-        'value': 552628
-            },
-
-    {
-        'id': '2.2',
-        'parent': '1.1',
-        'name': 'Central Africa'
-            },
-
-    {
-        'id': '3.21',
-        'parent': '2.2',
-        'name': 'Democratic Republic of the Congo',
-        'value': 81339988
-            }, {
-        'id': '3.22',
-        'parent': '2.2',
-        'name': 'Angola',
-        'value': 29784193
-            }, {
-        'id': '3.23',
-        'parent': '2.2',
-        'name': 'Cameroon',
-        'value': 24053727
-            }, {
-        'id': '3.24',
-        'parent': '2.2',
-        'name': 'Chad',
-        'value': 14899994
-            }, {
-        'id': '3.25',
-        'parent': '2.2',
-        'name': 'Congo',
-        'value': 5260750
-            }, {
-        'id': '3.26',
-        'parent': '2.2',
-        'name': 'Central African Republic',
-        'value': 4659080
-            }, {
-        'id': '3.27',
-        'parent': '2.2',
-        'name': 'Gabon',
-        'value': 2025137
-            }, {
-        'id': '3.28',
-        'parent': '2.2',
-        'name': 'Equatorial Guinea',
-        'value': 1267689
-            }, {
-        'id': '3.29',
-        'parent': '2.2',
-        'name': 'Sao Tome and Principe',
-        'value': 204327
-            },
-
-    {
-        'id': '2.4',
-        'parent': '1.1',
-        'name': 'South America'
-            },
-
-    {
-        'id': '3.37',
-        'parent': '2.4',
-        'name': 'South Africa',
-        'value': 56717156
-            }, {
-        'id': '3.38',
-        'parent': '2.4',
-        'name': 'Namibia',
-        'value': 2533794
-            }, {
-        'id': '3.39',
-        'parent': '2.4',
-        'name': 'Botswana',
-        'value': 2291661
-            }, {
-        'id': '3.40',
-        'parent': '2.4',
-        'name': 'Lesotho',
-        'value': 2233339
-            }, {
-        'id': '3.41',
-        'parent': '2.4',
-        'name': 'Swaziland',
-        'value': 1367254
-            },
-
-            /***********/
-
-            /* America */
-    {
-        'id': '2.9',
-        'parent': '1.2',
-        'name': 'South America'
-            },
-
-    {
-        'id': '3.98',
-        'parent': '2.9',
-        'name': 'Brazil',
-        'value': 209288278
-            }, {
-        'id': '3.99',
-        'parent': '2.9',
-        'name': 'Colombia',
-        'value': 49065615
-            }, {
-        'id': '3.100',
-        'parent': '2.9',
-        'name': 'Argentina',
-        'value': 44271041
-            }, {
-        'id': '3.101',
-        'parent': '2.9',
-        'name': 'Peru',
-        'value': 32165485
-            }, {
-        'id': '3.102',
-        'parent': '2.9',
-        'name': 'Venezuela',
-        'value': 31977065
-            }, {
-        'id': '3.103',
-        'parent': '2.9',
-        'name': 'Chile',
-        'value': 18054726
-            }, {
-        'id': '3.104',
-        'parent': '2.9',
-        'name': 'Ecuador',
-        'value': 16624858
-            }, {
-        'id': '3.105',
-        'parent': '2.9',
-        'name': 'Bolivia',
-        'value': 11051600
-            }, {
-        'id': '3.106',
-        'parent': '2.9',
-        'name': 'Paraguay',
-        'value': 6811297
-            }, {
-        'id': '3.107',
-        'parent': '2.9',
-        'name': 'Uruguay',
-        'value': 3456750
-            }, {
-        'id': '3.108',
-        'parent': '2.9',
-        'name': 'Guyana',
-        'value': 777859
-            }, {
-        'id': '3.109',
-        'parent': '2.9',
-        'name': 'Suriname',
-        'value': 563402
-            }, {
-        'id': '3.110',
-        'parent': '2.9',
-        'name': 'French Guiana',
-        'value': 282731
-            }, {
-        'id': '3.111',
-        'parent': '2.9',
-        'name': 'Falkland Islands',
-        'value': 2910
-            },
-
-    {
-        'id': '2.8',
-        'parent': '1.2',
-        'name': 'Northern America'
-            },
-
-    {
-        'id': '3.93',
-        'parent': '2.8',
-        'name': 'United States',
-        'value': 324459463
-            }, {
-        'id': '3.94',
-        'parent': '2.8',
-        'name': 'Canada',
-        'value': 36624199
-            }, {
-        'id': '3.95',
-        'parent': '2.8',
-        'name': 'Bermuda',
-        'value': 61349
-            }, {
-        'id': '3.96',
-        'parent': '2.8',
-        'name': 'Greenland',
-        'value': 56480
-            }, {
-        'id': '3.97',
-        'parent': '2.8',
-        'name': 'Saint Pierre and Miquelon',
-        'value': 6320
-            },
-
-    {
-        'id': '2.7',
-        'parent': '1.2',
-        'name': 'Central America'
-            },
-
-    {
-        'id': '3.85',
-        'parent': '2.7',
-        'name': 'Mexico',
-        'value': 129163276
-            }, {
-        'id': '3.86',
-        'parent': '2.7',
-        'name': 'Guatemala',
-        'value': 16913503
-            }, {
-        'id': '3.87',
-        'parent': '2.7',
-        'name': 'Honduras',
-        'value': 9265067
-            }, {
-        'id': '3.88',
-        'parent': '2.7',
-        'name': 'El Salvador',
-        'value': 6377853
-            }, {
-        'id': '3.89',
-        'parent': '2.7',
-        'name': 'Nicaragua',
-        'value': 6217581
-            }, {
-        'id': '3.90',
-        'parent': '2.7',
-        'name': 'Costa Rica',
-        'value': 4905769
-            }, {
-        'id': '3.91',
-        'parent': '2.7',
-        'name': 'Panama',
-        'value': 4098587
-            }, {
-        'id': '3.92',
-        'parent': '2.7',
-        'name': 'Belize',
-        'value': 374681
-            },
-
-    {
-        'id': '2.6',
-        'parent': '1.2',
-        'name': 'Caribbean'
-            },
-
-    {
-        'id': '3.59',
-        'parent': '2.6',
-        'name': 'Cuba',
-        'value': 11484636
-            }, {
-        'id': '3.60',
-        'parent': '2.6',
-        'name': 'Haiti',
-        'value': 10981229
-            }, {
-        'id': '3.61',
-        'parent': '2.6',
-        'name': 'Dominican Republic',
-        'value': 10766998
-            }, {
-        'id': '3.62',
-        'parent': '2.6',
-        'name': 'Puerto Rico',
-        'value': 3663131
-            }, {
-        'id': '3.63',
-        'parent': '2.6',
-        'name': 'Jamaica',
-        'value': 2890299
-            }, {
-        'id': '3.64',
-        'parent': '2.6',
-        'name': 'Trinidad and Tobago',
-        'value': 1369125
-            }, {
-        'id': '3.65',
-        'parent': '2.6',
-        'name': 'Guadeloupe',
-        'value': 449568
-            }, {
-        'id': '3.66',
-        'parent': '2.6',
-        'name': 'Bahamas',
-        'value': 395361
-            }, {
-        'id': '3.67',
-        'parent': '2.6',
-        'name': 'Martinique',
-        'value': 384896
-            }, {
-        'id': '3.68',
-        'parent': '2.6',
-        'name': 'Barbados',
-        'value': 285719
-            }, {
-        'id': '3.69',
-        'parent': '2.6',
-        'name': 'Saint Lucia',
-        'value': 178844
-            }, {
-        'id': '3.70',
-        'parent': '2.6',
-        'name': 'Curaçao',
-        'value': 160539
-            }, {
-        'id': '3.71',
-        'parent': '2.6',
-        'name': 'Saint Vincent and the Grenadines',
-        'value': 109897
-            }, {
-        'id': '3.72',
-        'parent': '2.6',
-        'name': 'Grenada',
-        'value': 107825
-            }, {
-        'id': '3.73',
-        'parent': '2.6',
-        'name': 'Aruba',
-        'value': 105264
-            }, {
-        'id': '3.74',
-        'parent': '2.6',
-        'name': 'United States Virgin Islands',
-        'value': 104901
-            }, {
-        'id': '3.75',
-        'parent': '2.6',
-        'name': 'Antigua and Barbuda',
-        'value': 102012
-            }, {
-        'id': '3.76',
-        'parent': '2.6',
-        'name': 'Dominica',
-        'value': 73925
-            }, {
-        'id': '3.77',
-        'parent': '2.6',
-        'name': 'Cayman Islands',
-        'value': 61559
-            }, {
-        'id': '3.78',
-        'parent': '2.6',
-        'name': 'Saint Kitts and Nevis',
-        'value': 55345
-            }, {
-        'id': '3.79',
-        'parent': '2.6',
-        'name': 'Sint Maarten',
-        'value': 40120
-            }, {
-        'id': '3.80',
-        'parent': '2.6',
-        'name': 'Turks and Caicos Islands',
-        'value': 35446
-            }, {
-        'id': '3.81',
-        'parent': '2.6',
-        'name': 'British Virgin Islands',
-        'value': 31196
-            }, {
-        'id': '3.82',
-        'parent': '2.6',
-        'name': 'Caribbean Netherlands',
-        'value': 25398
-            }, {
-        'id': '3.83',
-        'parent': '2.6',
-        'name': 'Anguilla',
-        'value': 14909
-            }, {
-        'id': '3.84',
-        'parent': '2.6',
-        'name': 'Montserrat',
-        'value': 5177
-            },
-            /***********/
-
-            /* Asia */
-    {
-        'id': '2.13',
-        'parent': '1.3',
-        'name': 'Southern Asia'
-            },
-
-    {
-        'id': '3.136',
-        'parent': '2.13',
-        'name': 'India',
-        'value': 1339180127
-            }, {
-        'id': '3.137',
-        'parent': '2.13',
-        'name': 'Pakistan',
-        'value': 197015955
-            }, {
-        'id': '3.138',
-        'parent': '2.13',
-        'name': 'Bangladesh',
-        'value': 164669751
-            }, {
-        'id': '3.139',
-        'parent': '2.13',
-        'name': 'Iran',
-        'value': 81162788
-            }, {
-        'id': '3.140',
-        'parent': '2.13',
-        'name': 'Afghanistan',
-        'value': 35530081
-            }, {
-        'id': '3.141',
-        'parent': '2.13',
-        'name': 'Nepal',
-        'value': 29304998
-            }, {
-        'id': '3.142',
-        'parent': '2.13',
-        'name': 'Sri Lanka',
-        'value': 20876917
-            }, {
-        'id': '3.143',
-        'parent': '2.13',
-        'name': 'Bhutan',
-        'value': 807610
-            }, {
-        'id': '3.144',
-        'parent': '2.13',
-        'name': 'Maldives',
-        'value': 436330
-            },
-
-    {
-        'id': '2.11',
-        'parent': '1.3',
-        'name': 'Eastern Asia'
-            },
-
-    {
-        'id': '3.117',
-        'parent': '2.11',
-        'name': 'China',
-        'value': 1409517397
-            }, {
-        'id': '3.118',
-        'parent': '2.11',
-        'name': 'Japan',
-        'value': 127484450
-            }, {
-        'id': '3.119',
-        'parent': '2.11',
-        'name': 'South Korea',
-        'value': 50982212
-            }, {
-        'id': '3.120',
-        'parent': '2.11',
-        'name': 'North Korea',
-        'value': 25490965
-            }, {
-        'id': '3.121',
-        'parent': '2.11',
-        'name': 'Taiwan',
-        'value': 23626456
-            }, {
-        'id': '3.122',
-        'parent': '2.11',
-        'name': 'Hong Kong',
-        'value': 7364883
-            }, {
-        'id': '3.123',
-        'parent': '2.11',
-        'name': 'Mongolia',
-        'value': 3075647
-            }, {
-        'id': '3.124',
-        'parent': '2.11',
-        'name': 'Macau',
-        'value': 622567
-            },
-
-    {
-        'id': '2.12',
-        'parent': '1.3',
-        'name': 'South-Eastern Asia'
-            },
-
-    {
-        'id': '3.125',
-        'parent': '2.12',
-        'name': 'Indonesia',
-        'value': 263991379
-            }, {
-        'id': '3.126',
-        'parent': '2.12',
-        'name': 'Philippines',
-        'value': 104918090
-            }, {
-        'id': '3.127',
-        'parent': '2.12',
-        'name': 'Vietnam',
-        'value': 95540800
-            }, {
-        'id': '3.128',
-        'parent': '2.12',
-        'name': 'Thailand',
-        'value': 69037513
-            }, {
-        'id': '3.129',
-        'parent': '2.12',
-        'name': 'Myanmar',
-        'value': 53370609
-            }, {
-        'id': '3.130',
-        'parent': '2.12',
-        'name': 'Malaysia',
-        'value': 31624264
-            }, {
-        'id': '3.131',
-        'parent': '2.12',
-        'name': 'Cambodia',
-        'value': 16005373
-            }, {
-        'id': '3.132',
-        'parent': '2.12',
-        'name': 'Laos',
-        'value': 6858160
-            }, {
-        'id': '3.133',
-        'parent': '2.12',
-        'name': 'Singapore',
-        'value': 5708844
-            }, {
-        'id': '3.134',
-        'parent': '2.12',
-        'name': 'Timor-Leste',
-        'value': 1296311
-            }, {
-        'id': '3.135',
-        'parent': '2.12',
-        'name': 'Brunei',
-        'value': 428697
-            // 'color': ''
-            },
-
-    {
-        'id': '2.14',
-        'parent': '1.3',
-        'name': 'Western Asia'
-            },
-
-    {
-        'id': '3.145',
-        'parent': '2.14',
-        'name': 'Turkey',
-        'value': 80745020
-            }, {
-        'id': '3.146',
-        'parent': '2.14',
-        'name': 'Iraq',
-        'value': 38274618
-            }, {
-        'id': '3.147',
-        'parent': '2.14',
-        'name': 'Saudi Arabia',
-        'value': 32938213
-            }, {
-        'id': '3.148',
-        'parent': '2.14',
-        'name': 'Yemen',
-        'value': 28250420
-            }, {
-        'id': '3.149',
-        'parent': '2.14',
-        'name': 'Syria',
-        'value': 18269868
-            }, {
-        'id': '3.150',
-        'parent': '2.14',
-        'name': 'Azerbaijan',
-        'value': 9827589
-            }, {
-        'id': '3.151',
-        'parent': '2.14',
-        'name': 'Jordan',
-        'value': 9702353
-            }, {
-        'id': '3.152',
-        'parent': '2.14',
-        'name': 'United Arab Emirates',
-        'value': 9400145
-            }, {
-        'id': '3.153',
-        'parent': '2.14',
-        'name': 'Israel',
-        'value': 8321570
-            }, {
-        'id': '3.154',
-        'parent': '2.14',
-        'name': 'Lebanon',
-        'value': 6082357
-            }, {
-        'id': '3.155',
-        'parent': '2.14',
-        'name': 'Palestine',
-        'value': 4920724
-            }, {
-        'id': '3.156',
-        'parent': '2.14',
-        'name': 'Oman',
-        'value': 4636262
-            }, {
-        'id': '3.157',
-        'parent': '2.14',
-        'name': 'Kuwait',
-        'value': 4136528
-            }, {
-        'id': '3.158',
-        'parent': '2.14',
-        'name': 'Georgia',
-        'value': 3912061
-            }, {
-        'id': '3.159',
-        'parent': '2.14',
-        'name': 'Armenia',
-        'value': 2930450
-            }, {
-        'id': '3.160',
-        'parent': '2.14',
-        'name': 'Qatar',
-        'value': 2639211
-            }, {
-        'id': '3.161',
-        'parent': '2.14',
-        'name': 'Bahrain',
-        'value': 1492584
-            },
-
-    {
-        'id': '2.10',
-        'parent': '1.3',
-        'name': 'Central Asia'
-            },
-
-    {
-        'id': '3.112',
-        'parent': '2.10',
-        'name': 'Uzbekistan',
-        'value': 31910641
-            }, {
-        'id': '3.113',
-        'parent': '2.10',
-        'name': 'Kazakhstan',
-        'value': 18204499
-            }, {
-        'id': '3.114',
-        'parent': '2.10',
-        'name': 'Tajikistan',
-        'value': 8921343
-            }, {
-        'id': '3.115',
-        'parent': '2.10',
-        'name': 'Kyrgyzstan',
-        'value': 6045117
-            }, {
-        'id': '3.116',
-        'parent': '2.10',
-        'name': 'Turkmenistan',
-        'value': 5758075
-            },
-            /***********/
-
-            /* Europe */
-    {
-        'id': '2.15',
-        'parent': '1.4',
-        'name': 'Eastern Europe'
-            },
-
-    {
-        'id': '3.162',
-        'parent': '2.15',
-        'name': 'Russia',
-        'value': 143989754
-            }, {
-        'id': '3.163',
-        'parent': '2.15',
-        'name': 'Ukraine',
-        'value': 44222947
-            }, {
-        'id': '3.164',
-        'parent': '2.15',
-        'name': 'Poland',
-        'value': 38170712
-            }, {
-        'id': '3.165',
-        'parent': '2.15',
-        'name': 'Romania',
-        'value': 19679306
-            }, {
-        'id': '3.166',
-        'parent': '2.15',
-        'name': 'Czechia',
-        'value': 10618303
-            }, {
-        'id': '3.167',
-        'parent': '2.15',
-        'name': 'Hungary',
-        'value': 9721559
-            }, {
-        'id': '3.168',
-        'parent': '2.15',
-        'name': 'Belarus',
-        'value': 9468338
-            }, {
-        'id': '3.169',
-        'parent': '2.15',
-        'name': 'Bulgaria',
-        'value': 7084571
-            }, {
-        'id': '3.170',
-        'parent': '2.15',
-        'name': 'Slovakia',
-        'value': 5447662
-            }, {
-        'id': '3.171',
-        'parent': '2.15',
-        'name': 'Moldova',
-        'value': 4051212
-            }, {
-        'id': '3.172',
-        'parent': '2.15',
-        'name': 'Cyprus',
-        'value': 1179551
-            },
-
-    {
-        'id': '2.16',
-        'parent': '1.4',
-        'name': 'Northern Europe'
-            },
-
-    {
-        'id': '3.173',
-        'parent': '2.16',
-        'name': 'United Kingdom',
-        'value': 66181585
-            }, {
-        'id': '3.174',
-        'parent': '2.16',
-        'name': 'Sweden',
-        'value': 9910701
-            }, {
-        'id': '3.175',
-        'parent': '2.16',
-        'name': 'Denmark',
-        'value': 5733551
-            }, {
-        'id': '3.176',
-        'parent': '2.16',
-        'name': 'Finland',
-        'value': 5523231
-            }, {
-        'id': '3.177',
-        'parent': '2.16',
-        'name': 'Norway',
-        'value': 5305383
-            }, {
-        'id': '3.178',
-        'parent': '2.16',
-        'name': 'Ireland',
-        'value': 4761657
-            }, {
-        'id': '3.179',
-        'parent': '2.16',
-        'name': 'Lithuania',
-        'value': 2890297
-            }, {
-        'id': '3.180',
-        'parent': '2.16',
-        'name': 'Latvia',
-        'value': 1949670
-            }, {
-        'id': '3.181',
-        'parent': '2.16',
-        'name': 'Estonia',
-        'value': 1309632
-            }, {
-        'id': '3.182',
-        'parent': '2.16',
-        'name': 'Iceland',
-        'value': 335025
-            }, {
-        'id': '3.183',
-        'parent': '2.16',
-        'name': 'Guernsey and  Jersey',
-        'value': 165314
-            }, {
-        'id': '3.184',
-        'parent': '2.16',
-        'name': 'Isle of Man',
-        'value': 84287
-            }, {
-        'id': '3.185',
-        'parent': '2.16',
-        'name': 'Faroe Islands',
-        'value': 49290
-            },
-
-    {
-        'id': '2.17',
-        'parent': '1.4',
-        'name': 'Southern Europe'
-            },
-
-    {
-        'id': '3.186',
-        'parent': '2.17',
-        'name': 'Italy',
-        'value': 59359900
-            }, {
-        'id': '3.187',
-        'parent': '2.17',
-        'name': 'Spain',
-        'value': 46354321
-            }, {
-        'id': '3.188',
-        'parent': '2.17',
-        'name': 'Greece',
-        'value': 11159773
-            }, {
-        'id': '3.189',
-        'parent': '2.17',
-        'name': 'Portugal',
-        'value': 10329506
-            }, {
-        'id': '3.190',
-        'parent': '2.17',
-        'name': 'Serbia',
-        'value': 8790574
-            }, {
-        'id': '3.191',
-        'parent': '2.17',
-        'name': 'Croatia',
-        'value': 4189353
-            }, {
-        'id': '3.192',
-        'parent': '2.17',
-        'name': 'Bosnia and Herzegovina',
-        'value': 3507017
-            }, {
-        'id': '3.193',
-        'parent': '2.17',
-        'name': 'Albania',
-        'value': 2930187
-            }, {
-        'id': '3.194',
-        'parent': '2.17',
-        'name': 'Republic of Macedonia',
-        'value': 2083160
-            }, {
-        'id': '3.195',
-        'parent': '2.17',
-        'name': 'Slovenia',
-        'value': 2079976
-            }, {
-        'id': '3.196',
-        'parent': '2.17',
-        'name': 'Montenegro',
-        'value': 628960
-            }, {
-        'id': '3.197',
-        'parent': '2.17',
-        'name': 'Malta',
-        'value': 430835
-            }, {
-        'id': '3.198',
-        'parent': '2.17',
-        'name': 'Andorra',
-        'value': 76965
-            }, {
-        'id': '3.199',
-        'parent': '2.17',
-        'name': 'Gibraltar',
-        'value': 34571
-            }, {
-        'id': '3.200',
-        'parent': '2.17',
-        'name': 'San Marino',
-        'value': 33400
-            }, {
-        'id': '3.201',
-        'parent': '2.17',
-        'name': 'Vatican City',
-        'value': 792
-            },
-
-    {
-        'id': '2.18',
-        'parent': '1.4',
-        'name': 'Western Europe'
-            },
-
-    {
-        'id': '3.202',
-        'parent': '2.18',
-        'name': 'Germany',
-        'value': 82114224
-            }, {
-        'id': '3.203',
-        'parent': '2.18',
-        'name': 'France',
-        'value': 64979548
-            }, {
-        'id': '3.204',
-        'parent': '2.18',
-        'name': 'Netherlands',
-        'value': 17035938
-            }, {
-        'id': '3.205',
-        'parent': '2.18',
-        'name': 'Belgium',
-        'value': 11429336
-            }, {
-        'id': '3.206',
-        'parent': '2.18',
-        'name': 'Austria',
-        'value': 8735453
-            }, {
-        'id': '3.207',
-        'parent': '2.18',
-        'name': 'Switzerland',
-        'value': 8476005
-            }, {
-        'id': '3.208',
-        'parent': '2.18',
-        'name': 'Luxembourg',
-        'value': 583455
-            }, {
-        'id': '3.209',
-        'parent': '2.18',
-        'name': 'Monaco',
-        'value': 38695
-            }, {
-        'id': '3.210',
-        'parent': '2.18',
-        'name': 'Liechtenstein',
-        'value': 37922
-            },
-            /***********/
-
-            /* Oceania */
-    {
-        'id': '2.19',
-        'parent': '1.5',
-        'name': 'Australia and New Zealand'
-            },
-
-    {
-        'id': '3.211',
-        'parent': '2.19',
-        'name': 'Australia',
-        'value': 24450561
-            }, {
-        'id': '3.212',
-        'parent': '2.19',
-        'name': 'New Zealand',
-        'value': 4705818
-            },
-
-    {
-        'id': '2.20',
-        'parent': '1.5',
-        'name': 'Melanesia'
-            },
-
-    {
-        'id': '3.213',
-        'parent': '2.20',
-        'name': 'Papua New Guinea'
-            }, {
-        'id': '3.214',
-        'parent': '2.20',
-        'name': 'Fiji',
-        'value': 905502
-            }, {
-        'id': '3.215',
-        'parent': '2.20',
-        'name': 'Solomon Islands',
-        'value': 611343
-            }, {
-        'id': '3.216',
-        'parent': '2.20',
-        'name': 'New Caledonia',
-        'value': 276255
-            }, {
-        'id': '3.217',
-        'parent': '2.20',
-        'name': 'Vanuatu',
-        'value': 276244
-            },
-
-    {
-        'id': '2.21',
-        'parent': '1.5',
-        'name': 'Micronesia'
-            },
-
-    {
-        'id': '3.218',
-        'parent': '2.21',
-        'name': 'Guam',
-        'value': 164229
-            }, {
-        'id': '3.219',
-        'parent': '2.21',
-        'name': 'Kiribati',
-        'value': 116398
-            }, {
-        'id': '3.220',
-        'parent': '2.21',
-        'name': 'Federated States of Micronesia',
-        'value': 105544
-            }, {
-        'id': '3.221',
-        'parent': '2.21',
-        'name': 'Northern Mariana Islands',
-        'value': 55144
-            }, {
-        'id': '3.222',
-        'parent': '2.21',
-        'name': 'Marshall Islands',
-        'value': 53127
-            }, {
-        'id': '3.223',
-        'parent': '2.21',
-        'name': 'Palau',
-        'value': 21729
-            }, {
-        'id': '3.224',
-        'parent': '2.21',
-        'name': 'Nauru',
-        'value': 11359
-            },
-
-    {
-        'id': '2.22',
-        'parent': '1.5',
-        'name': 'Polynesia'
-            },
-
-    {
-        'id': '3.225',
-        'parent': '2.22',
-        'name': 'French Polynesia',
-        'value': 283007
-            }, {
-        'id': '3.226',
-        'parent': '2.22',
-        'name': 'Samoa',
-        'value': 196440
-            }, {
-        'id': '3.227',
-        'parent': '2.22',
-        'name': 'Tonga',
-        'value': 108020
-            }, {
-        'id': '3.228',
-        'parent': '2.22',
-        'name': 'American Samoa',
-        'value': 55641
-            }, {
-        'id': '3.229',
-        'parent': '2.22',
-        'name': 'Cook Islands',
-        'value': 17380
-            }, {
-        'id': '3.230',
-        'parent': '2.22',
-        'name': 'Wallis and Futuna',
-        'value': 11773
-            }, {
-        'id': '3.231',
-        'parent': '2.22',
-        'name': 'Tuvalu',
-        'value': 11192
-            }, {
-        'id': '3.232',
-        'parent': '2.22',
-        'name': 'Niue',
-        'value': 1618
-            }, {
-        'id': '3.233',
-        'parent': '2.22',
-        'name': 'Tokelau',
-        'value': 1300
-            }
-        ];
+var tree_data = [{
+    '卢湾': {
+        ' 复兴公园 ': {
+            '申能国际大厦': '4'
+        },
+        ' 淮海路/新天地 ': {
+            '卢湾建设发展大楼': '1',
+            '久事复兴大厦': '5',
+            '复兴广场': '1',
+            '越界世博园': '2',
+            '柳林大厦': '3',
+            '力宝广场': '5',
+            '香港广场': '7',
+            '瑞安广场': '3',
+            '香港新世界大厦': '5',
+            '上海新天地时尚广场': '1',
+            '企业天地': '7',
+            '新茂大厦': '4',
+            '世纪巴士大厦': '1',
+            '瑞金大厦': '5',
+            '淮海金融大厦': '1',
+            'SOHO丽园': '2',
+            'SOHO复兴广场': '12',
+            '上海广场': '4',
+            '永银大厦': '3',
+            '751国际创意工场': '3'
+        },
+        ' 淮海中路 ': {
+            '汇针751创意园': '1'
+        },
+        ' 打浦桥 ': {
+            '8号桥一期': '2',
+            '国信商务大厦': '1',
+            '荣科大厦': '1',
+            '上置金融大厦': '2',
+            '绿地海外滩中心B幢': '4',
+            '广发大厦': '2',
+            '上海巴士大厦': '5',
+            '8号桥三期': '1',
+            '金玉兰广场': '4',
+            '斯格威国际': '1',
+            '摩工坊': '1',
+            '绿地海外滩中心A幢': '3',
+            '歌斐中心': '6',
+            '海兴大厦': '1',
+            '致远大厦': '2',
+            '智造局': '2',
+            '电科滨江中心': '1',
+            '世博浦西管理中心': '1',
+            '海兴广场': '2',
+            '江南造船大厦': '3',
+            '日月光中心伯爵居': '1',
+            '丽都大厦': '2',
+            '园林大厦': '1',
+            '广东发展银行大厦': '1',
+            '8号桥二期': '5'
+        }
+    },
+    '嘉定': {
+        ' 嘉定城区 ': {
+            '尚品SOHO': '2',
+            '月月光伯爵天地': '2',
+            '永盛商务楼1号楼': '2',
+            '日月光伯爵天地': '1',
+            '嘉定宝龙城市广场': '6',
+            '盛创企业家园': '3'
+        },
+        ' 安亭 ': {
+            '嘉亭大厦': '1'
+        },
+        ' 江桥 ': {
+            '嘉印象': '1',
+            '慧创国际': '6',
+            '歆翱商务大厦': '3',
+            '四方科创园': '1',
+            '江桥万达广场': '10',
+            '慧创国际C-2区': '1',
+            '上海西郊商务区-C2国际区': '1',
+            '歆翱国际电商大厦': '1',
+            '申窑艺术中心': '1'
+        },
+        ' 南翔 ': {
+            '中冶祥腾城市广场·菁英逸品': '1',
+            '南翔智地': '3',
+            '新明KIDMALL': '2',
+            '中冶祥腾城市广场': '2'
+        }
+    },
+    '宝山': {
+        ' 淞南高境 ': {
+            '华滋奔腾大厦': '1',
+            '中成智谷': '2'
+        },
+        ' 大场镇 ': {
+            '岛里创新园': '1'
+        },
+        ' 大华 ': {
+            '大华虎城第三空间': '1',
+            '齐成晟园': '1',
+            '尚大国际': '2'
+        },
+        ' 顾村 ': {
+            '智慧湾科创园': '2',
+            '绿地公元1860': '1',
+            '梓坤科技园': '1',
+            '绿地公园广场': '5',
+            '绿地北郊广场': '1',
+            '新宝中心': '3'
+        },
+        ' 上海大学 ': {
+            '昇PARK创意园': '2'
+        },
+        ' 吴淞 ': {
+            '智慧七立方': '1'
+        },
+        ' 共富 ': {
+            '泰德科技园': '4',
+            '北外环信息产业园': '3'
+        },
+        ' 杨行 ': {
+            '中铁北城时代': '1'
+        },
+        ' 共康 ': {
+            '永谊大厦': '3',
+            '绿地风尚天地': '2',
+            '宝山万达广场': '20',
+            '绿地风尚天地广场': '2',
+            '城市新汇': '2',
+            '骏利财富大厦': '1'
+        }
+    },
+    '徐汇': {
+        ' 上海南站 ': {
+            '万街303': '1',
+            '漕河泾易园': '3',
+            '中星城': '3',
+            '越界智慧谷': '1',
+            '美通科创空间': '1',
+            '徐汇易园': '2',
+            '一加投资创意园': '1'
+        },
+        ' 徐家汇  徐虹中路 20': {
+            '西岸创意园区': '1'
+        },
+        ' 衡山路/肇嘉浜 ': {
+            '枫林创意园': '1',
+            '青松城': '1',
+            '衡安大楼': '2',
+            '尚街LOFT': '2',
+            '永丰国际广场': '11',
+            '坤阳国际商务广场': '2',
+            '美奂大厦': '3',
+            '永嘉庭': '2',
+            '亚太企业大厦': '1'
+        },
+        ' 田林 ': {
+            'SVA越界': '19',
+            '汇阳广场': '6',
+            '普天科技园': '5',
+            '上海主角': '1',
+            '锦辉大厦': '2',
+            '鼎力创意园': '2',
+            '漕河泾凤凰园': '2'
+        },
+        ' 万体馆 ': {
+            '环线广场': '1',
+            '天华信息科技园': '1',
+            '光启城': '9',
+            '枫林国际大厦': '1',
+            '明申中心大厦': '1',
+            '上海国峰科技大厦': '1',
+            '永升大厦': '5',
+            '飞洲国际广场': '8',
+            '徐汇苑大厦': '1',
+            '光启文化广场': '3',
+            '海洋石油大厦': '1',
+            '上海望族城大厦': '1',
+            '南洋1931': '1',
+            '徐汇晶典大厦': '1',
+            '嘉汇国际广场': '2',
+            '森本大厦': '3',
+            '中煌大厦': '1',
+            '腾飞大厦': '1',
+            '汇智大厦': '7',
+            '兆丰环球大厦': '5'
+        },
+        ' 漕河泾 ': {
+            '华纳商务中心': '3',
+            '上海诚达创意产业园区': '2',
+            '虹漕园': '2',
+            '虹桥国际商务广场': '6',
+            '科技绿洲': '4',
+            '田林园': '2',
+            '新意城': '8',
+            '研祥科技大楼': '2',
+            '上海光大会展中心': '3',
+            '怡虹科技园': '1',
+            '乐业天地创意园': '1',
+            '企业总部园区': '2',
+            '华鑫中心': '11',
+            '新漕河泾国际商务中心': '5',
+            '光大会展中心D座': '1',
+            '科技产业化大楼': '5',
+            '科汇大厦': '2',
+            '凤凰科技园': '1',
+            '虹钦园': '1',
+            '远中科研大楼': '1',
+            '星联研发楼': '6',
+            '光启园': '4',
+            '钦汇园': '9',
+            '新银大厦': '1',
+            '漕河泾国际商务中心': '1',
+            '民润大厦': '10',
+            '泓毅大厦': '4',
+            '上海桂林聚科都市科技园': '2',
+            '宝石园大厦': '4',
+            '远中产业园': '5',
+            '新业大楼': '1',
+            '现代物流大厦': '1',
+            'H88越虹广场': '5',
+            '桂箐路产业园': '1',
+            '徐汇创意园': '1',
+            '上海南站德必易园': '1',
+            '贝岭技术研发中心': '1',
+            '新汇园': '2',
+            '合川大厦': '4',
+            '立明大厦': '1',
+            '莲花大厦': '6',
+            '漕河泾现代服务业园区': '2',
+            '明申商务广场': '1',
+            '桂果园': '3',
+            '天华信息科技服务园': '2',
+            '凯科国际大厦': '2'
+        },
+        ' 徐家汇 ': {
+            '中金国际广场': '6',
+            'X2创意空间': '3',
+            '上海地产大厦': '1',
+            '圣爱广场': '6',
+            '徐家汇独栋花园办公楼': '2',
+            'D1国际创意空间': '5',
+            '徐家汇国际': '1',
+            '汇鑫国际大厦': '3',
+            '七建大厦': '2',
+            '上海实业大厦': '2',
+            '港汇恒隆广场': '9',
+            '联峰汇': '5',
+            '飞雕国际大厦': '2',
+            '尚光徐汇中心': '5',
+            '中城国际大厦': '8',
+            '中福实业大厦': '1',
+            '数娱大厦': '1',
+            '华宜大厦': '3',
+            '城开国际大厦': '7',
+            '环贸iapm': '1',
+            '汇银广场': '3',
+            '港汇中心二座': '1',
+            '均瑶国际广场': '5',
+            '宏汇国际广场': '2',
+            '伍佰视觉园': '1',
+            '盛源恒华大厦': '1',
+            '申通信息广场': '1',
+            '汇峰大厦': '1',
+            '亚都商务楼': '1',
+            '北科大厦': '1',
+            '百汇园': '1',
+            '元福大厦': '1',
+            '汇嘉大厦': '1',
+            '汇京国际广场': '2',
+            '南洋实业大楼': '2',
+            '徐汇万科中心': '6',
+            '华鑫天地': '3',
+            '之俊大厦主楼': '1',
+            '金钟大厦': '1',
+            '申峰大厦': '1',
+            'X2创意园区2期': '1',
+            '嘉汇广场': '1',
+            '金轩大厦': '1'
+        },
+        ' 龙华 ': {
+            'L777新媒体产业园': '1',
+            '2577创意大院': '3',
+            '徐汇大树下新媒体创意园': '2',
+            '绿地中心二期写字楼': '1',
+            '上海绿地中心一期': '6',
+            '绿地汇中心': '13',
+            '上海纺运物流商务中心': '3'
+        },
+        ' 淮海西路 ': {
+            '嘉华中心': '3',
+            '武康庭': '2',
+            '世纪商贸广场': '2',
+            '云海大厦': '1',
+            '上海环茂广场': '1',
+            '淮海国际广场': '2'
+        }
+    },
+    '普陀': {
+        ' 中山北路 ': {
+            '格林德必易园': '1',
+            '中期大厦': '2',
+            '中一国际商务大厦': '1',
+            '浦发广场写字楼': '4',
+            '加减乘除创意园': '1',
+            '浦发财富广场': '6',
+            '华源世界广场': '3',
+            '飞洲时代大厦': '3',
+            '万千大厦': '1'
+        },
+        ' 长风商务区  中江路838': {
+            '华大科技园': '1'
+        },
+        ' 中远两湾城 ': {
+            '万业新阶': '2'
+        },
+        ' 甘泉宜川 ': {
+            '颐正大厦': '1',
+            '绿地威科国际商业广场': '3'
+        },
+        ' 曹杨 ': {
+            '联合大厦': '2',
+            '曹杨尚城国际': '4',
+            '中联大厦': '2',
+            '绿地科创大厦': '4',
+            '近铁云大厦': '4',
+            '尚诚国际': '1',
+            '绿洲广场': '1',
+            '杰地大厦': '7',
+            '绿地和创大厦': '5',
+            '开伦智汇园（普陀）': '1',
+            '上海月星环球港': '4',
+            '中关村科技大厦': '3',
+            '盛源科技园': '1',
+            '我格广场': '5',
+            '欧爱喜商务广场': '1',
+            '尚诚国际大厦': '1',
+            '汇融大厦': '2',
+            '鸿运大厦': '1',
+            '申汉大厦': '1',
+            '50智慧产业科技园': '2',
+            '长城大厦': '6',
+            '50智慧园': '1',
+            '绿地同创大厦': '1',
+            '春之声大厦': '2'
+        },
+        ' 武宁路 ': {
+            '智慧广场': '2',
+            '丽晶阳光大厦': '2'
+        },
+        ' 真如 ': {
+            '沪西德必易园': '1',
+            '品尊国际中心': '6',
+            '天汇广场': '3',
+            '高尚领域': '1',
+            '康建商务广场': '1',
+            '李子园大厦': '2',
+            '耀光中环国际大厦': '3',
+            '金沙江商务广场': '1',
+            'MINI公馆': '1',
+            '康健商务广场': '1',
+            '近铁城市广场': '8',
+            '鸿海大厦': '1'
+        },
+        ' 长寿路 ': {
+            '银座企业中心': '1',
+            '富丽大厦': '1',
+            '华生大厦': '2',
+            '中国港中旅大厦': '1',
+            '沙田大厦': '1',
+            '长久商务中心': '1',
+            '宝华大厦': '2',
+            '中华1912创意产业园': '1',
+            '友力国际大厦': '3',
+            '财富时代大厦': '5',
+            '世纪商务大厦': '1',
+            '源达大厦': '9',
+            '飞雕商务大厦': '1',
+            '开隆大厦': '1',
+            '悦达国际大厦': '3',
+            '中港汇大厦': '3',
+            '元茂金豪大厦': '2',
+            '平高国际广场': '4'
+        },
+        ' 长风商务区 ': {
+            '北岸长风': '8',
+            '海亮大厦': '6',
+            '金环商务花园': '2',
+            '创邑金沙谷': '1',
+            '苏宁天御国际广场': '3',
+            '旭辉世纪广场': '4',
+            '绿洲中环中心1号楼': '1',
+            '绿洲中环中心': '28',
+            '绿洲中环中心6号楼': '1',
+            '金沙商务广场': '1',
+            '普罗娜商务广场': '1',
+            '上海跨国采购中心': '1',
+            '华宏商务中心': '3',
+            '赢华国际广场': '6',
+            '国盛中心': '5',
+            '绿洲中环中心3号楼': '1',
+            '汇银铭尊': '3',
+            '红星世贸大厦': '1',
+            '敦奴大厦': '3',
+            '清水湾大酒店': '1',
+            '中天新世纪': '1'
+        },
+        ' 李子园 ': {
+            '麦腾创业天地': '1'
+        }
+    },
+    '杨浦': {
+        ' 新江湾城 ': {
+            '嘉誉国际广场': '2',
+            '上海星汇广场': '9',
+            '绿地新江湾大厦': '4',
+            '133世界广场': '1',
+            '湾谷科技园': '9'
+        },
+        ' 鞍山 ': {
+            '同叶大厦': '1',
+            '贵人大厦': '1',
+            '杨浦商城': '2',
+            '同济联合广场': '2',
+            '五环大厦': '1'
+        },
+        ' 中原地区 ': {
+            '波司登大厦': '1'
+        },
+        ' 五角场 ': {
+            '五角丰达': '10',
+            '怡富商务广场': '1',
+            '五角丰达二期': '2',
+            '城市概念创意园区': '1',
+            '蓝天大厦': '6',
+            '五角场800号艺术区': '1',
+            '复旦科技园大厦': '4',
+            '君庭广场': '1',
+            '长阳谷': '1',
+            '尚浦领世': '4',
+            '杨浦科技大厦': '1',
+            '五角场万达广场': '4',
+            '海上硕和城SOHO商务中心': '1',
+            '中天大厦': '2',
+            '东方蓝海国际广场': '7',
+            '创智坊': '1',
+            '国阳大厦': '1',
+            '上海合生国际广场': '10',
+            '国正中心': '8',
+            '绿地汇创国际广场': '5',
+            '创智天地': '5',
+            '创智天地广场三期': '2',
+            '凯迪金融大厦': '1',
+            '中航天盛广场': '3',
+            '同和国际大厦': '5',
+            '绿地能源大厦': '5',
+            '平盛大厦': '3',
+            '财富国际广场': '4',
+            '金岛大厦': '1',
+            '中环国际大厦': '2',
+            '东上海中心': '1'
+        },
+        ' 黄兴公园 ': {
+            '新纪元国际广场': '2',
+            '上海国际设计中心': '1',
+            '海上硕和城': '1',
+            '星汇广场': '1',
+            '中通大厦': '1',
+            '白玉兰环保广场': '1'
+        },
+        ' 控江 ': {
+            '智慧树创意园': '1',
+            '北美广场': '2',
+            '信息技术大厦': '3',
+            '同济联合广场C座': '1'
+        },
+        ' 平凉/杨浦外滩 ': {
+            '互联宝地': '1',
+            '滨江国际广场': '2',
+            '东方渔人码头': '5',
+            '星外滩10号': '1',
+            '尚凯商务大厦': '1',
+            '文通-财富国际': '2',
+            '宝地广场': '2',
+            '绿地滨江中央广场': '1',
+            '海泰大厦': '2',
+            '建发国际大厦': '8',
+            '郡江国际大厦': '3',
+            '上海电力国家大学科技园': '1',
+            '保利绿地': '6',
+            '海上海': '8'
+        }
+    },
+    '松江': {
+        ' 松江 ': {
+            '双高世贸广场': '1',
+            '三迪曼哈顿': '1',
+            '绿亮松江科创园': '7',
+            '平高世贸中心': '1',
+            '平高大厦': '1',
+            '上海国际中小企业城': '1',
+            '松江万达广场': '1',
+            '嘉立国际广场': '4',
+            '中展瑞景': '1',
+            '星辰大厦': '1'
+        },
+        ' 九亭 ': {
+            '嘉南红塔商务广场': '1',
+            '松江漕河泾': '3',
+            '恒耀广场': '1'
+        }
+    },
+    '虹口': {
+        ' 四川北路 ': {
+            '方舟大厦': '1',
+            '壹丰广场': '4',
+            '海泰国际大厦': '3',
+            '爱家国际大厦': '3',
+            '华虹国际大厦': '1',
+            '国际商厦': '1',
+            '福德商务中心': '1',
+            '上海国际商厦': '1',
+            '盛邦国际大厦': '1',
+            '绿地创客': '6',
+            '荣欣大厦': '1',
+            '上海利通广场': '1',
+            '中信广场': '10',
+            '明凯大厦': '1',
+            '海泰时代大厦': '1',
+            '高宝新时代广场': '2'
+        },
+        ' 曲阳 ': {
+            '沪办大厦': '1',
+            '1876老站创意园': '3',
+            '曲阳商务中心': '1',
+            '复城国际': '2',
+            '上海中观产业园': '1',
+            '宝隆一方大厦': '1'
+        },
+        ' 凉城路/虹口足球场 ': {
+            '凯德龙之梦虹口广场': '1',
+            '嘉和国际大厦': '1',
+            '花园坊上海节能环保中心': '4',
+            '虹口图书馆写字楼': '1',
+            '绿亮虹口科创园': '2',
+            '运动Loft': '5',
+            '法兰桥创意园': '1'
+        },
+        ' 临平/和平公园 ': {
+            '1930鑫鑫创意园': '1',
+            '创富大厦': '2',
+            '飘鹰世纪大厦': '1',
+            '岳洋大厦': '1',
+            '骏丰国际财富广场': '3'
+        },
+        ' 北外滩 ': {
+            '家化金融大厦': '1',
+            '城投控股大厦': '1',
+            '中科招商.国际财富中心': '1',
+            '瑞丰国际大厦': '4',
+            '印坊创意园': '1',
+            '星荟中心': '8',
+            '白金湾广场': '5',
+            '宝矿国际大厦': '5',
+            '合生财富大厦': '4',
+            '高阳商务中心': '1',
+            '耀江国际大厦': '1',
+            '新华保险大厦': '2',
+            '森林湾大厦': '2',
+            '上海滩国际大厦': '2',
+            '绿地北外滩中心': '1',
+            '外滩588': '2',
+            '东方海港国际大厦': '1',
+            '中房长治大楼': '1',
+            '国际港务大厦': '1',
+            '虹口SOHO': '5',
+            '北外滩金光中心': '11',
+            '永融企业中心': '1',
+            '金融街海伦中心': '7',
+            '浦江国际金融广场': '4',
+            '虹口绿亮科创园': '2',
+            '耀江国际广场': '4'
+        },
+        ' 北外滩  东大名路': {
+            '金岸大厦': '1'
+        },
+        ' 四川北路  沙泾路 10': {
+            '1933老场坊': '1'
+        }
+    },
+}, {
+    '浦东': {
+        ' 世博 ': {
+            '世博宝钢大厦': '1',
+            '上海华电大厦': '3',
+            '上海意大利中心': '2',
+            '鲁能国际大厦': '2'
+        },
+        ' 北蔡/塘桥 ': {
+            '华晔创意园': '1',
+            '兰村大厦': '3',
+            '加禾LOFT创意园': '2',
+            '中建时代广场': '8',
+            '天安万科御河企业公馆': '1',
+            '歆翱商务楼': '1',
+            '海富花园': '3',
+            '御河企业公馆': '1',
+            '华南大厦': '1',
+            '振华企业广场': '1',
+            '左岸88': '1',
+            '永旭商务中心': '1',
+            '东方尚博创意园': '2'
+        },
+        ' 张江高科 ': {
+            '世和中心': '6',
+            '张江·矽岸国际': '5',
+            '上海世和商务中心': '5',
+            '创智良仓': '5',
+            '展讯中心': '1',
+            '博达科技楼': '2',
+            '张江创新园': '1',
+            '日月光集团': '5',
+            '漕河泾康桥商务绿洲': '1',
+            '盛大全球研发中心': '6',
+            '创智空间': '3',
+            '浦东张江软件园': '3',
+            '金蝶软件园': '1',
+            '张江春申大厦': '1',
+            '张江润和国际总部园': '1',
+            '星峰企业园': '4',
+            '德国中心': '1',
+            'iDream张江公馆': '1',
+            '富海商务苑': '2',
+            '上海开文大厦': '4',
+            '张江.华鑫慧天地': '1',
+            '集创公园': '3',
+            '张江微电子港': '3',
+            '张江国创中心': '8',
+            '展想广场': '7',
+            '凯瑞大厦': '1',
+            '创企天地产业园': '16',
+            '惠生中心': '2',
+            '盛大天地源创谷': '8',
+            '稻盛科研楼': '1',
+            '绿地M-TOWN': '8',
+            '星创科技广场': '3',
+            '恒越大厦': '1',
+            '华强科技大厦': '2',
+            '凌阳大楼': '1',
+            '盛大天地青春里2.0': '4',
+            '创研智造': '2',
+            '锦科文化产业园': '3',
+            '科技领袖之都': '1',
+            '长泰广场': '3',
+            '科海大楼': '4',
+            '亚芯中心': '2',
+            '科苑大楼': '2',
+            '中兴上海智慧园': '1',
+            '圣御大厦': '1',
+            '康拜丝': '3',
+            '张江集电港': '2'
+        },
+        ' 浦东外环 ': {
+            'BHC中环中心': '2',
+            '上海中天科技商务园': '2',
+            '上海总部湾': '1',
+            '沃力创业园': '3',
+            '仕方广场': '1',
+            '万科活力城': '1'
+        },
+        ' 竹园商贸区 ': {
+            '浦项商务广场': '1',
+            '由由燕乔大厦': '2',
+            '陆家嘴商务广场': '3',
+            '东方国际科技大厦': '1',
+            '陆家嘴基金大厦': '1',
+            '东方大厦': '3',
+            '双鸽大厦': '3',
+            '国际金融家': '1',
+            '宝钢大厦': '1',
+            '钱江大厦': '7',
+            'soho世纪广场': '5',
+            '全华信息大楼': '1',
+            '东方希望大厦': '1',
+            '一佰杉杉大厦': '2',
+            '新天国际大厦': '3',
+            '嘉兴大厦': '1',
+            '葛洲坝大厦': '3',
+            '同盛大厦': '2',
+            '长泰国际金融大厦': '4',
+            '中达广场': '1',
+            '中建大厦': '2',
+            '中国煤炭大厦': '1',
+            '由由世纪广场': '2'
+        },
+        ' 上南地区 ': {
+            '长青企业广场': '1',
+            '森宏旗臻二期': '1',
+            '前滩尚博创意产业园': '1',
+            '城建大厦': '1',
+            '三林金融众创空间': '1',
+            '世博办公楼': '1',
+            '环球都会广场': '1',
+            '东方金融园': '1'
+        },
+        ' 世纪公园 ': {
+            '证大五道口大厦': '1',
+            '建工大唐国际大厦': '4',
+            '芳华德必运动LOFT': '3',
+            '正大喜马拉雅中心': '1',
+            '金鹰大厦': '6',
+            '333世纪大厦': '2',
+            '浦东嘉里城': '3',
+            '青慧谷': '1',
+            '界龙总部园': '5',
+            '巨洋大厦': '1',
+            '丁香国际大厦': '1',
+            '海东大厦': '1',
+            '富荟商业广场（写字楼）': '2',
+            '证大立方大厦': '1'
+        },
+        ' 源深洋泾 ': {
+            '天物空间': '2',
+            '中港汇.浦东': '4',
+            '置汇旭辉广场': '3'
+        },
+        ' 竹园商贸区  东方路985': {
+            '一百杉杉大厦': '1'
+        },
+        ' 三林 ': {
+            '森宏旗臻': '4',
+            '前滩世贸中心': '3',
+            '晶耀前滩': '3',
+            '比乐创意办公空间': '1'
+        },
+        ' 金桥开发区 ': {
+            '宏南投资大厦': '3',
+            '中新传媒大厦': '3',
+            '华虹创新': '4',
+            '金领之都B区': '1',
+            '金桥数研基地': '1',
+            '锦绣申江': '3',
+            '金领之都': '11',
+            '梵克雅堡': '1',
+            '福建天安大厦': '2',
+            '凯龙金领大厦': '2',
+            '联创国际': '2',
+            '禹洲金桥国际五期': '1',
+            '禹洲金桥国际三期': '1',
+            '金桥瑞邑': '1',
+            '东方万国企业中心': '6',
+            '银桥大厦': '1',
+            '鑫桥创意园': '1',
+            '现代通信大厦': '1',
+            '禹洲金桥国际二期': '1',
+            '方正大厦': '3',
+            '中环滨江大厦': '2',
+            '碧海现代苑': '2',
+            '禹洲广场': '1',
+            '禹洲金桥国际一期': '2',
+            '由度工场': '1',
+            '碧云公馆': '2'
+        },
+        ' 八佰伴 ': {
+            '远东大厦': '3',
+            '生命人寿大厦': '9',
+            '波特营': '1',
+            '隆宇大厦': '1',
+            '良友大厦': '2',
+            '胜康廖氏大厦': '5',
+            '紫竹国际大厦': '2',
+            '乐凯大厦': '5',
+            '汤臣中心': '2',
+            '宝安大厦': '4',
+            '众城大厦': '1',
+            '上海湾鄂尔多斯大厦': '4',
+            '世界广场': '10',
+            '新梅联合广场': '7',
+            '华融大厦': '3',
+            '裕安大厦': '2',
+            '德必梅园WE': '4',
+            '中融国际商城': '10',
+            '华润时代广场': '3',
+            '东方金融广场': '2',
+            '中融恒瑞国际大厦': '13',
+            '金穗大厦': '1',
+            '汤臣金融大厦': '12'
+        },
+        ' 外高桥  奥纳路79号2幢': {
+            '交能国际大厦': '2'
+        },
+        ' 陆家嘴 ': {
+            '建工大厦': '2',
+            '金茂大厦': '12',
+            '陆家嘴钻石大厦': '1',
+            '永华大厦': '1',
+            '上海银行大厦': '7',
+            '世纪汇广场': '8',
+            '时代金融中心': '2',
+            '滨江万科中心': '3',
+            '裕景国际商务广场A座': '2',
+            '未来资产大厦': '6',
+            '花旗集团大厦': '5',
+            '华夏银行大厦': '4',
+            '国际航运金融大厦': '1',
+            '震旦国际大楼': '2',
+            '上海保利广场': '2',
+            '裕景国际大厦': '4',
+            '陆家嘴软件园': '3',
+            '21世纪中心大厦': '3',
+            '裕景国际商务广场B座': '1',
+            '东方汇经OFC': '1',
+            '国家开发银行大厦': '1',
+            '宏嘉大厦': '5',
+            '中国船舶大厦': '1',
+            '浦发大厦': '1',
+            '世纪大都会': '1',
+            '汇亚大厦': '2',
+            '太平金融大厦': '4',
+            '东亚银行金融大厦': '3',
+            '中国华电': '1',
+            '华能联合大厦': '4',
+            '新上海国际大厦': '11',
+            '上海中心': '11',
+            '斯米克大厦': '7',
+            '国金中心': '6',
+            '港务大厦': '1',
+            '中国人寿金融中心': '21',
+            '环球金融中心': '2',
+            '中银大厦': '1',
+            '融汇958创意园': '5',
+            '中融碧玉蓝天': '8',
+            '招商局大厦': '6'
+        },
+        ' 外高桥 ': {
+            '中国石化物资大厦': '1',
+            '交能大厦': '2',
+            '诚信国际大厦': '1',
+            '众原企业天地': '1',
+            '外高桥酒类展示交易中心': '1',
+            '晓富金融大厦': '1',
+            '众原国际中心': '1',
+            '高华大楼': '1'
+        },
+        ' 周浦 ': {
+            '医谷・现代商务园': '1'
+        },
+        ' 川沙 ': {
+            '绿地东海岸国际广场': '1'
+        }
+    },
+    '金山': {
+        ' 金山商圈 ': {
+            '石油大厦': '1'
+        }
+    },
+    '长宁': {
+        ' 北新泾 ': {
+            '天山大厦': '2',
+            '天祥大厦': '1',
+            '虹桥临空工贸小区': '2',
+            '神州数码科技大厦': '1'
+        },
+        ' 延安西路 ': {
+            '大众金融大厦': '1',
+            '首信银都国际广场': '2',
+            '红坊': '1',
+            '大吉地世贸大厦': '1',
+            '法华525创意树林': '2',
+            '龙峰大厦': '1',
+            '凯利大厦': '1',
+            '玉嘉大厦': '1',
+            '圣骊虹桥创意园': '2',
+            '禾森商务中心': '2',
+            '嘉利大厦': '2',
+            '天杉•易园': '3',
+            '嘉宁国际大厦': '4',
+            '银统大厦': '3',
+            '华敏翰尊国际': '10',
+            '华融国际大厦': '1',
+            '龙之梦大厦': '1',
+            '长峰中心.聚贤阁': '1'
+        },
+        ' 中山公园 ': {
+            '绿地商务大厦': '4',
+            '兆丰世贸大厦': '3',
+            '东华时尚创意园': '1',
+            '裕丰国际大厦': '1',
+            '龙之梦购物中心': '1',
+            '长宁88中心': '7',
+            '凯阳大厦': '1',
+            '尚街会馆': '1',
+            '东华创意园': '2',
+            '绿洲大厦': '2',
+            '花园大厦': '1',
+            '兆丰广场': '7',
+            '联通大厦': '2',
+            '舜元企业发展大厦B栋': '6',
+            '舜元企业发展大厦A栋': '1',
+            '易园': '1',
+            '江苏路老洋房': '1',
+            '华宁国际广场': '8',
+            '华敏翰尊国际大厦': '2',
+            '东风商务园区': '1',
+            '长宁来福士广场': '8',
+            '虹桥世家花园写字楼': '2',
+            '嘉春753园区': '4',
+            '弘基创邑国际园': '2'
+        },
+        ' 虹桥开发区 ': {
+            '锦明大厦': '1',
+            '上海万都中心大厦': '5',
+            '金虹桥国际中心': '3',
+            'SOHO中山广场': '8',
+            '华闻国际大厦': '7',
+            '中山万博国际中心': '2',
+            '海盈商务中心': '1',
+            '金桥大厦': '2',
+            '东方维京大厦': '3',
+            '申虹国际大厦': '1',
+            '虹桥上海城': '1',
+            '现代广场': '1',
+            '嘉麒大厦': '2',
+            '世贸商城': '4',
+            '远东国际广场': '5',
+            '中关村虹桥创新中心': '1',
+            '新虹桥中心大厦': '5',
+            '虹桥银城大厦': '6',
+            '东方国际大厦': '1',
+            '虹桥天地': '10',
+            '国家会展中心': '13',
+            '协泰中心': '1',
+            '广顺商务中心': '1',
+            '鑫达大厦': '6',
+            '仲盛金融中心': '2',
+            '盛高国际': '5',
+            '尚嘉中心': '3'
+        },
+        ' 中山公园  长宁-地铁中山公园-华敏翰尊国际商务大厦': {
+            '华敏翰尊国际商务大厦': '1'
+        },
+        ' 天山路 ': {
+            '上服创意园': '1',
+            '呈远大厦': '2',
+            'SOHO天山广场': '18',
+            '思创大厦': '1',
+            '慧谷白猫科技园': '2',
+            '捷运大厦': '2',
+            '海益商务大厦': '2',
+            '同达创业': '3'
+        },
+        ' 虹桥临空经济园区 ': {
+            '明基广场': '1',
+            '虹桥国际科技广场': '2',
+            '虹桥国际商务花园': '1',
+            '鑫达商务楼': '2',
+            '东华大学科技园': '3',
+            '凌空SOHO': '9',
+            '旭辉虹桥国际': '1',
+            '统一企业大厦': '7',
+            '汤泉国际': '5',
+            '扬子江企业国际广场': '7',
+            '尚品都汇': '1',
+            '建滔企业广场': '7'
+        },
+        ' 古北 ': {
+            '尼克大楼': '2',
+            '古北国际财富中心': '1',
+            '尼克大厦': '1',
+            '东银中心': '1'
+        }
+    },
+    '闵行': {
+        ' 春申/老闵行 ': {
+            '绿亮虹梅南路科创园': '2',
+            '紫竹科学园区': '1',
+            '宁谷商务大厦': '4',
+            '上海陇盛科技大楼': '1',
+            '上海晶碧产业园': '1',
+            '上海电子物联产业园': '1',
+            '莲谷产业园': '4'
+        },
+        ' 龙柏 ': {
+            '莱茵·虹桥中心': '1',
+            '金汇德必易园': '2',
+            '银洲国际商务大厦': '1',
+            '灿虹大厦': '1',
+            '虹桥525创意园': '1',
+            '万象城': '2',
+            '虹桥晶座': '1',
+            '富群商务大厦A栋': '1',
+            '虹桥总部1号': '1',
+            '帝宝国际大厦': '3',
+            '宝纳大厦': '1',
+            '莱茵•虹景中心': '2'
+        },
+        ' 颛桥 ': {
+            '上海金领谷科技产业园': '2',
+            '山谷you帮大厦': '1',
+            '博济F-1088(放鹤路)': '1',
+            '歆翱智慧谷': '1'
+        },
+        ' 虹桥镇 ': {
+            '富力虹桥十号': '1',
+            '虹桥德必易园': '6',
+            '虹欣大厦': '1',
+            '燎申国际大厦': '1',
+            '灿虹精英大厦': '1'
+        },
+        ' 莘庄 ': {
+            '强劲大厦': '3',
+            '凯德龙之梦': '4',
+            '福克斯元江路创新园': '1',
+            '莘庄产学研基地': '1',
+            '绿地蓝海': '6',
+            'IF如果文化创意产业园': '2',
+            '世宏金源中心': '1',
+            '凯德龙之梦闵行广场': '3',
+            '中展大厦': '1',
+            '大虹桥国际中心': '2',
+            '中铁诺德国际中心': '4',
+            '西子国际中心': '3',
+            '莘东置业大厦': '2',
+            '解放日报大厦（闵行）': '2',
+            '绿地蓝海大厦3号楼': '1',
+            '东苑丽宝广场': '1',
+            '莘吴之星': '1',
+            '七星创业园': '3',
+            '赢嘉广场': '4'
+        },
+        ' 浦江 ': {
+            '茸锦科技园': '1',
+            '浦江智谷商务园': '4',
+            '红星国际广场': '1',
+            '禾谷文创园': '2',
+            '漕河泾浦江科技广场': '2',
+            '道•创空间': '1',
+            '上海节能环保科技企业孵化基地': '1',
+            '孵源节能环保科技企业孵化基地': '1',
+            '863基地': '1',
+            '奇亚特能源中心': '1',
+            '浦江知地': '4',
+            '爱登堡科技园': '2',
+            '寰启商务园': '1',
+            '复地浦江中心二期': '1',
+            '蕾特商务中心': '2',
+            '浦江高科技园': '5',
+            '万科VMO': '2'
+        },
+        ' 南方商城 ': {
+            '高优商务中心': '1',
+            '莲花国际商务广场': '1',
+            '城开中心': '13'
+        },
+        ' 华漕 ': {
+            '虹桥绿谷': '15',
+            '虹桥丽宝广场': '7',
+            '光宝科技大厦': '1',
+            '虹桥富力中心': '2',
+            '虹桥万科中心': '9',
+            '万科时一区': '13',
+            '虹桥协信中心': '6',
+            '冠捷科技大楼': '2',
+            '虹桥汇': '2',
+            '万通中心': '5',
+            '恒基•旭辉中心': '2',
+            '阿里中心': '4',
+            '中骏广场': '5',
+            '龙湖虹桥天街': '22',
+            '虹桥正荣中心': '6',
+            '虹桥新地中心': '5'
+        },
+        ' 七宝 ': {
+            '财富108广场': '5',
+            '万科七宝国际': '14',
+            '七宝宝龙城': '8',
+            '虹桥机场商务楼': '1',
+            '丰树商业城': '6',
+            '闵欣大厦': '2',
+            '华商时代广场': '5',
+            '银石科技园': '1',
+            '德必易园': '1',
+            '福克斯（银石）商务中心': '1',
+            '麦可将园区': '1',
+            '台尚创意园': '5',
+            '七莘红点城': '1',
+            '宝虹中心': '2',
+            '七宝易园': '1',
+            '明谷科技园': '3',
+            '七宝宝龙城市广场': '6',
+            '祥鹿大厦': '1',
+            '福克斯(银座)旗舰商务区': '1'
+        }
+    },
+    '闸北': {
+        ' 彭浦 ': {
+            '祥腾财富广场': '2',
+            '中环企业广场': '1',
+            '飞马旅5iCENTER创意园': '4',
+            '雍和创智广场': '2',
+            '久合科技园': '2',
+            '大宁音乐广场': '5',
+            '中环永新国际广场': '1',
+            '共和国际商务广场': '1',
+            '大宁中心广场': '2',
+            '宝华国际广场': '1',
+            '飞乐企业大厦': '1',
+            '诺诚1895创意园': '1'
+        },
+        ' 大宁绿地 ': {
+            '和源企业广场': '3',
+            '宝华中心': '2',
+            '金赢108创意广场': '3',
+            '静安新业坊': '1',
+            '中铁中环时代广场': '11',
+            '海棠大厦': '1',
+            '大宁财智中心': '1',
+            '中环协信天地': '5',
+            '静安东贤大厦': '1',
+            '中融信托大厦': '2',
+            '大宁易园': '1',
+            '珠江创意中心': '3',
+            '金谷中环大厦': '7',
+            '东方环球企业中心': '8',
+            '大宁国际商业广场': '1',
+            '和典创意园': '1'
+        },
+        ' 火车站 ': {
+            '银历大厦': '1',
+            '宝矿洲际商务中心': '2',
+            '嘉里不夜城': '8',
+            '上海现代交通商务大厦': '4',
+            '企业广场': '3',
+            '一天下大厦': '2',
+            '凯旋门大厦': '2',
+            '凯德星贸中心': '2',
+            '康吉大厦': '1',
+            '新发展大厦': '1',
+            '苏河1号': '4',
+            '和源大楼': '1',
+            '洲际中心': '5',
+            '长泰企业天地': '5',
+            '金城大厦': '1',
+            '铭德国际广场': '2',
+            '中海万锦城': '9',
+            '华瑞大厦': '1',
+            '新华文化科技园': '1',
+            '恒汇国际大厦': '3',
+            '华舟大厦': '1',
+            '达邦协作广场': '1',
+            '新理想大厦': '4',
+            '机电大厦': '1',
+            '达人湾创智广场': '2'
+        },
+        ' 闸北公园 ': {
+            '绿地中央广场': '5',
+            '通用大厦': '1'
+        }
+    },
+    '青浦': {
+        ' 青浦 ': {
+            'e通世界': '5',
+            'e通世界商务园五区': '2',
+            '虹桥世界中心': '5'
+        }
+    },
+    '静安': {
+        ' 曹家渡 ': {
+            '百乐门商务楼': '1',
+            '汇智创意园': '1',
+            '三和大厦': '1',
+            '开开大厦': '1',
+            '万源创意园': '1',
+            '金峰世纪大厦': '2',
+            '海森国际大厦': '3'
+        },
+        ' 江宁路 ': {
+            '新越时美大厦': '1',
+            '德安大厦': '1',
+            '和一大厦': '6',
+            '静安创想中心': '1',
+            '静安创展中心': '6',
+            '富容大厦': '1',
+            '石油天然气大厦': '4',
+            '同乐坊': '2',
+            '静安现代产业大厦': '1',
+            '申银发展大厦': '1',
+            '柴安大厦': '2',
+            '圣天地商务大厦': '1'
+        },
+        ' 静安寺 ': {
+            '城市机场航站楼': '1',
+            '800秀创意园区': '2',
+            '静安中华大厦': '7',
+            '恒隆广场': '8',
+            '环球世界大厦': '2',
+            '静安晶品中心': '2',
+            '愚园108': '2',
+            '百乐门大都会': '1',
+            '静安设计中心': '2',
+            '巨富大厦': '3',
+            '1788国际中心': '9',
+            'WE国际文化创意中心（静安）': '2',
+            '金融街静安中心': '11',
+            '世纪时空': '3',
+            '金航大厦': '2',
+            '阳光科技大厦': '1',
+            '上海阿波罗大厦': '3',
+            '中信泰富广场': '11',
+            '越洋广场': '2'
+        },
+        ' 南京西路 ': {
+            '东方众鑫大厦': '3',
+            '上海展览中心': '2',
+            'SOHO东海广场': '11',
+            '广电大厦': '1',
+            '688广场': '1',
+            '静安新时代大厦': '2',
+            '上海招商局广场': '5',
+            '梅龙镇广场': '3',
+            '晶采世纪大厦': '3',
+            '汇银大厦': '1',
+            '静安高和大厦': '5',
+            '南证大厦': '14',
+            '嘉地中心': '3',
+            '锦江向阳大楼': '3',
+            '文新报业大厦': '1',
+            '恒利国际大厦': '1',
+            '旺旺大厦': '2',
+            '上海商城': '2',
+            '兴业大厦': '1',
+            '科恩国际中心': '5',
+            '嘉里中心': '16',
+            '国立大厦': '1',
+            '云海苑': '1',
+            '中创大厦': '5',
+            '长春藤运通大厦': '2',
+            '555大厦': '1',
+            '会德丰国际广场': '12',
+            '东方海外大厦': '4',
+            '紫安大厦': '2',
+            '上海大中里': '4',
+            '仲益大厦': '2',
+            '铜仁88': '2',
+            '金鹰国际广场': '1',
+            '丽都新贵': '2'
+        }
+    },
+    '黄浦': {
+        ' 老西门 ': {
+            '南开大厦': '2',
+            '惠德大厦': '2',
+            '金天地国际大厦': '2',
+            '新上海城市广场': '1',
+            '京德大楼': '1',
+            '永惠大厦写字楼': '1',
+            '康宁大厦': '1',
+            '新华联大厦': '1',
+            '万事利大厦': '3',
+            '安基大厦': '3'
+        },
+        ' 城隍庙 ': {
+            '朝阳门大厦': '1',
+            '旺角广场': '10'
+        },
+        ' 豫园 ': {
+            '香港名都写字楼': '1'
+        },
+        ' 南京东路 ': {
+            '中外运大厦': '6',
+            '华盛大厦': '4',
+            '明天广场': '2',
+            '春申江大厦': '1',
+            '东吴证券大厦': '2',
+            '金融广场': '3',
+            '名人商业大厦': '1',
+            '亚龙国际广场': '2',
+            '恒基大厦': '1',
+            '久事商务大厦': '1',
+            '金光外滩中心': '4',
+            '申华金融大厦': '1',
+            '外滩德必WE': '2',
+            '越洋国际广场': '1',
+            '申大厦': '1',
+            '上海科技京城': '6'
+        },
+        ' 外滩 ': {
+            '老码头创意园': '1',
+            '金延大楼': '1',
+            '外滩8号': '1',
+            '腾飞浦汇大厦': '1',
+            '外滩金融中心': '12',
+            '华隆大厦': '3',
+            '外滩SOHO': '14',
+            '高登金融大厦': '4',
+            '华普科技大厦': '1',
+            '光明大厦': '1',
+            '洛克外滩源': '2',
+            '创邑socool创意园': '4',
+            '物资大厦': '3'
+        },
+        ' 人民广场 ': {
+            '港泰广场': '9',
+            '长江新能源大厦': '3',
+            '世界贸易大厦': '3',
+            '海通证券大厦': '5',
+            '廖创兴金融中心': '3',
+            '中区广场': '4',
+            '恒积大厦': '4',
+            '华旭国际大厦': '6',
+            '仙乐斯广场': '5',
+            '来福士广场': '4',
+            '淮海中华大厦': '4',
+            '中国民生银行大厦': '4',
+            '都市总部大楼': '2',
+            '天安中心': '4',
+            '亚洲大厦': '2',
+            '南苏州路独栋': '1',
+            '世贸大厦': '6',
+            '东方有线大厦': '1',
+            '海洋大厦': '6',
+            '港陆广场': '3',
+            '工商联大厦': '1',
+            '淮云大厦': '1',
+            '港陆黄浦中心': '1',
+            '六合大厦': '1',
+            '鸿祥大厦': '1',
+            '峻岭广场': '9',
+            '雅居乐国际广场': '6',
+            '东海商业中心二期': '1',
+            '金陵海欣大厦': '2',
+            '中海国际中心': '2'
+        }
+    }
+}]
