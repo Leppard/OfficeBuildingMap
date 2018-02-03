@@ -28,12 +28,11 @@
 
     <style>
         #map {
-            height:inherit;
+            height: inherit;
             bottom: 0;
             right: 0;
             left: 0;
         }
-
     </style>
 </head>
 
@@ -54,18 +53,13 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="overview.html">Home</a></li>
-                    <li><a href="statistics.html">statistics</a></li>
+                    <li><a href="index.html">主页</a></li>
+                    <li><a href="statistics.html">统计分析</a></li>
                     <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">heatmap <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">热力图<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">heatmap</a></li>
-                            <li><a href="clustering.html">clustering</a></li>
-                            <li><a href="#">other maps</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">other maps</li>
-                            <li><a href="#">other maps</a></li>
-                            <li><a href="#">other maps</a></li>
+                            <li><a href="#">热力图</a></li>
+                            <li><a href="clustering.html">聚合图</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -89,7 +83,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: #2980B9; border-radius: 0px">
-                        <h3 class="panel-title" > 楼盘热力图 </h3>
+                        <h3 class="panel-title"> 楼盘热力图 </h3>
                     </div>
                     <div class="panel-body" style="height: 800px;padding: 0">
                         <div id="map"></div>
@@ -116,7 +110,6 @@
             maxZoom: 18,
             minZoom: 5
         }).addTo(map);
-
     </script>
 
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
