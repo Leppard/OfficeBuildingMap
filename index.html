@@ -21,6 +21,8 @@
     <script src="leaflet/leaflet.js"></script>
     <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
     <script src="esri/esri-leaflet.js"></script>
+    <script src="coorTransform.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
 
     <link href="map.css" rel="stylesheet">
 </head>
@@ -88,23 +90,46 @@
     <!-- /container -->
 
     <script>
+        var centerPoint = [31.23, 121.40];
         var map = L.map("mapDiv", {
-            center: [31.23, 121.40],
-            zoom: 9
+            center: centerPoint,
+            zoom: 10
         });
         L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
             maxZoom: 18,
             minZoom: 5
         }).addTo(map);
-        var buildingLayer = L.esri.featureLayer({
-            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
-        });
-        buildingLayer.addTo(map);
+        // var buildingLayer = L.esri.featureLayer({
+        //     url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
+        // });
+        // buildingLayer.addTo(map);
 
-        buildingLayer.bindPopup(function(layer) {
-            console.log(layer.feature.properties);
-            return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²</p>', layer.feature.properties);
-        });
+        // buildingLayer.bindPopup(function(layer) {
+        //     return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²</p>', layer.feature.properties);
+        // });
+
+        var options = {
+            onSearchComplete: function(results){
+                // 判断状态是否正确
+                if (local.getStatus() == BMAP_STATUS_SUCCESS){
+                    var s = [];
+                    for (var i = 0; i < results.getCurrentNumPois(); i ++){
+                        var dic = new Array();
+
+                        var gcjCoor = bd09togcj02(results.getPoi(i).point.lng, results.getPoi(i).point.lat);
+                        var wgsCoor = gcj02towgs84(gcjCoor[0], gcjCoor[1]);
+                        dic['lon'] = wgsCoor[0];
+                        dic['lat'] = wgsCoor[1];
+                        dic['title'] = results.getPoi(i).title;
+                        dic['address'] = results.getPoi(i).address;
+                        s.push(dic);
+                        L.marker([dic['lat'], dic['lon']]).addTo(map);
+                    }
+                }
+            }
+        };
+        var local = new BMap.LocalSearch("上海", options);
+        local.search("公园");
 
         //初始化使计算Map控件大小
         document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
