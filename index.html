@@ -116,23 +116,23 @@
                                 <input type="checkbox" id="inlineCheckbox3" value="option3"> 便利店
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox3" value="option3"> 地铁站
+                                <input type="checkbox" id="inlineCheckbox4" value="option4"> 地铁站
                             </label>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-2">
-                            <span class="label label-default" style="font-size:15px;">搜索范围</span>
+                            <span class="label label-default" style="font-size:15px;">搜索范围(单位:米)</span>
                         </div>
                         <div class="col-md-4">
                             <div class="input-group-sm">
                                 <select class="form-control" id="radius">
                                     <option disabled selected style="display: none;" value="0"></option>
-                                    <option>1000m</option>
-                                    <option>800m</option>
-                                    <option>600m</option>
-                                    <option>400m</option>
-                                    <option>200m</option>
+                                    <option>1000</option>
+                                    <option>800</option>
+                                    <option>600</option>
+                                    <option>400</option>
+                                    <option>200</option>
                                 </select>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
                     </button>
-                    <button type="button" class="btn btn-primary btn-sm">搜 索
+                    <button type="button" class="btn btn-primary btn-sm" onclick="searchNearby()">搜 索
                     </button>
                 </div>
             </div>
@@ -153,6 +153,12 @@
 
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script>
+        function searchNearby() {
+            console.log($('#openModalBtn').data('lat'));
+            console.log($('#openModalBtn').data('lon'));
+            console.log($('#radius').val());
+            console.log($('#radius').val());
+        }
         var centerPoint = [31.23, 121.40];
         var map = L.map("mapDiv", {
             center: centerPoint,
@@ -168,8 +174,22 @@
         // buildingLayer.addTo(map);
 
         // buildingLayer.bindPopup(function(layer) {
-        //     return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²</p>', layer.feature.properties);
+        //     return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">更 多</button></p>', layer.feature.properties);
         // });
+        
+        // for test
+        var testCoor = centerPoint;
+        var testDic = new Array();
+        testDic['BuildingName'] = "写字楼";
+        testDic['Address'] = "xx";
+        testDic['RentPerDay'] = "xx";
+        testDic['RentPerMonth'] = "xx";
+        testDic['Square'] = "xx";
+        testDic['Modal'] = '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon='+testCoor[1]+' data-lat='+testCoor[0]+' data-target="#myModal">搜索周边</button>';
+        var point = L.marker(centerPoint);
+        point.addTo(map);
+        var popContent = L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br>{Modal}</p>', testDic);
+        point.bindPopup(popContent);
 
         var options = {
             pageCapacity: 10,
@@ -186,13 +206,11 @@
                         dic['lat'] = wgsCoor[1];
                         dic['title'] = results.getPoi(i).title;
                         dic['address'] = results.getPoi(i).address;
-                        dic['modal'] = '<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">更 多</button>';
-
                         s.push(dic);
-                        var point = L.marker([dic['lat'], dic['lon']]);
-                        point.addTo(map);
-                        var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}_{lon}<br />{modal}</p>', dic);
-                        point.bindPopup(popContent).openPopup();
+                        // var point = L.marker([dic['lat'], dic['lon']]);
+                        // point.addTo(map);
+                        // var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}, {lon}</p>', dic);
+                        // point.bindPopup(popContent).openPopup();
 
                     }
                 }
