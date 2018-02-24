@@ -24,6 +24,7 @@
     <script src="coorTransform.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
 
+
     <link href="map.css" rel="stylesheet">
 </head>
 
@@ -87,8 +88,70 @@
             <p>&copy; Leppard</p>
         </footer>
     </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h5 class="modal-title" id="myModalLabel">
+                        周边信息
+				    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="label label-default" style="font-size:15px;">搜索种类</span>
+                        </div>
+                        <div class="col-md-10">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1"> 酒店
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" value="option2"> 公园
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox3" value="option3"> 便利店
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox3" value="option3"> 地铁站
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-2">
+                            <span class="label label-default" style="font-size:15px;">搜索范围</span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group-sm">
+                                <select class="form-control" id="radius">
+                                    <option disabled selected style="display: none;" value="0"></option>
+                                    <option>1000m</option>
+                                    <option>800m</option>
+                                    <option>600m</option>
+                                    <option>400m</option>
+                                    <option>200m</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm">搜 索
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
     <!-- /container -->
 
+    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script>
         var centerPoint = [31.23, 121.40];
         var map = L.map("mapDiv", {
@@ -109,12 +172,12 @@
         // });
 
         var options = {
-            pageCapacity: 10, 
-            onSearchComplete: function(results){
+            pageCapacity: 10,
+            onSearchComplete: function(results) {
                 // 判断状态是否正确
-                if (local.getStatus() == BMAP_STATUS_SUCCESS){
+                if (local.getStatus() == BMAP_STATUS_SUCCESS) {
                     var s = [];
-                    for (var i = 0; i < results.getCurrentNumPois(); i ++){
+                    for (var i = 0; i < results.getCurrentNumPois(); i++) {
                         var dic = new Array();
 
                         var gcjCoor = bd09togcj02(results.getPoi(i).point.lng, results.getPoi(i).point.lat);
@@ -123,12 +186,19 @@
                         dic['lat'] = wgsCoor[1];
                         dic['title'] = results.getPoi(i).title;
                         dic['address'] = results.getPoi(i).address;
+                        dic['modal'] = '<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">更 多</button>';
+
                         s.push(dic);
-                        L.marker([dic['lat'], dic['lon']]).addTo(map);
+                        var point = L.marker([dic['lat'], dic['lon']]);
+                        point.addTo(map);
+                        var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}_{lon}<br />{modal}</p>', dic);
+                        point.bindPopup(popContent).openPopup();
+
                     }
                 }
             }
         };
+
         var local = new BMap.LocalSearch("上海", options);
         local.search("公园");
 
@@ -138,8 +208,9 @@
         window.onresize = function() {
             document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
         }
+
     </script>
-    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
 </body>
 
