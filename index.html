@@ -16,14 +16,17 @@
     <!-- Loading Flat UI -->
     <link href="Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
     <link rel="shortcut icon" href="Flat-UI-master/dist/img/favicon.ico">
+    <link rel="stylesheet" href="leaflet/awesome-markers/leaflet.awesome-markers.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
     <!-- 加载leaflet-->
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js"></script>
     <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
     <script src="esri/esri-leaflet.js"></script>
+    <script src="leaflet/awesome-markers/leaflet.awesome-markers.js"></script>
     <script src="coorTransform.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
-
 
     <link href="map.css" rel="stylesheet">
 </head>
@@ -107,16 +110,16 @@
                         </div>
                         <div class="col-md-10">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox1" value="option1"> 酒店
+                                <input type="checkbox" id="inlineCheckbox1" value="酒店"> 酒店
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox2" value="option2"> 公园
+                                <input type="checkbox" id="inlineCheckbox2" value="公园"> 公园
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox3" value="option3"> 便利店
+                                <input type="checkbox" id="inlineCheckbox3" value="便利店"> 便利店
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox4" value="option4"> 地铁站
+                                <input type="checkbox" id="inlineCheckbox4" value="地铁站"> 地铁站
                             </label>
                         </div>
                     </div>
@@ -154,11 +157,90 @@
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script>
         function searchNearby() {
-            console.log($('#openModalBtn').data('lat'));
-            console.log($('#openModalBtn').data('lon'));
-            console.log($('#radius').val());
-            console.log($('#radius').val());
+            var lat = $('#openModalBtn').data('lat');
+            var lon = $('#openModalBtn').data('lon');
+            var radius = $('#radius').val();
+            var keywords = [];
+            if($('#inlineCheckbox1').is(':checked')) {
+                keywords.push("酒店");
+            }; 
+            if($('#inlineCheckbox2').is(':checked')) {
+                keywords.push("公园");
+            }; 
+            if($('#inlineCheckbox3').is(':checked')) {
+                keywords.push("便利店");
+            };
+            if($('#inlineCheckbox4').is(':checked')) {
+                keywords.push("地铁站");
+            };
+
+            var options = {
+            pageCapacity: 100,
+                onSearchComplete: function(results) {
+                    // 判断状态是否正确
+                    if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                        if (results.length == 0) {
+                            alert("未完整设置搜索条件，请重新检查！");
+                            return;
+                        }
+                        for (var index in results) {
+                            for (var i = 0; i < results[index].getCurrentNumPois(); i++) {
+                                var dic = new Array();
+                                var gcjCoor = bd09togcj02(results[index].getPoi(i).point.lng, results[index].getPoi(i).point.lat);
+                                var wgsCoor = gcj02towgs84(gcjCoor[0], gcjCoor[1]);
+                                dic['lon'] = wgsCoor[0];
+                                dic['lat'] = wgsCoor[1];
+                                dic['title'] = results[index].getPoi(i).title;
+                                dic['address'] = results[index].getPoi(i).address;
+
+                                var marker;
+                                if (results[index].keyword == "公园") {
+                                    marker = L.AwesomeMarkers.icon({
+                                        icon: 'leaf',
+                                        prefix: 'fa',
+                                        markerColor: 'green'
+                                    });
+                                } else if (results[index].keyword == "酒店"){
+                                    marker = L.AwesomeMarkers.icon({
+                                        icon: 'h-square',
+                                        prefix: 'fa',
+                                        markerColor: 'red'
+                                    }); 
+                                } else if (results[index].keyword == "便利店"){
+                                    marker = L.AwesomeMarkers.icon({
+                                        icon: 'shopping-basket',
+                                        prefix: 'fa',
+                                        markerColor: 'blue'
+                                    }); 
+                                } else if (results[index].keyword == "地铁站"){
+                                    marker = L.AwesomeMarkers.icon({
+                                        icon: 'subway',
+                                        prefix: 'fa',
+                                        markerColor: 'darkpurple'
+                                    }); 
+                                }  else {
+                                    marker = L.AwesomeMarkers.icon({
+                                        prefix: 'fa',
+                                        markerColor: 'cadetblue'
+                                    }); 
+                                }
+      
+                                var point = L.marker([dic['lat'], dic['lon']], {icon: marker});
+                                point.addTo(map);
+                                var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}, {lon}</p>', dic);
+                                point.bindPopup(popContent);
+                            }
+                        }
+                    }
+
+                    $('#myModal').modal('hide');
+                }
+            };
+            var local = new BMap.LocalSearch("上海", options);
+            local.searchNearby(keywords, new BMap.Point(lon, lat), Number(radius));
         }
+
+
         var centerPoint = [31.23, 121.40];
         var map = L.map("mapDiv", {
             center: centerPoint,
@@ -178,6 +260,7 @@
         // });
         
         // for test
+        // 这里坐标拿的是属性表里的百度坐标
         var testCoor = centerPoint;
         var testDic = new Array();
         testDic['BuildingName'] = "写字楼";
@@ -190,35 +273,6 @@
         point.addTo(map);
         var popContent = L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br>{Modal}</p>', testDic);
         point.bindPopup(popContent);
-
-        var options = {
-            pageCapacity: 10,
-            onSearchComplete: function(results) {
-                // 判断状态是否正确
-                if (local.getStatus() == BMAP_STATUS_SUCCESS) {
-                    var s = [];
-                    for (var i = 0; i < results.getCurrentNumPois(); i++) {
-                        var dic = new Array();
-
-                        var gcjCoor = bd09togcj02(results.getPoi(i).point.lng, results.getPoi(i).point.lat);
-                        var wgsCoor = gcj02towgs84(gcjCoor[0], gcjCoor[1]);
-                        dic['lon'] = wgsCoor[0];
-                        dic['lat'] = wgsCoor[1];
-                        dic['title'] = results.getPoi(i).title;
-                        dic['address'] = results.getPoi(i).address;
-                        s.push(dic);
-                        // var point = L.marker([dic['lat'], dic['lon']]);
-                        // point.addTo(map);
-                        // var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}, {lon}</p>', dic);
-                        // point.bindPopup(popContent).openPopup();
-
-                    }
-                }
-            }
-        };
-
-        var local = new BMap.LocalSearch("上海", options);
-        local.search("公园");
 
         //初始化使计算Map控件大小
         document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
