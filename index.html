@@ -159,6 +159,8 @@
         function searchNearby() {
             var lat = $('#openModalBtn').data('lat');
             var lon = $('#openModalBtn').data('lon');
+            var bd_coor = wgs84tobd09(lon, lat);
+
             var radius = $('#radius').val();
             var keywords = [];
             if($('#inlineCheckbox1').is(':checked')) {
@@ -186,8 +188,7 @@
                         for (var index in results) {
                             for (var i = 0; i < results[index].getCurrentNumPois(); i++) {
                                 var dic = new Array();
-                                var gcjCoor = bd09togcj02(results[index].getPoi(i).point.lng, results[index].getPoi(i).point.lat);
-                                var wgsCoor = gcj02towgs84(gcjCoor[0], gcjCoor[1]);
+                                var wgsCoor = bd09towgs84(results[index].getPoi(i).point.lng, results[index].getPoi(i).point.lat);
                                 dic['lon'] = wgsCoor[0];
                                 dic['lat'] = wgsCoor[1];
                                 dic['title'] = results[index].getPoi(i).title;
@@ -237,7 +238,7 @@
                 }
             };
             var local = new BMap.LocalSearch("上海", options);
-            local.searchNearby(keywords, new BMap.Point(lon, lat), Number(radius));
+            local.searchNearby(keywords, new BMap.Point(bd_coor[0], bd_coor[1]), Number(radius));
         }
 
 
@@ -250,29 +251,14 @@
             maxZoom: 18,
             minZoom: 5
         }).addTo(map);
-        // var buildingLayer = L.esri.featureLayer({
-        //     url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
-        // });
-        // buildingLayer.addTo(map);
+        var buildingLayer = L.esri.featureLayer({
+            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
+        });
+        buildingLayer.addTo(map);
 
-        // buildingLayer.bindPopup(function(layer) {
-        //     return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">更 多</button></p>', layer.feature.properties);
-        // });
-        
-        // for test
-        // 这里坐标拿的是属性表里的百度坐标
-        var testCoor = centerPoint;
-        var testDic = new Array();
-        testDic['BuildingName'] = "写字楼";
-        testDic['Address'] = "xx";
-        testDic['RentPerDay'] = "xx";
-        testDic['RentPerMonth'] = "xx";
-        testDic['Square'] = "xx";
-        testDic['Modal'] = '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon='+testCoor[1]+' data-lat='+testCoor[0]+' data-target="#myModal">搜索周边</button>';
-        var point = L.marker(centerPoint);
-        point.addTo(map);
-        var popContent = L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br>{Modal}</p>', testDic);
-        point.bindPopup(popContent);
+        buildingLayer.bindPopup(function(layer) {
+            return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br><button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
+        });
 
         //初始化使计算Map控件大小
         document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";

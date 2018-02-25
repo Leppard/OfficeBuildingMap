@@ -3,6 +3,16 @@ var PI = 3.1415926535897932384626;
 var a = 6378245.0;
 var ee = 0.00669342162296594323;
 
+function bd09towgs84(lon, lat) {
+  var gcj02 = bd09togcj02(lon, lat);
+  return gcj02towgs84(gcj02[0], gcj02[1]);
+}
+
+function wgs84tobd09(lon, lat) {
+  var gcj02 = wgs84togcj02(lon, lat);
+  return gcj02tobd09(gcj02[0], gcj02[1]);
+}
+
 function bd09togcj02(bd_lon, bd_lat) {
     var bd_lon = +bd_lon;
     var bd_lat = +bd_lat;
