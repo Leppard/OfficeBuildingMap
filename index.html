@@ -159,7 +159,7 @@
         function searchNearby() {
             var lat = $('#openModalBtn').data('lat');
             var lon = $('#openModalBtn').data('lon');
-            var bd_coor = wgs84tobd09(lon, lat);
+            var bd_coor = wgs84tobd09(Number(lon), Number(lat));
 
             var radius = $('#radius').val();
             var keywords = [];
