@@ -1,4 +1,4 @@
-function searchNearby() {
+function searchPOIandDrawOnMap(map, markers, layerControl) {
     var lat = $('#openModalBtn').data('lat');
     var lon = $('#openModalBtn').data('lon');
     var bd_coor = wgs84tobd09(Number(lon), Number(lat));
@@ -27,6 +27,8 @@ function searchNearby() {
                     alert("未完整设置搜索条件，请重新检查！");
                     return;
                 }
+
+                markers.clearLayers();
                 for (var index in results) {
                     for (var i = 0; i < results[index].getCurrentNumPois(); i++) {
                         var dic = new Array();
@@ -36,47 +38,52 @@ function searchNearby() {
                         dic['title'] = results[index].getPoi(i).title;
                         dic['address'] = results[index].getPoi(i).address;
 
-                        var marker;
+                        var markerIcon;
                         if (results[index].keyword == "公园") {
-                            marker = L.AwesomeMarkers.icon({
+                            markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'leaf',
                                 prefix: 'fa',
                                 markerColor: 'green'
                             });
                         } else if (results[index].keyword == "酒店"){
-                            marker = L.AwesomeMarkers.icon({
+                            markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'h-square',
                                 prefix: 'fa',
                                 markerColor: 'red'
                             }); 
                         } else if (results[index].keyword == "便利店"){
-                            marker = L.AwesomeMarkers.icon({
+                            markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'shopping-basket',
                                 prefix: 'fa',
                                 markerColor: 'blue'
                             }); 
                         } else if (results[index].keyword == "地铁站"){
-                            marker = L.AwesomeMarkers.icon({
+                            markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'subway',
                                 prefix: 'fa',
                                 markerColor: 'darkpurple'
                             }); 
                         }  else {
-                            marker = L.AwesomeMarkers.icon({
+                            markerIcon = L.AwesomeMarkers.icon({
                                 prefix: 'fa',
                                 markerColor: 'cadetblue'
                             }); 
                         }
 
-                        var point = L.marker([dic['lat'], dic['lon']], {icon: marker});
-                        point.addTo(map);
+                        var marker = L.marker([dic['lat'], dic['lon']], {icon: markerIcon});
+                        marker.addTo(markers);
                         var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}, {lon}</p>', dic);
-                        point.bindPopup(popContent);
+                        marker.bindPopup(popContent);
                     }
                 }
             }
 
             $('#myModal').modal('hide');
+            if (!map.hasLayer(markers)) {
+                markers.addTo(map);
+                layerControl.addOverlay(markers, "显示搜索结果");
+            }
+
         }
     };
     var local = new BMap.LocalSearch("上海", options);
