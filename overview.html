@@ -83,7 +83,7 @@
 
                 <div class="col-lg-8" style="padding-right: 0px">
                     <div class="panel panel-default" style="margin-bottom: 0px">
-                        <div class="mapView1" id="mapDiv">
+                        <div class="mapView1" id="l-map">
                         </div>
                     </div>
                     <div style="overflow:scroll; height:300px; width: 100%;">
@@ -91,57 +91,13 @@
                             <thead>
                                 <tr>
                                     <th>名称</th>
-                                    <th>城市c</th>
-                                    <th>邮编e</th>
+                                    <th>地址</th>
+                                    <th>电话</th>
+                                    <th>种类</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>Tanmay</td>
-                                    <td>Bangalore</td>
-                                    <td>560001</td>
-                                </tr>
-                                <tr>
-                                    <td>Sachin</td>
-                                    <td>Mumbai</td>
-                                    <td>400003</td>
-                                </tr>
-                                <tr>
-                                    <td>Uma</td>
-                                    <td>Pune</td>
-                                    <td>411027</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanmay</td>
-                                    <td>Bangalore</td>
-                                    <td>560001</td>
-                                </tr>
-                                <tr>
-                                    <td>Sachin</td>
-                                    <td>Mumbai</td>
-                                    <td>400003</td>
-                                </tr>
-                                <tr>
-                                    <td>Uma</td>
-                                    <td>Pune</td>
-                                    <td>411027</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanmay</td>
-                                    <td>Bangalore</td>
-                                    <td>560001</td>
-                                </tr>
-                                <tr>
-                                    <td>Sachin</td>
-                                    <td>Mumbai</td>
-                                    <td>400003</td>
-                                </tr>
-                                <tr>
-                                    <td>Uma</td>
-                                    <td>Pune</td>
-                                    <td>411027</td>
-                                </tr>
+                            <tbody id="results-list">
+                            
                             </tbody>
                         </table>
                     </div>
@@ -166,30 +122,44 @@
     </div>
 
     <script>
-        var map = L.map("mapDiv", {
-            center: [31.23, 121.40],
-            zoom: 9
-        });
-        L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
-            maxZoom: 18,
-            minZoom: 5
-        }).addTo(map);
-        var buildingLayer = L.esri.featureLayer({
-            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
-        });
-        buildingLayer.addTo(map);
+        var map = new BMap.Map("l-map");
+        var centerPoint = new BMap.Point(121.43724, 31.233687);
+        map.centerAndZoom(centerPoint, 15);
 
-        buildingLayer.bindPopup(function(layer) {
-            console.log(layer.feature.properties);
-            return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²</p>', layer.feature.properties);
-        });
+        var options = {
+            onSearchComplete: function(results) {
+                // 判断状态是否正确
+                if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                    var s = [];
+                    for (var i = 0; i < results.getCurrentNumPois(); i++) {
+                        //                        s.push(results.getPoi(i).title + ", " + results.getPoi(i).address + ", " + results.getPoi(i).phoneNumber + ", " + results.getPoi(i).tags + ", " + results.getPoi(i).detailUrl);
+                        s.push(results.getPoi(i));
+                    }
+                    toList(s);
+                }
+            }
+        };
+        var local = new BMap.LocalSearch(map, options);
+        local.searchNearby("医院", centerPoint, 1000);
 
-        //        //初始化使计算Map控件大小
-        //        document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 250 + "px";
-        //        //当网页变化是重新计算地图控件的大小
-        //        window.onresize = function() {
-        //            document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
-        //        }
+        function toList(sResults) {
+            for (var i = 0; i < sResults.length; i++) {
+                //                var rTitle = '<td><a href="' + sResults[i].detailUrl + '">' + sResults[i].title + '</a></td>';
+                var rTitle = $("<td></td>").text(sResults[i].title);
+                var rAddress = $("<td></td>").text(sResults[i].address);
+                var rPhoneNumber = $("<td></td>").text(sResults[i].phoneNumber);
+                var rTags = $("<td></td>").text(sResults[i].tags);
+
+                rTitle.wrapInner("<a href='" + sResults[i].detailUrl + "'></a>");
+                var tr = document.createElement("TR");
+                rTitle.appendTo(tr);
+                rAddress.appendTo(tr);
+                rPhoneNumber.appendTo(tr);
+                rTags.appendTo(tr);
+
+                $("#results-list").append(tr);
+            }
+        }
 
     </script>
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
