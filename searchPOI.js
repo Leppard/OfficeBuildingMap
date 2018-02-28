@@ -100,7 +100,7 @@ function showResultsInTable(sResults) {
         var rTitle = $("<td></td>").text(sResults[i].title);
         var rAddress = $("<td></td>").text(sResults[i].address);
         var rPhoneNumber = $("<td></td>").text(sResults[i].phoneNumber);
-        var rTags = $("<td></td>").text(sResults[i].tags.toString());
+        var rTags = $("<td></td>").html(sResults[i].tags);
 
         rTitle.wrapInner("<a href='" + sResults[i].detailUrl + "'></a>");
         var tr = document.createElement("TR");
