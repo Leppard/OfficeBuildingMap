@@ -15,11 +15,17 @@
     <!-- Loading Flat UI -->
     <link href="Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
     <link rel="shortcut icon" href="Flat-UI-master/dist/img/favicon.ico">
+    <link rel="stylesheet" href="leaflet/awesome-markers/leaflet.awesome-markers.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
     <!-- 加载leaflet-->
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js"></script>
     <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
     <script src="esri/esri-leaflet.js"></script>
+    <script src="leaflet/awesome-markers/leaflet.awesome-markers.js"></script>
+    <script src="coorTransform.js"></script>
+    <script src="searchPOI.js"></script>
 
     <!-- 百度地图api-->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
@@ -83,7 +89,7 @@
 
                 <div class="col-lg-8" style="padding-right: 0px">
                     <div class="panel panel-default" style="margin-bottom: 0px">
-                        <div class="mapView1" id="l-map">
+                        <div class="mapView1" id="mapDiv">
                         </div>
                     </div>
                     <div style="overflow:scroll; height:300px; width: 100%;">
@@ -97,7 +103,7 @@
                                 </tr>
                             </thead>
                             <tbody id="results-list">
-                            
+
                             </tbody>
                         </table>
                     </div>
@@ -121,47 +127,120 @@
         </div>
     </div>
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h5 class="modal-title" id="myModalLabel">
+                        周边信息
+				    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="label label-default" style="font-size:15px;">搜索种类</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="酒店"> 酒店
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" value="公园"> 公园
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox3" value="便利店"> 便利店
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox4" value="地铁站"> 地铁站
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-2">
+                            <span class="label label-default" style="font-size:15px;">搜索范围(单位:米)</span>
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-4">
+                            <div class="input-group-sm">
+                                <select class="form-control" id="radius">
+                                    <option disabled selected style="display: none;" value="0"></option>
+                                    <option>1000</option>
+                                    <option>800</option>
+                                    <option>600</option>
+                                    <option>400</option>
+                                    <option>200</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="searchNearby()">搜 索
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
     <script>
-        var map = new BMap.Map("l-map");
-        var centerPoint = new BMap.Point(121.43724, 31.233687);
-        map.centerAndZoom(centerPoint, 15);
+        var centerPoint = [31.23, 121.40];
 
-        var options = {
-            onSearchComplete: function(results) {
-                // 判断状态是否正确
-                if (local.getStatus() == BMAP_STATUS_SUCCESS) {
-                    var s = [];
-                    for (var i = 0; i < results.getCurrentNumPois(); i++) {
-                        //                        s.push(results.getPoi(i).title + ", " + results.getPoi(i).address + ", " + results.getPoi(i).phoneNumber + ", " + results.getPoi(i).tags + ", " + results.getPoi(i).detailUrl);
-                        s.push(results.getPoi(i));
-                    }
-                    toList(s);
-                }
-            }
+        var baseLayer = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+            maxZoom: 18,
+            minZoom: 5
+        });
+
+        var buildingLayer = L.esri.featureLayer({
+            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
+        });
+        // buildingLayer.addTo(map);
+        buildingLayer.bindPopup(function(layer) {
+            return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br><button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
+        });
+
+        var markers = L.layerGroup();
+
+        var map = L.map("mapDiv", {
+            center: centerPoint,
+            zoom: 11,
+            layers: [baseLayer, buildingLayer]
+        });
+
+        var baseMaps = {
+            "上海市写字楼": buildingLayer
         };
-        var local = new BMap.LocalSearch(map, options);
-        local.searchNearby("医院", centerPoint, 1000);
 
-        function toList(sResults) {
-            for (var i = 0; i < sResults.length; i++) {
-                //                var rTitle = '<td><a href="' + sResults[i].detailUrl + '">' + sResults[i].title + '</a></td>';
-                var rTitle = $("<td></td>").text(sResults[i].title);
-                var rAddress = $("<td></td>").text(sResults[i].address);
-                var rPhoneNumber = $("<td></td>").text(sResults[i].phoneNumber);
-                var rTags = $("<td></td>").text(sResults[i].tags);
+        var markers = L.layerGroup();
+        var layerControl = L.control.layers(baseMaps, null).addTo(map);
 
-                rTitle.wrapInner("<a href='" + sResults[i].detailUrl + "'></a>");
-                var tr = document.createElement("TR");
-                rTitle.appendTo(tr);
-                rAddress.appendTo(tr);
-                rPhoneNumber.appendTo(tr);
-                rTags.appendTo(tr);
-
-                $("#results-list").append(tr);
-            }
+        //初始化使计算Map控件大小
+        document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 239 + "px";
+        //当网页变化是重新计算地图控件的大小
+        window.onresize = function() {
+            document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
         }
 
     </script>
+
+    <script>
+        function searchNearby() {
+            // markers.clearLayers();
+            searchPOIandDrawOnMap(map, markers, layerControl);
+        }
+
+    </script>
+
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
 
