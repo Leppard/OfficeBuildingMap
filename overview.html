@@ -89,7 +89,10 @@
 
                 <div class="col-lg-8" style="padding-right: 0px">
                     <div class="panel panel-default" style="margin-bottom: 0px">
-                        <div class="mapView1" id="mapDiv">
+                        <div class="mapView-overview" id="mapDiv">
+                            <div class="leaflet-bottom leaflet-left">
+                                <button class="btn btn-large btn-block btn-primary leaflet-control" onclick="clearAllPoi()">清除搜索结果</button>
+                            </div>
                         </div>
                     </div>
                     <div style="overflow:scroll; height:300px; width: 100%;">
@@ -235,10 +238,12 @@
 
     <script>
         function searchNearby() {
-            // markers.clearLayers();
             searchPOIandDrawOnMap(map, markers, layerControl);
         }
 
+        function clearAllPoi() {
+            clearAllPoiPoints(markers);
+        }
     </script>
 
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>

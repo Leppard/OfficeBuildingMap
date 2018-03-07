@@ -28,7 +28,6 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                     return;
                 }
 
-                markers.clearLayers();
                 for (var index in results) {
                     var resultsList = [];
                     for (var i = 0; i < results[index].getCurrentNumPois(); i++) {
@@ -86,7 +85,7 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
             $('#myModal').modal('hide');
             if (!map.hasLayer(markers)) {
                 markers.addTo(map);
-                layerControl.addOverlay(markers, "显示搜索结果");
+                layerControl.addOverlay(markers, "显示搜索图层");
             }
 
         }
@@ -111,4 +110,8 @@ function showResultsInTable(sResults) {
 
         $("#results-list").append(tr);
     }
+}
+
+function clearAllPoiPoints(markers) {
+    markers.clearLayers();
 }

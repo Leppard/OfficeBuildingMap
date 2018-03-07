@@ -85,6 +85,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="mapView" id="mapDiv">
+                    <div class="leaflet-bottom leaflet-left">
+                        <button class="btn btn-large btn-block btn-primary leaflet-control" onclick="clearAllPoi()">清除搜索结果</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -202,8 +205,11 @@
 
     <script>
         function searchNearby() {
-            // markers.clearLayers();
             searchPOIandDrawOnMap(map, markers, layerControl);
+        }
+
+        function clearAllPoi() {
+            clearAllPoiPoints(markers);
         }
     </script>
 
