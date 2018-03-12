@@ -74,20 +74,7 @@
     <div class="panel panel-default" style="margin-top: 80px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2" style="padding-right: 0px">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" style="background-color: #34495E; border-radius: 0px">
-                            <h3 class="panel-title" style="text-align: center"> <span class="fui-home"></span> Panel title</h3>
-                        </div>
-                        <div class="panel-body" style="height: 600px">
-                            Panel content
-                        </div>
-                        <div class="panel-footer" style="padding: 0px; border-radius: 0px">
-                            <a href="#" class="btn btn-block btn-sm btn-primary" style="border-radius: 0px"><span class="fui-plus"></span> Primary Button</a></div>
-                    </div>
-                </div>
-
-                <div class="col-lg-8" style="padding-right: 0px">
+                <div class="col-lg-9" style="padding-right: 0px">
                     <div class="panel panel-default" style="margin-bottom: 0px">
                         <div class="mapView-overview" id="mapDiv">
                             <div class="leaflet-bottom leaflet-left">
@@ -95,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="overflow:scroll; height:300px; width: 100%;">
+                    <div style="overflow:scroll; height:300px; width: 100%;margin-top: 10px">
                         <table class="table table-striped table-bordered table-condensed">
                             <thead>
                                 <tr>
@@ -111,21 +98,25 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-2" style="padding-left: 0px">
 
-                    <div class="panel panel-default" style="height: 602px; 
-                       margin-bottom: 0px">
-                        <div class="panel-heading mypanel-heading">
-                            <div class="panel-title mypanel-title"> WISHLIST</div>
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="background-color: #34495E; border-radius: 0px">
+                            <h3 class="panel-title" style="text-align: center"> <span class="fui-list-small-thumbnails"></span>&#160;&#160;&#160;相关信息</h3>
                         </div>
-                    </div>
-                    <div class="panel panel-default" style="height: 200px; 
-                       margin-bottom: 0px">
-                        <div class="panel-heading mypanel-heading">
-                            <div class="panel-title mypanel-title"> INSPECTOR</div>
+                        <div class="panel-body" style="height: 568px">
+                            <div class="mypanel-title">归一化周边信息</div>
+                            <hr>
+                            <div style="height: 300px"></div>
+                            <div class="mypanel-title">楼盘比较</div>
+                            <hr>
+                        </div>
+                        <div class="panel-footer" style="padding: 0px; border-radius: 0px">
+                            <a href="#" class="btn btn-block btn-sm btn-primary" style="border-radius: 0px"><span class="fui-plus"></span> Primary Button</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -228,7 +219,7 @@
         var layerControl = L.control.layers(baseMaps, null).addTo(map);
 
         //初始化使计算Map控件大小
-        document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 239 + "px";
+        document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 300 + "px";
         //当网页变化是重新计算地图控件的大小
         window.onresize = function() {
             document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
@@ -244,6 +235,7 @@
         function clearAllPoi() {
             clearAllPoiPoints(markers);
         }
+
     </script>
 
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
