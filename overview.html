@@ -30,7 +30,20 @@
     <!-- 百度地图api-->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
 
+
+    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
+    <script src="charts.js"></script>
+
+
+    <!--   引入图表相关的文件-->
+    <script src="code/highcharts.js"></script>
+    <script src="code/highcharts-more.js"></script>
+    <script src="code/modules/exporting.js"></script>
+    <script src="code/modules/offline-exporting.js"></script>
+
     <link href="map.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -107,7 +120,9 @@
                         <div class="panel-body" style="height: 568px">
                             <div class="mypanel-title">归一化周边信息</div>
                             <hr>
-                            <div style="height: 300px"></div>
+                            <div style="height: 300px" id="container">
+
+                            </div>
                             <div class="mypanel-title">楼盘比较</div>
                             <hr>
                         </div>
@@ -129,7 +144,7 @@
                         &times;
                     </button>
                     <h5 class="modal-title" id="myModalLabel">
-                        周边信息 <a href="#" style="font-size: 15px">&#160;&#160;&#160;查看详情</a>
+                        周边信息 <a href="#" style="font-size: 15px" onclick="addRadarC()">&#160;&#160;&#160;查看详情</a>
 				    </h5>
                 </div>
                 <div class="modal-body">
@@ -227,7 +242,7 @@
 
     </script>
 
-    <script>
+    <script type="text/javascript">
         function searchNearby() {
             searchPOIandDrawOnMap(map, markers, layerControl);
         }
@@ -236,10 +251,12 @@
             clearAllPoiPoints(markers);
         }
 
+        function addRadarC() {
+            addRadarChart();
+        }
+
     </script>
 
-    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
 
 </body>
 
