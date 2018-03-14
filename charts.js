@@ -5,8 +5,8 @@ function addRadarChart() {
             type: 'line'
         },
         title: {
-            text: '预算与支出',
-            x: -80
+            text: '',
+            x: 0
         },
         pane: {
             size: '80%'
@@ -26,19 +26,9 @@ function addRadarChart() {
             shared: true,
             pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
         },
-        legend: {
-            align: 'right',
-            verticalAlign: 'top',
-            y: 70,
-            layout: 'vertical'
-        },
         series: [{
             name: '预算拨款',
             data: [43000, 19000, 60000, 35000, 17000, 10000],
-            pointPlacement: 'on'
-        }, {
-            name: '实际支出',
-            data: [50000, 39000, 42000, 31000, 26000, 14000],
             pointPlacement: 'on'
         }]
     });
