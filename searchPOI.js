@@ -75,7 +75,7 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                             icon: markerIcon
                         });
                         marker.addTo(markers);
-                        var popContent = L.Util.template('<p>{title}<br />{address}<br />{lat}, {lon}</p>', dic);
+                        var popContent = L.Util.template('<p>{title}<br />{address}</p>', dic);
                         marker.bindPopup(popContent);
                     }
                     showResultsInTable(resultsList);
