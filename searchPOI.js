@@ -53,7 +53,7 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                             markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'h-square',
                                 prefix: 'fa',
-                                markerColor: 'red'
+                                markerColor: 'darkgreen'
                             });
                         } else if (results[index].keyword == "便利店") {
                             markerIcon = L.AwesomeMarkers.icon({
@@ -71,7 +71,7 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                             markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'ambulance',
                                 prefix: 'fa',
-                                markerColor: 'darkgreen'
+                                markerColor: 'red'
                             });
                         } else {
                             markerIcon = L.AwesomeMarkers.icon({
