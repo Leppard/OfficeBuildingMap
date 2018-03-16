@@ -5,28 +5,33 @@ function addRadarChart() {
 
     var radius = $('#radius').val();
     var nearbyNum = new Array();
+    var categories = new Array();
     var keywords = ['酒店', '公园', '便利店', '地铁站', '医院'];
 
     var num = new Number();
     for (var i = 0; i < keywords.length; i++) {
-        mySearchNearby(keywords[i], bd_coor[0], bd_coor[1], Number(radius), nearbyNum);
+        mySearchNearby(keywords[i], bd_coor[0], bd_coor[1], Number(radius), nearbyNum, categories);
     }
-
-    alert("end of add Chart");
-
 
 }
 
-function mySearchNearby(key, lon, lat, r, nearbyNum) {
-    var options = {
+function mySearchNearby(key, lon, lat, r, nearbyNum, categories) {
 
+    var options = {
         pageCapacity: 100,
         onSearchComplete: function (results) {
             // 判断状态是否正确
 
             if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                if (results.length == 0) {
+                    alert("未完整设置搜索条件，请重新检查！");
+                    return;
+                }
+                categories.push(key);
                 nearbyNum.push(results.getNumPois());
-
+            } else {
+                categories.push(key);
+                nearbyNum.push(0);
             }
 
             if (nearbyNum.length == 5) {
@@ -44,7 +49,7 @@ function mySearchNearby(key, lon, lat, r, nearbyNum) {
                         size: '80%'
                     },
                     xAxis: {
-                        categories: ['酒店', '公园', '便利店', '地铁站', '医院'],
+                        categories: categories,
                         tickmarkPlacement: 'on',
                         lineWidth: 0
                     },
