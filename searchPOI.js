@@ -109,8 +109,8 @@ function showResultsInTable(sResults) {
         var rAddress = $("<td></td>").text(sResults[i].address);
         var rPhoneNumber = $("<td></td>").text(sResults[i].phoneNumber);
         var rTags = $("<td></td>").html(sResults[i].tags);
-
         rTitle.wrapInner("<a href='" + sResults[i].detailUrl + "'></a>");
+
         var tr = document.createElement("TR");
         rTitle.appendTo(tr);
         rAddress.appendTo(tr);
@@ -123,4 +123,5 @@ function showResultsInTable(sResults) {
 
 function clearAllPoiPoints(markers) {
     markers.clearLayers();
+    $("#results-list").empty();
 }

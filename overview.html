@@ -144,7 +144,7 @@
                         &times;
                     </button>
                     <h5 class="modal-title" id="myModalLabel">
-                        周边信息 <a href="#" style="font-size: 15px" onclick="addRadarC()">&#160;&#160;&#160;查看详情</a>
+                        周边信息
 				    </h5>
                 </div>
                 <div class="modal-body">
@@ -248,15 +248,12 @@
     <script type="text/javascript">
         function searchNearby() {
             searchPOIandDrawOnMap(map, markers, layerControl);
+            addRadarChart();
         }
 
         function clearAllPoi() {
             clearAllPoiPoints(markers);
-        }
-
-        function addRadarC() {
-            addRadarChart();
-        }
+        } 
 
     </script>
 
