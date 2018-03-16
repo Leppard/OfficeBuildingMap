@@ -17,6 +17,9 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
     if ($('#inlineCheckbox4').is(':checked')) {
         keywords.push("地铁站");
     };
+    if ($('#inlineCheckbox5').is(':checked')) {
+        keywords.push("医院");
+    };
 
     var options = {
         pageCapacity: 100,
@@ -63,6 +66,12 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                                 icon: 'subway',
                                 prefix: 'fa',
                                 markerColor: 'darkpurple'
+                            });
+                        } else if (results[index].keyword == "医院") {
+                            markerIcon = L.AwesomeMarkers.icon({
+                                icon: 'ambulance',
+                                prefix: 'fa',
+                                markerColor: 'darkgreen'
                             });
                         } else {
                             markerIcon = L.AwesomeMarkers.icon({
