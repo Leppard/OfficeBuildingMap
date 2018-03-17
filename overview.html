@@ -35,6 +35,7 @@
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
     <script src="addRadarChart.js"></script>
+    <script src="compareB.js"></script>
 
 
     <!--   引入图表相关的文件-->
@@ -130,17 +131,14 @@
                         </div>
                         <div class="mypanel-title">楼盘比较</div>
                         <hr>
-                        <div class="well"
+                        <div class="well" id="builds"
                              style="font-size: 15px;margin-top: 10px;padding:5px 0;border-radius: 0;border-color: #ffffff">
-                            <div>歌斐中心</div>
-                            <div>上海绿地中心一期</div>
-                            <div>张江微电子港</div>
-                            <div>绿地汇中心</div>
+
                         </div>
                     </div>
                     <div class="panel-footer" style="padding: 0; border-radius: 0">
                         <a href="#" class="btn btn-block btn-sm btn-primary" id="openModalBtn2" data-toggle="modal"
-                           data-target="#myModal2"> 查看比较详情</a>
+                           data-target="#myModal2" onclick="startCompare()"> 查看比较详情</a>
                     </div>
                 </div>
             </div>
@@ -207,6 +205,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-info btn-sm" data-dismiss="modal" style="float: left" onclick="addToC()">加入比较
+                </button>
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
                 </button>
                 <button type="button" class="btn btn-primary btn-sm" onclick="searchNearby()">搜 索
@@ -287,6 +287,15 @@
 
     function clearAllPoi() {
         clearAllPoiPoints(markers);
+    }
+
+    var searchBs = new Array();
+    function addToC(){
+        addToCompare(searchBs);
+    }
+
+    function startCompare() {
+        compare(searchBs);
     }
 
 </script>
