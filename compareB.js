@@ -20,12 +20,12 @@ function compare(searchBs) {
         var keywords = ['酒店_' + searchBs[b][0], '公园_' + searchBs[b][0],
             '便利店_' + searchBs[b][0], '地铁站_' + searchBs[b][0], '医院_' + searchBs[b][0]];
         for (var i = 0; i < keywords.length; i++) {
-            mySearchNearby(keywords[i], searchBs[b][1][0], searchBs[b][1][1], Number(searchBs[b][2]), nearbyNum, searchBs[b][0]);
+            mySearchNearby2(keywords[i], searchBs[b][1][0], searchBs[b][1][1], Number(searchBs[b][2]), nearbyNum, searchBs[b][0]);
         }
     }
 }
 
-function mySearchNearby(keyword, lon, lat, r, nearbyNum, title) {
+function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
     var options = {
         pageCapacity: 100,
         onSearchComplete: function (results) {
@@ -54,7 +54,7 @@ function mySearchNearby(keyword, lon, lat, r, nearbyNum, title) {
                 data["pointPlacement"] = 'on';
                 allData.push(data);
             }
-            
+
             if (!hasUndefined(allData[0].data)) {
                 $('#spider-charts').highcharts({
                     chart: {
