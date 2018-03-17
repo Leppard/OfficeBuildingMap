@@ -14,7 +14,6 @@ function addToCompare(searchBs) {
 
 function compare(searchBs) {
     var nearbyNum = new Array();
-    alert(searchBs);
 
     for (var b = 0; b < searchBs.length; b++) {
         var keywords = ['酒店_' + searchBs[b][0], '公园_' + searchBs[b][0],
@@ -80,7 +79,7 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
                     },
                     tooltip: {
                         shared: true,
-                        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+                        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
                     },
                     series: allData
                 });
