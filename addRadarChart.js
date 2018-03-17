@@ -1,4 +1,6 @@
 function addRadarChart() {
+    var title = $('#openModalBtn').data('title');
+
     var lat = $('#openModalBtn').data('lat');
     var lon = $('#openModalBtn').data('lon');
     var bd_coor = wgs84tobd09(Number(lon), Number(lat));
@@ -6,6 +8,9 @@ function addRadarChart() {
     var radius = $('#radius').val();
     var nearbyNum = new Array();
     var keywords = ['酒店', '公园', '便利店', '地铁站', '医院'];
+
+    $("#mypanel-title").empty();
+    $("#mypanel-title").append(title + " " + radius + "m");
 
     for (var i = 0; i < keywords.length; i++) {
         mySearchNearby(keywords[i], bd_coor[0], bd_coor[1], Number(radius), nearbyNum);

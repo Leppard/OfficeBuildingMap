@@ -34,7 +34,7 @@
 
     <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
-    <script src="charts.js"></script>
+    <script src="addRadarChart.js"></script>
 
 
     <!--   引入图表相关的文件-->
@@ -120,10 +120,10 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: #34495E; border-radius: 0">
                         <h3 class="panel-title" style="text-align: center"><span
-                                class="fui-list-small-thumbnails"></span>&#160;&#160;&#160;相关信息</h3>
+                                class="fui-list-small-thumbnails"></span>&#160;&#160;&#160;周边信息</h3>
                     </div>
                     <div class="panel-body" style="height: 568px">
-                        <div class="mypanel-title">归一化周边信息</div>
+                        <div class="mypanel-title" id="mypanel-title"></div>
                         <hr>
                         <div style="height: 300px" id="container">
 
@@ -252,7 +252,8 @@
     });
     // buildingLayer.addTo(map);
     buildingLayer.bindPopup(function (layer) {
-        return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br><button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
+        return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br>' +
+            '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-title = {BuildingName} data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
     });
 
     var markers = L.layerGroup();

@@ -7,19 +7,24 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
     var keywords = [];
     if ($('#inlineCheckbox1').is(':checked')) {
         keywords.push("酒店");
-    };
+    }
+    ;
     if ($('#inlineCheckbox2').is(':checked')) {
         keywords.push("公园");
-    };
+    }
+    ;
     if ($('#inlineCheckbox3').is(':checked')) {
         keywords.push("便利店");
-    };
+    }
+    ;
     if ($('#inlineCheckbox4').is(':checked')) {
         keywords.push("地铁站");
-    };
+    }
+    ;
     if ($('#inlineCheckbox5').is(':checked')) {
         keywords.push("医院");
-    };
+    }
+    ;
 
     var options = {
         pageCapacity: 100,
