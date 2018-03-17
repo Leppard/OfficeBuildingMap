@@ -54,9 +54,7 @@ function mySearchNearby(keyword, lon, lat, r, nearbyNum, title) {
                 data["pointPlacement"] = 'on';
                 allData.push(data);
             }
-            alert( allData[0].data + " " + allData[1].data);
-
-
+            
             if (!hasUndefined(allData[0].data)) {
                 $('#spider-charts').highcharts({
                     chart: {
