@@ -20,201 +20,212 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
     <!-- 加载leaflet-->
-    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <link rel="stylesheet" href="leaflet/leaflet.css"/>
     <script src="leaflet/leaflet.js"></script>
     <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
     <script src="esri/esri-leaflet.js"></script>
     <script src="leaflet/awesome-markers/leaflet.awesome-markers.js"></script>
     <script src="coorTransform.js"></script>
     <script src="searchPOI.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=Xs3ww5WyUnGwLuKtoPxOb33kQhjI9z6D"></script>
 
     <link href="map.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">写字楼时空数据展示</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">预览</a></li>
-                    <li><a href="overview.html">主页</a></li>
-                    <li><a href="statistics.html">统计分析</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">地图<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="heatmap.html">热力图</a></li>
-                            <li><a href="clustering.html">聚合图</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
-            </div>
-            <!--/.navbar-collapse -->
-        </div>
-    </nav>
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <h3>上海市写字楼时空数据展示</h3>
-            <p>基于Arcgis的上海写字楼信息展示。 </p>
-            <p>数据来源：对房屋租售信息网站安居客的上海写字楼页面进行定期爬取和更新。 </p>
-            <p><a class="btn btn-primary btn-lg" href="http://10.60.38.147:8081/excel" role="button">导出EXCEL数据</a></p>
-        </div>
-    </div>
-
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="mapView" id="mapDiv">
-                    <div class="leaflet-bottom leaflet-left">
-                        <button class="btn btn-large btn-block btn-primary leaflet-control" onclick="clearAllPoi()">清除搜索结果</button>
-                    </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">写字楼时空数据展示</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">预览</a></li>
+                <li><a href="overview.html">主页</a></li>
+                <li><a href="statistics.html">统计分析</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">地图<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="heatmap.html">热力图</a></li>
+                        <li><a href="clustering.html">聚合图</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h3>上海市写字楼时空数据展示</h3>
+        <p>基于Arcgis的上海写字楼信息展示。 </p>
+        <p>数据来源：对房屋租售信息网站安居客的上海写字楼页面进行定期爬取和更新。 </p>
+        <p><a class="btn btn-primary btn-lg" href="http://10.60.38.147:8081/excel" role="button">导出EXCEL数据</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="mapView" id="mapDiv">
+                <div class="leaflet-bottom leaflet-left">
+                    <button class="btn btn-large btn-block btn-primary leaflet-control" onclick="clearAllPoi()">清除搜索结果
+                    </button>
                 </div>
             </div>
         </div>
-        <footer>
-            <p>&copy; Leppard</p>
-        </footer>
     </div>
+    <footer>
+        <p>&copy; Leppard</p>
+    </footer>
+</div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h5 class="modal-title" id="myModalLabel">
-                        周边信息
-				    </h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <span class="label label-default" style="font-size:15px;">搜索种类</span>
-                        </div>
-                    </div>
-                    <div class= "row">
-                        <div class="col-md-10">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox1" value="酒店"> 酒店
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox2" value="公园"> 公园
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox3" value="便利店"> 便利店
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox4" value="地铁站"> 地铁站
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                        <div class="col-md-2">
-                            <span class="label label-default" style="font-size:15px;">搜索范围(单位:米)</span>
-                        </div>
-                        
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                        <div class="col-md-4">
-                            <div class="input-group-sm">
-                                <select class="form-control" id="radius">
-                                    <option disabled selected style="display: none;" value="0"></option>
-                                    <option>1000</option>
-                                    <option>800</option>
-                                    <option>600</option>
-                                    <option>400</option>
-                                    <option>200</option>
-                                </select>
-                            </div>
-                        </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h5 class="modal-title" id="myModalLabel">
+                    周边信息
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <span class="label label-default" style="font-size:15px;">搜索种类</span>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="searchNearby()">搜 索
-                    </button>
+                <div class="row">
+                    <div class="col-md-10">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="酒店"> 酒店
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="公园"> 公园
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="便利店"> 便利店
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox4" value="地铁"> 地铁
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox5" value="医院"> 医院
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox6" value="商场"> 商场
+                        </label>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-md-2">
+                        <span class="label label-default" style="font-size:15px;">搜索范围(单位:米)</span>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-md-4">
+                        <div class="input-group-sm">
+                            <select class="form-control" id="radius">
+                                <option disabled selected style="display: none;" value="0"></option>
+                                <option>1000</option>
+                                <option>800</option>
+                                <option>600</option>
+                                <option>400</option>
+                                <option>200</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="searchNearby()">搜 索
+                </button>
+            </div>
         </div>
-        <!-- /.modal -->
+        <!-- /.modal-content -->
     </div>
-    <!-- /container -->
+    <!-- /.modal -->
+</div>
+<!-- /container -->
 
-    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script>
-        var centerPoint = [31.23, 121.40];
-        
-        var baseLayer = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
-            maxZoom: 18,
-            minZoom: 5
-        });
+<script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+<script>
+    var centerPoint = [31.23, 121.40];
 
-        var buildingLayer = L.esri.featureLayer({
-            url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
-        });
-        // buildingLayer.addTo(map);
-        buildingLayer.bindPopup(function(layer) {
-            return L.Util.template('<p>{BuildingName}<br>{Address}<br>日租金:{RentPerDay}元/m²•天<br>月租金:{RentPerMonth}万/月<br>开间面积:{Square}m²<br><button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
-        });
+    var baseLayer = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 5
+    });
 
-        var markers = L.layerGroup();
+    var buildingLayer = L.esri.featureLayer({
+        url: 'http://10.60.38.147:6080/arcgis/rest/services/ShanghaiOfficeBuilding/MapServer/0'
+    });
+    // buildingLayer.addTo(map);
+    buildingLayer.bindPopup(function (layer) {
+        return L.Util.template('<p><b>{BuildingName}</b></p><p class="mypopup">{Address}<br>日租金: {RentPerDay}元/m²•天<br>月租金: {RentPerMonth}万/月<br>' +
+            '开间面积: {Square}m²<br><button id="openModalBtn" class="btn btn-info btn-xs" ' +
+            'data-toggle="modal" data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
+    });
 
-        var map = L.map("mapDiv", {
-            center: centerPoint,
-            zoom: 10,
-            layers: [baseLayer, buildingLayer]
-        });
+    var markers = L.layerGroup();
 
-        var baseMaps = {
+    var map = L.map("mapDiv", {
+        center: centerPoint,
+        zoom: 10,
+        layers: [baseLayer, buildingLayer]
+    });
+
+    var baseMaps = {
         "上海市写字楼": buildingLayer
-        };
-        
-        var markers = L.layerGroup();
-        var layerControl = L.control.layers(baseMaps, null).addTo(map);
+    };
 
-        //初始化使计算Map控件大小
+    var markers = L.layerGroup();
+    var layerControl = L.control.layers(baseMaps, null).addTo(map);
+
+    //初始化使计算Map控件大小
+    document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
+    //当网页变化是重新计算地图控件的大小
+    window.onresize = function () {
         document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
-        //当网页变化是重新计算地图控件的大小
-        window.onresize = function() {
-            document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
-        }
-    </script>
+    }
+</script>
 
-    <script>
-        function searchNearby() {
-            searchPOIandDrawOnMap(map, markers, layerControl);
-        }
+<script>
+    function searchNearby() {
+        searchPOIandDrawOnMap(map, markers, layerControl);
+    }
 
-        function clearAllPoi() {
-            clearAllPoiPoints(markers);
-        }
-    </script>
+    function clearAllPoi() {
+        clearAllPoiPoints(markers);
+    }
+</script>
 
-    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
+<script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
 </body>
 
 </html>

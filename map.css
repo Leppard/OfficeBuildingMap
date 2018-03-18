@@ -57,7 +57,7 @@ hr {
     border-left-width: 0;
     border-radius: 0;
     background-color: #f5f5f5;
-    padding: 4px 5px ;
+    padding: 4px 5px;
 }
 
 .mywell {
@@ -68,8 +68,17 @@ hr {
     border-color: #ffffff;
 }
 
-.list-group-item>.badge {
+.list-group-item > .badge {
     margin-top: 3px;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 0;
+}
+
+.leaflet-popup-content > .mypopup {
+    margin: 0px 0px 18px 0px;
+    font-size: 15px;
 }
 
 /*.awesome-marker {*/
