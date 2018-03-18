@@ -58,8 +58,8 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum) {
                 allData.push(data);
             }
 
-            // alert("hasUndefined(allData[0].data)" + allData[0].data + "," + hasUndefined(allData[0].data));
-            if (!hasUndefined(allData[0].data)) {
+            // alert("noneHasUndefined(allData)" + noneHasUndefined(allData));
+            if (noneHasUndefined(allData)) {
                 $('#spider-charts').highcharts({
                     chart: {
                         polar: true,
@@ -96,6 +96,15 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum) {
     var local = new BMap.LocalSearch("上海", options);
     var key = keyword.split('_')[0];
     local.searchNearby(key, new BMap.Point(lon, lat), r);
+}
+
+function noneHasUndefined(allData) {
+    for (var i = 0; i < allData.length; i++) {
+        if (hasUndefined(allData[i].data)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function hasUndefined(arr) {
