@@ -8,23 +8,22 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
     if ($('#inlineCheckbox1').is(':checked')) {
         keywords.push("酒店");
     }
-    ;
     if ($('#inlineCheckbox2').is(':checked')) {
         keywords.push("公园");
     }
-    ;
     if ($('#inlineCheckbox3').is(':checked')) {
         keywords.push("便利店");
     }
-    ;
     if ($('#inlineCheckbox4').is(':checked')) {
-        keywords.push("地铁站");
+        keywords.push("地铁");
     }
-    ;
     if ($('#inlineCheckbox5').is(':checked')) {
         keywords.push("医院");
     }
-    ;
+    if ($('#inlineCheckbox6').is(':checked')) {
+        keywords.push("商场");
+    }
+
 
     var options = {
         pageCapacity: 100,
@@ -66,7 +65,7 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                                 prefix: 'fa',
                                 markerColor: 'blue'
                             });
-                        } else if (results[index].keyword == "地铁站") {
+                        } else if (results[index].keyword == "地铁") {
                             markerIcon = L.AwesomeMarkers.icon({
                                 icon: 'subway',
                                 prefix: 'fa',
@@ -77,6 +76,12 @@ function searchPOIandDrawOnMap(map, markers, layerControl) {
                                 icon: 'ambulance',
                                 prefix: 'fa',
                                 markerColor: 'red'
+                            });
+                        } else if (results[index].keyword == "商场") {
+                            markerIcon = L.AwesomeMarkers.icon({
+                                icon: 'shopping-cart',
+                                prefix: 'fa',
+                                markerColor: 'orange'
                             });
                         } else {
                             markerIcon = L.AwesomeMarkers.icon({

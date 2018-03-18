@@ -17,7 +17,7 @@ function compare(searchBs) {
 
     for (var b = 0; b < searchBs.length; b++) {
         var keywords = ['酒店_' + searchBs[b][0], '公园_' + searchBs[b][0],
-            '便利店_' + searchBs[b][0], '地铁站_' + searchBs[b][0], '医院_' + searchBs[b][0]];
+            '地铁_' + searchBs[b][0], '便利店_' + searchBs[b][0], '医院_' + searchBs[b][0], '商场_' + searchBs[b][0]];
         for (var i = 0; i < keywords.length; i++) {
             mySearchNearby2(keywords[i], searchBs[b][1][0], searchBs[b][1][1], Number(searchBs[b][2]), nearbyNum, searchBs[b][0]);
         }
@@ -47,8 +47,8 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
             for (var b = 0; b < searchBs.length; b++) {
                 var data = new Array();
                 data["name"] = searchBs[b][0];
-                data["data"] = [nearbyNum['酒店_' + searchBs[b][0]], nearbyNum['公园_' + searchBs[b][0]],
-                    nearbyNum['便利店_' + searchBs[b][0]], nearbyNum['地铁站_' + searchBs[b][0]], nearbyNum['医院_' + searchBs[b][0]]];
+                data["data"] = [nearbyNum['酒店_' + searchBs[b][0]], nearbyNum['公园_' + searchBs[b][0]], nearbyNum['地铁_' + searchBs[b][0]],
+                    nearbyNum['便利店_' + searchBs[b][0]], nearbyNum['医院_' + searchBs[b][0]], nearbyNum['商场_' + searchBs[b][0]]];
 
                 data["pointPlacement"] = 'on';
                 allData.push(data);
@@ -68,7 +68,7 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
                         size: '80%'
                     },
                     xAxis: {
-                        categories: ['酒店', '公园', '便利店', '地铁站', '医院'],
+                        categories: ['酒店', '公园', '地铁', '便利店', '医院', '商场'],
                         tickmarkPlacement: 'on',
                         lineWidth: 0
                     },
@@ -93,9 +93,9 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
     local.searchNearby(key, new BMap.Point(lon, lat), r);
 }
 
-function hasUndefined(arr){
-    for (var i =0;i<arr.length;i++){
-        if (i==undefined){
+function hasUndefined(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (i == undefined) {
             return true;
         }
     }

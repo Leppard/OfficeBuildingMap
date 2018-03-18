@@ -7,7 +7,7 @@ function addRadarChart() {
 
     var radius = $('#radius').val();
     var nearbyNum = new Array();
-    var keywords = ['酒店', '公园', '便利店', '地铁站', '医院'];
+    var keywords = ['酒店', '公园', '地铁', '便利店', '医院', '商场'];
 
     $("#mypanel-title").empty();
     $("#mypanel-title").append(title + " " + radius + "m");
@@ -34,7 +34,7 @@ function mySearchNearby(key, lon, lat, r, nearbyNum) {
                 nearbyNum[key] = 0;
             }
 
-            if (Object.keys(nearbyNum).length == 5) {
+            if (Object.keys(nearbyNum).length == 6) {
                 $('#container').highcharts({
                     chart: {
                         polar: true,
@@ -48,7 +48,7 @@ function mySearchNearby(key, lon, lat, r, nearbyNum) {
                         size: '80%'
                     },
                     xAxis: {
-                        categories: ['酒店', '公园', '便利店', '地铁站', '医院'],
+                        categories: ['酒店', '公园', '地铁', '便利店', '医院', '商场'],
                         tickmarkPlacement: 'on',
                         lineWidth: 0
                     },
@@ -63,7 +63,7 @@ function mySearchNearby(key, lon, lat, r, nearbyNum) {
                     },
                     series: [{
                         name: 'POI数目',
-                        data: [nearbyNum['酒店'], nearbyNum['公园'], nearbyNum['便利店'], nearbyNum['地铁站'], nearbyNum['医院']],
+                        data: [nearbyNum['酒店'], nearbyNum['公园'], nearbyNum['地铁'], nearbyNum['便利店'], nearbyNum['医院'], nearbyNum['商场']],
                         pointPlacement: 'on'
                     }]
                 });
