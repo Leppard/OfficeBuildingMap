@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Flat UI Free</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,92 +19,102 @@
       <script src="../../dist/js/vendor/html5shiv.js"></script>
       <script src="../../dist/js/vendor/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-      <h4>Tagsinput</h4>
-      <div class="row">
-        <div class="col-md-7 mtl">
-          <h5 class="demo-panel-title">Tags Input</h5>
-          <input name="tagsinput-01" class="tagsinput" value="Clean, Fresh, Modern, Unique" />
-          <h5 class="demo-panel-title">Tags Input Primary with typeahead functionality</h5>
-          <div class="tagsinput-primary">
-            <input name="tagsinput-02" class="tagsinput tagsinput-typeahead input-lg" value="Alabama"/>
-          </div>
+        <h4>Tagsinput</h4>
+        <div class="row">
+            <div class="col-md-7 mtl">
+                <h5 class="demo-panel-title">Tags Input</h5>
+                <input name="tagsinput-01" class="tagsinput" value="Clean, Fresh, Modern, Unique" />
 
-          <h5 class="demo-panel-title">Typeahead only</h5>
-          <div class="form-group">
-            <input class="form-control typeahead-only input-lg" type="text" id="typeahead-demo-01" />
-          </div>        
+                <h5 class="demo-panel-title">Tags Input Primary with typeahead functionality</h5>
+                <div class="tagsinput-primary">
+                    <input name="tagsinput-02" class="tagsinput tagsinput-typeahead input-lg" value="Alabama" />
+                </div>
 
-          <h5 class="demo-panel-title">Typeahead with feedback icons</h5>
-          <p>Huge</p>
-          <div class="form-group">
-            <input class="form-control typeahead-only input-hg" type="text" id="typeahead-demo-01" />
-            <span class="form-control-feedback control-feedback-hg fui-location"></span>
-          </div>        
+                <h5 class="demo-panel-title">Typeahead only</h5>
+                <div class="form-group">
+                    <input class="form-control typeahead-only input-lg" type="text" id="typeahead-demo-01" />
+                </div>
 
-          <p>Default</p>
-          <div class="form-group">
-            <input class="form-control typeahead-only" type="text" id="typeahead-demo-01" />
-            <span class="form-control-feedback fui-location"></span>
-          </div>        
+                <h5 class="demo-panel-title">Typeahead with feedback icons</h5>
+                <p>Huge</p>
+                <div class="form-group">
+                    <input class="form-control typeahead-only input-hg" type="text" id="typeahead-demo-01" />
+                    <span class="form-control-feedback control-feedback-hg fui-location"></span>
+                </div>
 
-          <p>Large</p>
-          <div class="form-group">
-            <input class="form-control typeahead-only input-lg" type="text" id="typeahead-demo-01" />
-            <span class="form-control-feedback control-feedback-lg  fui-location"></span>
-          </div>        
+                <p>Default</p>
+                <div class="form-group">
+                    <input class="form-control typeahead-only" type="text" id="typeahead-demo-01" />
+                    <span class="form-control-feedback fui-location"></span>
+                </div>
 
-          <p>Small</p>
-          <div class="form-group">
-            <input class="form-control typeahead-only input-sm" type="text" id="typeahead-demo-01" />
-            <span class="form-control-feedback control-feedback-sm fui-location"></span>
-          </div>        
+                <p>Large</p>
+                <div class="form-group">
+                    <input class="form-control typeahead-only input-lg" type="text" id="typeahead-demo-01" />
+                    <span class="form-control-feedback control-feedback-lg  fui-location"></span>
+                </div>
 
-        </div> <!-- /tags -->
-      </div><!-- /.row -->
+                <p>Small</p>
+                <div class="form-group">
+                    <input class="form-control typeahead-only input-sm" type="text" id="typeahead-demo-01" />
+                    <span class="form-control-feedback control-feedback-sm fui-location"></span>
+                </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../../dist/js/vendor/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../../dist/js/flat-ui.js"></script>
+            </div>
+            <!-- /tags -->
+        </div>
+        <!-- /.row -->
 
-    <script src="../assets/js/application.js"></script>
-    <script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../../dist/js/vendor/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../../dist/js/flat-ui.js"></script>
 
-      var states = new Bloodhound({
-        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.word); },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        limit: 4,
-        local: [
-          { word: "Alabama" },
-          { word: "Alaska" },
-          { word: "Arizona" },
-          { word: "Arkansas" },
-          { word: "California" },
-          { word: "Colorado" }
-        ]
-      });
+        <script src="../assets/js/application.js"></script>
+        <script>
+            var states = new Bloodhound({
+                datumTokenizer: function(d) {
+                    return Bloodhound.tokenizers.whitespace(d.word);
+                },
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                limit: 4,
+                local: [{
+                    word: "Alabama"
+                }, {
+                    word: "Alaska"
+                }, {
+                    word: "Arizona"
+                }, {
+                    word: "Arkansas"
+                }, {
+                    word: "California"
+                }, {
+                    word: "Colorado"
+                }]
+            });
 
-      states.initialize();
+            states.initialize();
 
-      $('input.tagsinput').tagsinput();
+            $('input.tagsinput').tagsinput();
 
-      $('input.tagsinput-typeahead').tagsinput('input').typeahead(null, {
-        name: 'states',
-        displayKey: 'word',
-        source: states.ttAdapter()
-      });
+            $('input.tagsinput-typeahead').tagsinput('input').typeahead(null, {
+              name: 'states',
+              displayKey: 'word',
+              source: states.ttAdapter()
+            });
 
-      $('input.typeahead-only').typeahead(null, {
-        name: 'states',
-        displayKey: 'word',
-        source: states.ttAdapter()
-      });
+            $('input.typeahead-only').typeahead(null, {
+              name: 'states',
+              displayKey: 'word',
+              source: states.ttAdapter()
+            });
+        </script>
 
-    </script>
 
+</body>
 
-  </body>
 </html>

@@ -75,13 +75,13 @@
                 </li>
             </ul>
             <!--<form class="navbar-form navbar-right">-->
-                <!--<div class="form-group">-->
-                    <!--<input type="text" placeholder="Email" class="form-control" style="border-radius: 0">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<input type="password" placeholder="Password" class="form-control" style="border-radius: 0">-->
-                <!--</div>-->
-                <!--<button type="submit" class="btn btn-success" style="border-radius: 0">Sign in</button>-->
+            <!--<div class="form-group">-->
+            <!--<input type="text" placeholder="Email" class="form-control" style="border-radius: 0">-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<input type="password" placeholder="Password" class="form-control" style="border-radius: 0">-->
+            <!--</div>-->
+            <!--<button type="submit" class="btn btn-success" style="border-radius: 0">Sign in</button>-->
             <!--</form>-->
         </div>
         <!--/.navbar-collapse -->
@@ -124,17 +124,17 @@
                         <h3 class="panel-title" style="text-align: center"><span
                                 class="fui-list-small-thumbnails"></span>&#160;&#160;&#160;周边信息</h3>
                     </div>
-                    <div class="panel-body" style="height: 568px">
-                        <div class="mypanel-title" id="mypanel-title"></div>
+                    <div class="panel-body" style="height: 600px">
+                        <div class="mypanel-title" id="mypanel-title">周边信息</div>
                         <hr>
                         <div style="height: 300px" id="container">
 
                         </div>
-                        <div class="mypanel-title">楼盘比较</div>
+                        <div class="mypanel-title" style="margin-top: 15px">楼盘比较 <a href="javascript:void(0)" onclick="cancel()">&#160;&#160;&#160;取消</a></div>
                         <hr>
-                        <div class="well" id="builds"
-                             style="font-size: 15px;margin-top: 10px;padding:5px 0;border-radius: 0;border-color: #ffffff">
-
+                        <div class="mywell">
+                            <ul class="list-group" id="builds">
+                            </ul>
                         </div>
                     </div>
                     <div class="panel-footer" style="padding: 0; border-radius: 0">
@@ -209,7 +209,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info btn-sm" data-dismiss="modal" style="float: left" onclick="addToC()">加入比较
+                <button type="button" class="btn btn-info btn-sm" data-dismiss="modal" style="float: left"
+                        onclick="addToC()">加入比较
                 </button>
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取 消
                 </button>
@@ -293,15 +294,19 @@
         clearAllPoiPoints(markers);
     }
 
-    var searchBs = new Array();
-    function addToC(){
-        addToCompare(searchBs);
+    var searchBs = [];
+
+    function addToC() {
+        addToCompare();
     }
 
     function startCompare() {
-        compare(searchBs);
+        compare();
     }
 
+    function cancel() {
+        cancelCompare();
+    }
 </script>
 
 

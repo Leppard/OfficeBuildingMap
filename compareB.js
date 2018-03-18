@@ -1,7 +1,10 @@
-function addToCompare(searchBs) {
+function addToCompare() {
     var title = $('#openModalBtn').data('title');
     var radius = $('#radius').val();
-    $("#builds").append("<div>" + title + " " + radius + "m" + "</div>");
+    $("#builds").append("<li class='list-group-item'> " +
+        "<span class='badge'>" + radius + "m" + "</span>"
+        + title + "</li>");
+
 
     var lat = $('#openModalBtn').data('lat');
     var lon = $('#openModalBtn').data('lon');
@@ -9,10 +12,11 @@ function addToCompare(searchBs) {
 
     var bInfo = [title, bd_coor, radius];
     searchBs.push(bInfo);
+    // alert("push" + title + searchBs.length);
 
 }
 
-function compare(searchBs) {
+function compare() {
     var nearbyNum = new Array();
 
     for (var b = 0; b < searchBs.length; b++) {
@@ -100,5 +104,11 @@ function hasUndefined(arr) {
         }
     }
     return false;
+}
+
+function cancelCompare() {
+    searchBs = [];
+    // alert("cancel" + searchBs.length);
+    $("#builds").empty();
 }
 
