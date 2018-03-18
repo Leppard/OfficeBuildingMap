@@ -16,22 +16,22 @@ function addToCompare() {
     } else {
         alert("此条查询已存在，请重新设置查询条件");
     }
-    // alert("push" + title + searchBs.length);
+    // alert("push" + title + bList.length + "," + searchBs.length);
 }
 
 function compare() {
-    var nearbyNum = new Array();
+    var nearbyNum = [];
 
     for (var b = 0; b < searchBs.length; b++) {
         var keywords = ['酒店_' + searchBs[b][0], '公园_' + searchBs[b][0],
             '地铁_' + searchBs[b][0], '便利店_' + searchBs[b][0], '医院_' + searchBs[b][0], '商场_' + searchBs[b][0]];
         for (var i = 0; i < keywords.length; i++) {
-            mySearchNearby2(keywords[i], searchBs[b][1][0], searchBs[b][1][1], Number(searchBs[b][2]), nearbyNum, searchBs[b][0]);
+            mySearchNearby2(keywords[i], searchBs[b][1][0], searchBs[b][1][1], Number(searchBs[b][2]), nearbyNum);
         }
     }
 }
 
-function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
+function mySearchNearby2(keyword, lon, lat, r, nearbyNum) {
     var options = {
         pageCapacity: 100,
         onSearchComplete: function (results) {
@@ -47,9 +47,6 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
                 nearbyNum[keyword] = 0;
             }
 
-            // alert(keyword + "," + nearbyNum[keyword]);
-
-            var test = [];
             var allData = new Array();
             for (var b = 0; b < searchBs.length; b++) {
                 var data = new Array();
@@ -61,6 +58,7 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
                 allData.push(data);
             }
 
+            // alert("hasUndefined(allData[0].data)" + allData[0].data + "," + hasUndefined(allData[0].data));
             if (!hasUndefined(allData[0].data)) {
                 $('#spider-charts').highcharts({
                     chart: {
@@ -102,7 +100,7 @@ function mySearchNearby2(keyword, lon, lat, r, nearbyNum, title) {
 
 function hasUndefined(arr) {
     for (var i = 0; i < arr.length; i++) {
-        if (i == undefined) {
+        if (typeof(arr[i]) == 'undefined') {
             return true;
         }
     }
@@ -110,8 +108,9 @@ function hasUndefined(arr) {
 }
 
 function cancelCompare() {
+    bList = [];
     searchBs = [];
-    // alert("cancel" + searchBs.length);
+    // alert("cancel" + bList.length + "," + searchBs.length);
     $("#builds").empty();
 }
 
