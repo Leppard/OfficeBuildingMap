@@ -47,3 +47,7 @@ hr {
 .btn {
     border-radius: 0px;
 }
+
+.navbar-nav > li > .dropdown-menu {
+    border-radius: 0;
+}
