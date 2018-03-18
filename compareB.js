@@ -1,19 +1,22 @@
 function addToCompare() {
     var title = $('#openModalBtn').data('title');
     var radius = $('#radius').val();
-    $("#builds").append("<li class='list-group-item'> " +
-        "<span class='badge'>" + radius + "m" + "</span>"
-        + title + "</li>");
-
-
     var lat = $('#openModalBtn').data('lat');
     var lon = $('#openModalBtn').data('lon');
     var bd_coor = wgs84tobd09(Number(lon), Number(lat));
 
     var bInfo = [title, bd_coor, radius];
-    searchBs.push(bInfo);
-    // alert("push" + title + searchBs.length);
 
+    if (!bList.includes(bInfo.toString())) {
+        $("#builds").append("<li class='list-group-item'> " +
+            "<span class='badge'>" + radius + "m" + "</span>"
+            + title + "</li>");
+        bList.push(bInfo.toString());
+        searchBs.push(bInfo);
+    } else {
+        alert("此条查询已存在，请重新设置查询条件");
+    }
+    // alert("push" + title + searchBs.length);
 }
 
 function compare() {
