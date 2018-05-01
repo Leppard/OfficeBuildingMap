@@ -1,4 +1,4 @@
-var express = require('express');
+﻿var express = require('express');
 var nodeExcel = require('excel-export');
 var app = express();
  
@@ -33,63 +33,57 @@ function setUpExcelExport(res, dataSet) {
 	// conf.stylesXmlFile = "styles.xml";
     conf.name = "mysheet";
   	conf.cols = [{
-		caption:'ID',
+		caption:'id',
         type:'number'
 	},{
-		caption:'RentPerDay',
+		caption:'outer_id',
 		type:'string'
 	},{
-		caption:'Square',
+		caption:'name',
 		type:'string'
 	},{
-		caption:'RentPerMonth',
+		caption:'address',
 		 type:'string'				
   	},{
-		caption:'Floor',
+		caption:'type',
+        	type:'string'
+	},{
+		caption:'build_time',
+		type:'string'
+	},{
+		caption:'floors',
+		type:'string'
+	},{
+		caption:'property_fee',
+		 type:'string'				
+  	},{
+		caption:'rent',
+		type:'string'
+	},{
+		caption:'rent_more',
+		type:'string'
+	},{
+		caption:'area',
+		 type:'string'				
+  	},{
+		caption:'location',
         type:'string'
 	},{
-		caption:'RoomRate',
+		caption:'address_for_coordinate',
 		type:'string'
 	},{
-		caption:'WorkStation',
+		caption:'latitude_bd',
 		type:'string'
 	},{
-		caption:'BuildingName',
+		caption:'longitude_bd',
 		 type:'string'				
   	},{
-		caption:'PropertyFee',
-		type:'string'
-	},{
-		caption:'Underground',
-		type:'string'
-	},{
-		caption:'Address',
+		caption:'latitude_wgs',
 		 type:'string'				
   	},{
-		caption:'Description',
-        type:'string'
-	},{
-		caption:'BuildingId',
+		caption:'longitude_wgs',
 		type:'string'
-	},{
-		caption:'Area',
-		type:'string'
-	},{
-		caption:'Location',
-		 type:'string'				
-  	},{
-		caption:'Latitude_bd',
-		 type:'string'				
-  	},{
-		caption:'Longitude_bd',
-		type:'string'
-	},{
-		caption:'Latitude_wgs',
-		type:'string'
-	},{
-		caption:'Longitude_wgs',
-		 type:'string'				
-  	}];
+	}];
   	conf.rows = dataSet;
   	var result = nodeExcel.execute(conf);
   	res.setHeader('Content-Type', 'application/vnd.openxmlformats');
