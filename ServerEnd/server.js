@@ -4,13 +4,21 @@ var app = express();
  
 app.use(express.static('../'));
 
-app.get('/queryData', function (req, res) {
+app.get('/buildingData', function (req, res) {
 	var query = require('./dbConnector');
 	query.queryData(function(recordset) {
-		res.send(recordset);
+		var dataSet = [];
+		for(var arrNumber in recordset) {
+			var rowArr = [];
+			var dic = recordset[arrNumber];
+			for (var key in dic) {
+				rowArr.push(dic[key]);
+			}
+			dataSet.push(rowArr);
+		}
+		res.json(dataSet);
 	});
 })
-
 
 app.get('/excel', function(req, res){
 	var query = require('./dbConnector');
@@ -67,7 +75,7 @@ function setUpExcelExport(res, dataSet) {
 		 type:'string'				
   	},{
 		caption:'location',
-        type:'string'
+        	type:'string'
 	},{
 		caption:'address_for_coordinate',
 		type:'string'
