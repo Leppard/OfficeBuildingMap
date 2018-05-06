@@ -1,7 +1,7 @@
 import pymysql
 import CoorTransform
 
-conn = pymysql.connect(host='10.60.38.147',port= 3306,user = 'Leppard',passwd='123456',db='officebuilding')
+conn = pymysql.connect(host='10.60.45.22',port= 3306,user = 'Leppard',passwd='123456',db='officebuilding')
 
 cursor = conn.cursor()
 
