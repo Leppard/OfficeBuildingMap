@@ -1,7 +1,7 @@
 ﻿var express = require('express');
 var nodeExcel = require('excel-export');
 var app = express();
- 
+
 app.use(express.static('../'));
 
 app.get('/buildingData', function (req, res) {
@@ -51,7 +51,7 @@ function setUpExcelExport(res, dataSet) {
 		type:'string'
 	},{
 		caption:'address',
-		 type:'string'				
+		 type:'string'
   	},{
 		caption:'type',
         	type:'string'
@@ -63,7 +63,7 @@ function setUpExcelExport(res, dataSet) {
 		type:'string'
 	},{
 		caption:'property_fee',
-		 type:'string'				
+		 type:'string'
   	},{
 		caption:'rent',
 		type:'string'
@@ -72,7 +72,7 @@ function setUpExcelExport(res, dataSet) {
 		type:'string'
 	},{
 		caption:'area',
-		 type:'string'				
+		 type:'string'
   	},{
 		caption:'location',
         	type:'string'
@@ -84,10 +84,10 @@ function setUpExcelExport(res, dataSet) {
 		type:'string'
 	},{
 		caption:'longitude_bd',
-		 type:'string'				
+		 type:'string'
   	},{
 		caption:'latitude_wgs',
-		 type:'string'				
+		 type:'string'
   	},{
 		caption:'longitude_wgs',
 		type:'string'
@@ -98,13 +98,13 @@ function setUpExcelExport(res, dataSet) {
   	res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
   	res.end(result, 'binary');
 }
- 
 
-var server = app.listen(8081, function () {
- 
+
+var server = app.listen(9999, function () {
+
   var host = server.address().address
   var port = server.address().port
- 
+
   console.log("应用实例，访问地址为 http://%s:%s", host, port)
- 
+
 })
