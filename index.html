@@ -179,7 +179,7 @@
 
     var baseLayer = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
         maxZoom: 18,
-        minZoom: 5
+        minZoom: 8
     });
 
     var buildingLayer = L.esri.featureLayer({
@@ -187,7 +187,7 @@
     });
     // buildingLayer.addTo(map);
     buildingLayer.bindPopup(function (layer) {
-        return L.Util.template('<p><b>{name}</b></p><p class="mypopup">{address}<br>日租金: {rent}元/m²•天<br>物业费: {property_fee}<br>类别: {type}<br>楼层: {floors}<br>建成时间: {build_time}<br>' + '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon={x} data-lat={y} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
+        return L.Util.template('<p><b>{name}</b></p><p class="mypopup">{address}<br>日租金: {rent}元/m²•天<br>物业费: {property_fee}元/m²•月<br>类别: {type}<br>总楼层: {floors}层<br>建成时间: {build_time}<br>' + '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-lon={longitude_wgs} data-lat={latitude_wgs} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
     });
 
     var markers = L.layerGroup();
