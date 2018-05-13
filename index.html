@@ -8,7 +8,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>overview</title>
+    <title>主 页</title>
 
     <!-- Loading Bootstrap -->
     <link href="Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -258,7 +258,8 @@
     // buildingLayer.addTo(map);
     buildingLayer.bindPopup(function (layer) {
         return L.Util.template('<p><b>{name}</b></p><p class="mypopup">{address}<br>日租金: {rent}<br>物业费: {property_fee}<br>类别: {type}<br>总楼层: {floors}层<br>建成时间: {build_time}<br>' +
-            '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-title = {name} data-lon={longitude_wgs} data-lat={latitude_wgs} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
+            '<button id="openModalBtn" class="btn btn-info btn-xs" data-toggle="modal" data-title = {name} data-lon={longitude_wgs} ' +
+            'data-lat={latitude_wgs}  data-rent={rent} data-target="#myModal">搜索周边</button></p>', layer.feature.properties);
     });
 
     var markers = L.layerGroup();

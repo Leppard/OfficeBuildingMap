@@ -88,10 +88,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="mapView" id="mapDiv">
-                <div class="leaflet-bottom leaflet-left">
-                    <button class="btn btn-large btn-block btn-primary leaflet-control" onclick="clearAllPoi()">清除搜索结果
-                    </button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -119,8 +116,6 @@
         return L.Util.template('<p><b>{name}</b></p><p class="mypopup">{address}<br>日租金: {rent}<br>物业费: {property_fee}<br>类别: {type}<br>总楼层: {floors}层<br>建成时间: {build_time}<br> </p>', layer.feature.properties);
     });
 
-    var markers = L.layerGroup();
-
     var map = L.map("mapDiv", {
         center: centerPoint,
         zoom: 10,
@@ -131,24 +126,11 @@
         "上海市写字楼": buildingLayer
     };
 
-    var markers = L.layerGroup();
-    var layerControl = L.control.layers(baseMaps, null).addTo(map);
-
     //初始化使计算Map控件大小
     document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
     //当网页变化是重新计算地图控件的大小
     window.onresize = function () {
         document.getElementById("mapDiv").style.height = document.documentElement.clientHeight - 120 + "px";
-    }
-</script>
-
-<script>
-    function searchNearby() {
-        searchPOIandDrawOnMap(map, markers, layerControl);
-    }
-
-    function clearAllPoi() {
-        clearAllPoiPoints(markers);
     }
 </script>
 
