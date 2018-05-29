@@ -113,7 +113,7 @@
     });
     // buildingLayer.addTo(map);
     buildingLayer.bindPopup(function (layer) {
-        return L.Util.template('<p><b>{name}</b></p><p class="mypopup">{address}<br>日租金: {rent}<br>物业费: {property_fee}<br>类别: {type}<br>总楼层: {floors}层<br>建成时间: {build_time}<br> </p>', layer.feature.properties);
+        return L.Util.template('<p><b>{name}</b></p><p class="mypopup">{address}<br>日租金: {rent}<br>物业费: {property_fee}<br>类别: {type}<br>总楼层: {floors}层<br>建成时间: {buil_time}<br> </p>', layer.feature.properties);
     });
 
     var map = L.map("mapDiv", {
