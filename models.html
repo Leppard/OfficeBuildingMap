@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>模型分析及其结果</title>
+
+    <!-- Loading Bootstrap -->
+    <link href="Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+    <link rel="shortcut icon" href="Flat-UI-master/dist/img/favicon.ico">
+    <link rel="stylesheet" href="leaflet/awesome-markers/leaflet.awesome-markers.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="map.css" rel="stylesheet">
+
+    <!--    <link href="css/mycss.css" rel="stylesheet">-->
+    <style>
+        /* Custom Styles */
+
+        ul.nav-tabs {
+            width: 140px;
+            margin-top: 50px;
+            border-radius: 0;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+
+        ul.nav-tabs li {
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+
+        ul.nav-tabs li:first-child {
+            border-top: none;
+        }
+
+        ul.nav-tabs li a {
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+
+        ul.nav-tabs li.active a,
+        ul.nav-tabs li.active a:hover {
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+
+        ul.nav-tabs li:first-child a {
+            border-radius: 0;
+        }
+
+        ul.nav-tabs li:last-child a {
+            border-radius: 0;
+        }
+
+        ul.nav-tabs.affix {
+            top: 100px;
+            /* Set the top position of pinned element */
+        }
+
+    </style>
+
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">写字楼时空数据展示</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">预览</a></li>
+                <li><a href="index.html">主页</a></li>
+                <li><a href="statistics.html">统计分析</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">地图<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="heatmap.html">热力图</a></li>
+                        <li><a href="clustering.html">聚合图</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="models.html">模型分析</a></li>
+            </ul>
+            <!--<form class="navbar-form navbar-right">-->
+            <!--<div class="form-group">-->
+            <!--<input type="text" placeholder="Email" class="form-control">-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<input type="password" placeholder="Password" class="form-control">-->
+            <!--</div>-->
+            <!--<button type="submit" class="btn btn-success">Sign in</button>-->
+            <!--</form>-->
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container" style="margin-top: 80px">
+
+    <div class="row">
+        <div class="col-xs-2" id="myScrollspy" >
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                <li class="active"><a href="#section-1">数据分析</a></li>
+                <li><a href="#section-2">回归模型</a></li>
+                <li><a href="#section-3">租金聚类</a></li>
+                <li><a href="#section-4">分类模型</a></li>
+                <li><a href="#top" style="color: black">回到顶部</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-10">
+            <div class="panel panel-info" id="section-1">
+                <div class="panel-heading">
+                    <h3 class="panel-title">数据分析</h3>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+            <div class="panel panel-success" id="section-2">
+                <div class="panel-heading">
+                    <h3 class="panel-title">回归模型</h3>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+            <div class="panel panel-danger" id="section-3">
+                <div class="panel-heading">
+                    <h3 class="panel-title">租金聚类</h3>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+            <div class="panel panel-warning" id="section-4">
+                <div class="panel-heading">
+                    <h3 class="panel-title">分类模型</h3>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+<script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
+</body>
+
+</html>
