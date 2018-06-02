@@ -85,6 +85,17 @@ li {
     font-size: 16px;
 }
 
+.panel-body > p {
+    font-size: 16px;
+}
+
+.panel-body > h5 {
+    font-size: 23px;
+}
+
+tbody > tr > th {
+    font-weight: normal;
+}
 
 /*.awesome-marker {*/
 /*width: 20px;*/
