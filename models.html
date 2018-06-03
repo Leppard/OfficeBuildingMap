@@ -24,7 +24,7 @@
     <!--    <link href="css/mycss.css" rel="stylesheet">-->
     <style>
         /* Custom Styles */
-
+        
         ul.nav-tabs {
             width: 140px;
             margin-top: 50px;
@@ -32,527 +32,525 @@
             border: 1px solid #ddd;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
         }
-
+        
         ul.nav-tabs li {
             margin: 0;
             border-top: 1px solid #ddd;
         }
-
+        
         ul.nav-tabs li:first-child {
             border-top: none;
         }
-
+        
         ul.nav-tabs li a {
             margin: 0;
             padding: 8px 16px;
             border-radius: 0;
         }
-
+        
         ul.nav-tabs li.active a,
         ul.nav-tabs li.active a:hover {
             color: #fff;
             background: #0088cc;
             border: 1px solid #0088cc;
         }
-
+        
         ul.nav-tabs li:first-child a {
             border-radius: 0;
         }
-
+        
         ul.nav-tabs li:last-child a {
             border-radius: 0;
         }
-
+        
         ul.nav-tabs.affix {
             top: 100px;
             /* Set the top position of pinned element */
         }
-
     </style>
 
 </head>
 
 <body data-spy="scroll" data-target="#myScrollspy">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">写字楼时空数据展示</a>
+                <a class="navbar-brand" href="#">写字楼时空数据展示</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="overview.html">预览</a></li>
+                    <li><a href="index.html">主页</a></li>
+                    <li><a href="statistics.html">统计分析</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">地图<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="heatmap.html">热力图</a></li>
+                            <li><a href="clustering.html">聚合图</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="models.html">模型分析</a></li>
+                </ul>
+                <!--<form class="navbar-form navbar-right">-->
+                <!--<div class="form-group">-->
+                <!--<input type="text" placeholder="Email" class="form-control">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--<input type="password" placeholder="Password" class="form-control">-->
+                <!--</div>-->
+                <!--<button type="submit" class="btn btn-success">Sign in</button>-->
+                <!--</form>-->
+            </div>
+            <!--/.navbar-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#">预览</a></li>
-                <li><a href="index.html">主页</a></li>
-                <li><a href="statistics.html">统计分析</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">地图<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="heatmap.html">热力图</a></li>
-                        <li><a href="clustering.html">聚合图</a></li>
-                    </ul>
-                </li>
-                <li class="active"><a href="models.html">模型分析</a></li>
-            </ul>
-            <!--<form class="navbar-form navbar-right">-->
-            <!--<div class="form-group">-->
-            <!--<input type="text" placeholder="Email" class="form-control">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-            <!--<input type="password" placeholder="Password" class="form-control">-->
-            <!--</div>-->
-            <!--<button type="submit" class="btn btn-success">Sign in</button>-->
-            <!--</form>-->
-        </div>
-        <!--/.navbar-collapse -->
-    </div>
-</nav>
+    </nav>
 
-<div class="container" style="margin-top: 80px">
+    <div class="container" style="margin-top: 80px">
 
-    <div class="row">
-        <div class="col-xs-2" id="myScrollspy">
-            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
-                <li class="active"><a href="#section-0">数据概况</a></li>
-                <li><a href="#section-1">数据分析</a></li>
-                <li><a href="#section-2">回归模型</a></li>
-                <li><a href="#section-3">租金聚类</a></li>
-                <li><a href="#section-4">分类模型</a></li>
-                <li><a href="#top" style="color: black">回到顶部</a></li>
-            </ul>
-        </div>
+        <div class="row">
+            <div class="col-xs-2" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                    <li class="active"><a href="#section-0">数据概况</a></li>
+                    <li><a href="#section-1">数据分析</a></li>
+                    <li><a href="#section-2">回归模型</a></li>
+                    <li><a href="#section-3">租金聚类</a></li>
+                    <li><a href="#section-4">分类模型</a></li>
+                    <li><a href="#top" style="color: black">回到顶部</a></li>
+                </ul>
+            </div>
 
-        <div class="col-xs-10">
-            <div class="panel panel-default" id="section-0">
-                <div class="panel-heading">
-                    <h3 class="panel-title">数据概况</h3>
-                </div>
-                <div class="panel-body">
-                    <h5>数据属性</h5>
+            <div class="col-xs-10">
+                <div class="panel panel-default" id="section-0">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">数据概况</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h5>数据属性</h5>
 
-                    <p>共搜集得到1875个写字楼信息，即1875条写字楼数据，每条数据均有如下属性：<b>type 等级(甲乙丙三个等级)、floors 楼层数、
+                        <p>共搜集得到1875个写字楼信息，即1875条写字楼数据，每条数据均有如下属性：<b>type 等级(甲乙丙三个等级)、floors 楼层数、
                         age 写字楼年龄</b> 以及 <b>rent 写字楼平均租金(元/m²⋅天)</b></p>
-                    <p>除此之外，还通过调用<a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0">百度地图api</a>获取写字楼周边特定POI信息，并作为改写字楼的额外属性，如下：
-                        <b>hotel (周边600m内旅馆数)、hospital (周边600m内医院数)、mall (周边600m内商场数)、 park1500 (周边1500m内公元数)、
+                        <p>除此之外，还通过调用<a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0">百度地图api</a>获取写字楼周边特定POI信息，并作为改写字楼的额外属性，如下：
+                            <b>hotel (周边600m内旅馆数)、hospital (周边600m内医院数)、mall (周边600m内商场数)、 park1500 (周边1500m内公元数)、
                             store (周边600m内便利店数)、
                             underground (周边600m内地铁数)、 POIs (上述POI类别数)</b></p>
-                    <p style="color: #d82334">POI半径设为600m对应平均步程10分钟，由于公园的特殊性，将其半径设为1500m</p>
-                    <p><b>dummy数据</b>：将类别属性如写字楼等级这样无法用数值表示的属性，转换为数值属性，相见数据预览</p>
-                    <hr>
+                        <p style="color: #d82334">POI半径设为600m对应平均步程10分钟，由于公园的特殊性，将其半径设为1500m</p>
+                        <p><b>dummy数据</b>：将类别属性如写字楼等级这样无法用数值表示的属性，转换为数值属性，相见数据预览</p>
+                        <hr>
 
-                    <h5 style="margin-top: 30px">数据预览</h5>
-                    <p><b>原数据：</b></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>name</th>
-                            <th style="color: red">type</th>
-                            <th>age</th>
-                            <th>floors</th>
-                            <th>rent</th>
-                            <th>hotel</th>
-                            <th>hospital</th>
-                            <th>mall</th>
-                            <th>store</th>
-                            <th>park1500</th>
-                            <th>underground</th>
-                            <th>POIs</th>
-                        </tr>
-                        </thead>
+                        <h5 style="margin-top: 30px">数据预览</h5>
+                        <p><b>原数据：</b></p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th style="color: red">type</th>
+                                    <th>age</th>
+                                    <th>floors</th>
+                                    <th>rent</th>
+                                    <th>hotel</th>
+                                    <th>hospital</th>
+                                    <th>mall</th>
+                                    <th>store</th>
+                                    <th>park1500</th>
+                                    <th>underground</th>
+                                    <th>POIs</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                        <tr>
-                            <th>瑅香广场</th>
-                            <th style="color: red">丙</th>
-                            <th>4</th>
-                            <th>NaN</th>
-                            <th>3.55</th>
-                            <th>18</th>
-                            <th>0</th>
-                            <th>3</th>
-                            <th>7</th>
-                            <th>24</th>
-                            <th>0</th>
-                            <th>5</th>
-                        </tr>
-                        <tr>
-                            <th>银历大厦</th>
-                            <th style="color: red">丙</th>
-                            <th>NaN</th>
-                            <th>NaN</th>
-                            <th>3.04</th>
-                            <th>39</th>
-                            <th>4</th>
-                            <th>11</th>
-                            <th>10</th>
-                            <th>52</th>
-                            <th>2</th>
-                            <th>7</th>
-                        </tr>
-                        <tr>
-                            <th>昇PARK创意园</th>
-                            <th style="color: red">丙</th>
-                            <th>2</th>
-                            <th>5</th>
-                            <th>2.54</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>2</th>
-                            <th>0</th>
-                            <th>13</th>
-                            <th>0</th>
-                            <th>4</th>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p><b>dummy数据：</b></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>name</th>
-                            <th style="color: red">JIA</th>
-                            <th style="color: red">YI</th>
-                            <th style="color: red">BING</th>
-                            <th>age</th>
-                            <th>floors</th>
-                            <th>rent</th>
-                            <th>hotel</th>
-                            <th>hospital</th>
-                            <th>mall</th>
-                            <th>store</th>
-                            <th>park1500</th>
-                            <th>underground</th>
-                            <th>POIs</th>
-                        </tr>
-                        </thead>
+                            <tbody>
+                                <tr>
+                                    <th>瑅香广场</th>
+                                    <th style="color: red">丙</th>
+                                    <th>4</th>
+                                    <th>NaN</th>
+                                    <th>3.55</th>
+                                    <th>18</th>
+                                    <th>0</th>
+                                    <th>3</th>
+                                    <th>7</th>
+                                    <th>24</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                </tr>
+                                <tr>
+                                    <th>银历大厦</th>
+                                    <th style="color: red">丙</th>
+                                    <th>NaN</th>
+                                    <th>NaN</th>
+                                    <th>3.04</th>
+                                    <th>39</th>
+                                    <th>4</th>
+                                    <th>11</th>
+                                    <th>10</th>
+                                    <th>52</th>
+                                    <th>2</th>
+                                    <th>7</th>
+                                </tr>
+                                <tr>
+                                    <th>昇PARK创意园</th>
+                                    <th style="color: red">丙</th>
+                                    <th>2</th>
+                                    <th>5</th>
+                                    <th>2.54</th>
+                                    <th>1</th>
+                                    <th>0</th>
+                                    <th>2</th>
+                                    <th>0</th>
+                                    <th>13</th>
+                                    <th>0</th>
+                                    <th>4</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><b>dummy数据：</b></p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th style="color: red">JIA</th>
+                                    <th style="color: red">YI</th>
+                                    <th style="color: red">BING</th>
+                                    <th>age</th>
+                                    <th>floors</th>
+                                    <th>rent</th>
+                                    <th>hotel</th>
+                                    <th>hospital</th>
+                                    <th>mall</th>
+                                    <th>store</th>
+                                    <th>park1500</th>
+                                    <th>underground</th>
+                                    <th>POIs</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                        <tr>
-                            <th>瑅香广场</th>
-                            <th style="color: red">0</th>
-                            <th style="color: red">0</th>
-                            <th style="color: red">1</th>
-                            <th>4</th>
-                            <th>NaN</th>
-                            <th>3.55</th>
-                            <th>18</th>
-                            <th>0</th>
-                            <th>3</th>
-                            <th>7</th>
-                            <th>24</th>
-                            <th>0</th>
-                            <th>5</th>
-                        </tr>
-                        <tr>
-                            <th>银历大厦</th>
-                            <th style="color: red">0</th>
-                            <th style="color: red">0</th>
-                            <th style="color: red">1</th>
-                            <th>NaN</th>
-                            <th>NaN</th>
-                            <th>3.04</th>
-                            <th>39</th>
-                            <th>4</th>
-                            <th>11</th>
-                            <th>10</th>
-                            <th>52</th>
-                            <th>2</th>
-                            <th>7</th>
-                        </tr>
-                        <tr>
-                            <th>昇PARK创意园</th>
-                            <th style="color: red">0</th>
-                            <th style="color: red">0</th>
-                            <th style="color: red">1</th>
-                            <th>2</th>
-                            <th>5</th>
-                            <th>2.54</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>2</th>
-                            <th>0</th>
-                            <th>13</th>
-                            <th>0</th>
-                            <th>4</th>
-                        </tr>
-                        </tbody>
-                    </table>
+                            <tbody>
+                                <tr>
+                                    <th>瑅香广场</th>
+                                    <th style="color: red">0</th>
+                                    <th style="color: red">0</th>
+                                    <th style="color: red">1</th>
+                                    <th>4</th>
+                                    <th>NaN</th>
+                                    <th>3.55</th>
+                                    <th>18</th>
+                                    <th>0</th>
+                                    <th>3</th>
+                                    <th>7</th>
+                                    <th>24</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                </tr>
+                                <tr>
+                                    <th>银历大厦</th>
+                                    <th style="color: red">0</th>
+                                    <th style="color: red">0</th>
+                                    <th style="color: red">1</th>
+                                    <th>NaN</th>
+                                    <th>NaN</th>
+                                    <th>3.04</th>
+                                    <th>39</th>
+                                    <th>4</th>
+                                    <th>11</th>
+                                    <th>10</th>
+                                    <th>52</th>
+                                    <th>2</th>
+                                    <th>7</th>
+                                </tr>
+                                <tr>
+                                    <th>昇PARK创意园</th>
+                                    <th style="color: red">0</th>
+                                    <th style="color: red">0</th>
+                                    <th style="color: red">1</th>
+                                    <th>2</th>
+                                    <th>5</th>
+                                    <th>2.54</th>
+                                    <th>1</th>
+                                    <th>0</th>
+                                    <th>2</th>
+                                    <th>0</th>
+                                    <th>13</th>
+                                    <th>0</th>
+                                    <th>4</th>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <hr>
+                        <hr>
 
-                    <h5 style="margin-top: 30px">建模目的</h5>
-                    <p>分析写字楼租金与该楼盘自身属性以及周边POIs之间的关系，通过机器学习预测某一新写字楼的租金</p>
+                        <h5 style="margin-top: 30px">建模目的</h5>
+                        <p>分析写字楼租金与该楼盘自身属性以及周边POIs之间的关系，通过机器学习预测某一新写字楼的租金</p>
 
+                    </div>
                 </div>
-            </div>
 
-            <div class="panel panel-info" id="section-1">
-                <div class="panel-heading">
-                    <h3 class="panel-title">数据分析</h3>
+                <div class="panel panel-info" id="section-1">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">数据分析</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h5>租金概况</h5>
+                        <p>对1875条数据的租金信息进行基础统计分析，得到如下结果：</p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>最小值</th>
+                                    <th>最大值</th>
+                                    <th>平均值</th>
+                                    <th>中位值</th>
+                                    <th>标准差</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>租金 (元/m²⋅天)</th>
+                                    <th>0.03</th>
+                                    <th>13.35</th>
+                                    <th>4.26</th>
+                                    <th>3.85</th>
+                                    <th>1.88</th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <p><b>租金分布图：</b></p>
+                        <div class="panel"><img src="imgs/rents.png" class="img-responsive"></div>
+
+                        <hr>
+                        <h5 style="margin-top: 30px">租金与属性的相关性分析</h5>
+                        <p><b>租金与各属性的关系：</b></p>
+                        <div class="panel"><img src="imgs/scatters_plot.png" class="img-responsive"></div>
+
+                        <p><b><a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">皮尔森相关系数</a>热力图：</b>
+                        </p>
+                        <div class="panel"><img src="imgs/corrs.png" class="img-responsive"></div>
+                        <p><b>租金与各属性的相关系数</b></p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>type</th>
+                                    <th>age</th>
+                                    <th>floors</th>
+                                    <th>hotel</th>
+                                    <th>hospital</th>
+                                    <th>mall</th>
+                                    <th>store</th>
+                                    <th>park1500</th>
+                                    <th>underground</th>
+                                    <th>POIs</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>Pearson Corr (0-1)</th>
+                                    <th>0.2</th>
+                                    <th>0.067</th>
+                                    <th>0.41</th>
+                                    <th>0.27</th>
+                                    <th>0.22</th>
+                                    <th>0.32</th>
+                                    <th>0.37</th>
+                                    <th>0.28</th>
+                                    <th>0.22</th>
+                                    <th>0.24</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <h5>租金概况</h5>
-                    <p>对1875条数据的租金信息进行基础统计分析，得到如下结果：</p>
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>最小值</th>
-                            <th>最大值</th>
-                            <th>平均值</th>
-                            <th>中位值</th>
-                            <th>标准差</th>
-                        </tr>
-                        </thead>
 
-                        <tbody>
-                        <tr>
-                            <th>租金 (元/m²⋅天)</th>
-                            <th>0.03</th>
-                            <th>13.35</th>
-                            <th>4.26</th>
-                            <th>3.85</th>
-                            <th>1.88</th>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                    <p><b>租金分布图：</b></p>
-                    <div class="panel"><img src="imgs/rents.png" class="img-responsive"></div>
-
-                    <hr>
-                    <h5 style="margin-top: 30px">租金与属性的相关性分析</h5>
-                    <p><b>租金与各属性的关系：</b></p>
-                    <div class="panel"><img src="imgs/scatters_plot.png" class="img-responsive"></div>
-
-                    <p><b><a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">皮尔森相关系数</a>热力图：</b>
-                    </p>
-                    <div class="panel"><img src="imgs/corrs.png" class="img-responsive"></div>
-                    <p><b>租金与各属性的相关系数</b></p>
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>type</th>
-                            <th>age</th>
-                            <th>floors</th>
-                            <th>hotel</th>
-                            <th>hospital</th>
-                            <th>mall</th>
-                            <th>store</th>
-                            <th>park1500</th>
-                            <th>underground</th>
-                            <th>POIs</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <th>Pearson Corr (0-1)</th>
-                            <th>0.2</th>
-                            <th>0.067</th>
-                            <th>0.41</th>
-                            <th>0.27</th>
-                            <th>0.22</th>
-                            <th>0.32</th>
-                            <th>0.37</th>
-                            <th>0.28</th>
-                            <th>0.22</th>
-                            <th>0.24</th>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="panel panel-success" id="section-2">
-                <div class="panel-heading">
-                    <h3 class="panel-title">回归模型</h3>
-                </div>
-                <div class="panel-body">
-                    <h5>回归模型以及结果</h5>
-                    <p>将现有数据划分训练集(80%)和测试集(20%)，建立多个回归模型，分别对现有数据进行训练，并对预测集上的租金属性进行预测，通过模型优化以期提升预测准确率</p>
-                    <p>选用的回归模型有：<b><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">DecisionTree</a>、<a
+                <div class="panel panel-success" id="section-2">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">回归模型</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h5>回归模型以及结果</h5>
+                        <p>将现有数据划分训练集(80%)和测试集(20%)，建立多个回归模型，分别对现有数据进行训练，并对预测集上的租金属性进行预测，通过模型优化以期提升预测准确率</p>
+                        <p>选用的回归模型有：<b><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">DecisionTree</a>、<a
                             href="https://en.wikipedia.org/wiki/Linear_regression">LinearRegression</a>、<a
                             href="https://en.wikipedia.org/wiki/Support_vector_machine">SVM</a>、<a
                             href="http://keras-cn.readthedocs.io/en/latest/models/sequential/">Sequential</a></b></p>
-                    <p>预测结果的度量：<b><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">R平方</a>，即决定系数</b>，范围是0-1，数值越大则说明预测效果越好，越接近真实值
-                    </p>
-                    <p><b>结果：</b></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>DecisionTree</th>
-                            <th>LinearRegression</th>
-                            <th>SVM</th>
-                            <th>Sequential</th>
-                        </tr>
-                        </thead>
+                        <p>预测结果的度量：<b><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">R平方</a>，即决定系数</b>，范围是0-1，数值越大则说明预测效果越好，越接近真实值
+                        </p>
+                        <p><b>结果：</b></p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>DecisionTree</th>
+                                    <th>LinearRegression</th>
+                                    <th>SVM</th>
+                                    <th>Sequential</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                        <tr>
-                            <th>原数据</th>
-                            <th>0.35</th>
-                            <th>0.31</th>
-                            <th>0.38</th>
-                            <th>0.27</th>
-                        </tr>
-                        <tr>
-                            <th>dummy数据</th>
-                            <th>0.35</th>
-                            <th>0.41</th>
-                            <th>0.47</th>
-                            <th>0.47</th>
-                        </tr>
-                        </tbody>
-                    </table>
+                            <tbody>
+                                <tr>
+                                    <th>原数据</th>
+                                    <th>0.35</th>
+                                    <th>0.31</th>
+                                    <th>0.38</th>
+                                    <th>0.27</th>
+                                </tr>
+                                <tr>
+                                    <th>dummy数据</th>
+                                    <th>0.35</th>
+                                    <th>0.41</th>
+                                    <th>0.47</th>
+                                    <th>0.47</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div class="panel panel-danger" id="section-3">
-                <div class="panel-heading">
-                    <h3 class="panel-title">租金聚类</h3>
+                <div class="panel panel-danger" id="section-3">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">租金聚类</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h5>聚类过程和目的</h5>
+                        <p>
+                            <li>利用<a href="https://en.wikipedia.org/wiki/K-means_clustering">Kmeans聚类算法</a>对1875个数据的租金信息（rent）进行聚类，得到租金信息的5个分类。
+                            </li>
+                            <li>将上述所得的5个分类作为5个不同的标签（labels）添加到原数据中，将原来的<b>连续型租金信息</b>转换成<b>离散型租金信息</b>，以便后续分类学习和预测。</li>
+                            <li>利分类监督学习模型对上述所得数据进行训练和预测。</li>
+                        </p>
+
+                        <hr>
+                        <h5 style="margin-top: 30px">聚类结果</h5>
+                        <p><b>聚类概况：</b></p>
+                        <div class="panel"><img src="imgs/kmeans.png" class="img-responsive"></div>
+                        <p><b>结果示例：</b></p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th>type</th>
+                                    <th>age</th>
+                                    <th>floors</th>
+                                    <th style="color: #c60100">rent</th>
+                                    <th>hotel</th>
+                                    <th>hospital</th>
+                                    <th>mall</th>
+                                    <th>store</th>
+                                    <th>park1500</th>
+                                    <th>underground</th>
+                                    <th>POIs</th>
+                                    <th style="color: red">label5</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>瑅香广场</th>
+                                    <th>丙</th>
+                                    <th>4</th>
+                                    <th>NaN</th>
+                                    <th style="color: #c60100">3.55</th>
+                                    <th>18</th>
+                                    <th>0</th>
+                                    <th>3</th>
+                                    <th>7</th>
+                                    <th>24</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th style="color: red">4</th>
+                                </tr>
+                                <tr>
+                                    <th>银历大厦</th>
+                                    <th>丙</th>
+                                    <th>NaN</th>
+                                    <th>NaN</th>
+                                    <th style="color: #c60100">3.04</th>
+                                    <th>39</th>
+                                    <th>4</th>
+                                    <th>11</th>
+                                    <th>10</th>
+                                    <th>52</th>
+                                    <th>2</th>
+                                    <th>7</th>
+                                    <th style="color: red">4</th>
+                                </tr>
+                                <tr>
+                                    <th>昇PARK创意园</th>
+                                    <th>丙</th>
+                                    <th>2</th>
+                                    <th>5</th>
+                                    <th style="color: #c60100">2.54</th>
+                                    <th>1</th>
+                                    <th>0</th>
+                                    <th>2</th>
+                                    <th>0</th>
+                                    <th>13</th>
+                                    <th>0</th>
+                                    <th>4</th>
+                                    <th style="color: red">4</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <h5>聚类过程和目的</h5>
-                    <p>
-                    <li>利用<a href="https://en.wikipedia.org/wiki/K-means_clustering">Kmeans聚类算法</a>对1875个数据的租金信息（rent）进行聚类，得到租金信息的5个分类。
-                    </li>
-                    <li>将上述所得的5个分类作为5个不同的标签（labels）添加到原数据中，将原来的<b>连续型租金信息</b>转换成<b>离散型租金信息</b>，以便后续分类学习和预测。</li>
-                    <li>利分类监督学习模型对上述所得数据进行训练和预测。</li>
-                    </p>
 
-                    <hr>
-                    <h5 style="margin-top: 30px">聚类结果</h5>
-                    <p><b>聚类概况：</b></p>
-                    <div class="panel"><img src="imgs/kmeans.png" class="img-responsive"></div>
-                    <p><b>结果示例：</b></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>type</th>
-                            <th>age</th>
-                            <th>floors</th>
-                            <th style="color: #c60100">rent</th>
-                            <th>hotel</th>
-                            <th>hospital</th>
-                            <th>mall</th>
-                            <th>store</th>
-                            <th>park1500</th>
-                            <th>underground</th>
-                            <th>POIs</th>
-                            <th style="color: red">label5</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <th>瑅香广场</th>
-                            <th>丙</th>
-                            <th>4</th>
-                            <th>NaN</th>
-                            <th style="color: #c60100">3.55</th>
-                            <th>18</th>
-                            <th>0</th>
-                            <th>3</th>
-                            <th>7</th>
-                            <th>24</th>
-                            <th>0</th>
-                            <th>5</th>
-                            <th style="color: red">4</th>
-                        </tr>
-                        <tr>
-                            <th>银历大厦</th>
-                            <th>丙</th>
-                            <th>NaN</th>
-                            <th>NaN</th>
-                            <th style="color: #c60100">3.04</th>
-                            <th>39</th>
-                            <th>4</th>
-                            <th>11</th>
-                            <th>10</th>
-                            <th>52</th>
-                            <th>2</th>
-                            <th>7</th>
-                            <th style="color: red">4</th>
-                        </tr>
-                        <tr>
-                            <th>昇PARK创意园</th>
-                            <th>丙</th>
-                            <th>2</th>
-                            <th>5</th>
-                            <th style="color: #c60100">2.54</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>2</th>
-                            <th>0</th>
-                            <th>13</th>
-                            <th>0</th>
-                            <th>4</th>
-                            <th style="color: red">4</th>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="panel panel-warning" id="section-4">
-                <div class="panel-heading">
-                    <h3 class="panel-title">分类模型</h3>
-                </div>
-                <div class="panel-body">
-                    <h5>分类模型以及结果</h5>
-                    <p>将现有数据划分训练集(80%)和测试集(20%)，建立多个分类模型，分别对现有数据进行训练，并对预测集上的租金进行所属范围的预测，通过模型优化以期提升预测准确率</p>
-                    <p>选用的分类模型有：<b><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">DecisionTree</a>、<a
+                <div class="panel panel-warning" id="section-4">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">分类模型</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h5>分类模型以及结果</h5>
+                        <p>将现有数据划分训练集(80%)和测试集(20%)，建立多个分类模型，分别对现有数据进行训练，并对预测集上的租金进行所属范围的预测，通过模型优化以期提升预测准确率</p>
+                        <p>选用的分类模型有：<b><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">DecisionTree</a>、<a
                             href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">NaiveBayes</a>、<a
                             href="https://en.wikipedia.org/wiki/Support_vector_machine">SVM</a></b></p>
-                    <p>预测结果的度量：<b>预测准确率</b>，即预测对的个数所占测试集的比重，范围是0-1，数值越大则说明预测效果越好，越接近真实值
-                    </p>
-                    <p><b>结果：</b></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>DecisionTree</th>
-                            <th>NaiveBayes</th>
-                            <th>SVM</th>
-                        </tr>
-                        </thead>
+                        <p>预测结果的度量：<b>预测准确率</b>，即预测对的个数所占测试集的比重，范围是0-1，数值越大则说明预测效果越好，越接近真实值
+                        </p>
+                        <p><b>结果：</b></p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>DecisionTree</th>
+                                    <th>NaiveBayes</th>
+                                    <th>SVM</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                        <tr>
-                            <th>原数据</th>
-                            <th>35%</th>
-                            <th>32%</th>
-                            <th>43</th>
-                        </tr>
-                        <tr>
-                            <th>dummy数据</th>
-                            <th>44%</th>
-                            <th>38%</th>
-                            <th>48%</th>
-                        </tr>
-                        </tbody>
-                    </table>
+                            <tbody>
+                                <tr>
+                                    <th>原数据</th>
+                                    <th>35%</th>
+                                    <th>32%</th>
+                                    <th>43</th>
+                                </tr>
+                                <tr>
+                                    <th>dummy数据</th>
+                                    <th>44%</th>
+                                    <th>38%</th>
+                                    <th>48%</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
 
+
         </div>
-
-
     </div>
-</div>
-<script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-<script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
+    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
 </body>
 
 </html>
