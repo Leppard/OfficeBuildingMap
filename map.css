@@ -1,3 +1,7 @@
+.jumbotron {
+    padding-bottom: 0px;
+}
+
 .mapView {
     margin-bottom: 20px;
     height: 400px;
