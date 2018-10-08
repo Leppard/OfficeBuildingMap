@@ -12,22 +12,25 @@
     <title>统 计</title>
 
     <!-- Loading Bootstrap -->
-    <link href="Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Loading Flat UI -->
-    <link href="Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
-    <link rel="shortcut icon" href="Flat-UI-master/dist/img/favicon.ico">
+    <link href="../Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../Flat-UI-master/dist/img/favicon.ico">
+    <script src="../Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+
+    <script src="../Flat-UI-master/dist/js/flat-ui.min.js"></script>
     <!-- 加载leaflet-->
 
     <!--普通图表/热力图/树形图-->
-    <script src="code/highcharts.js"></script>
-    <script src="code/modules/heatmap.js"></script>
-    <script src="code/modules/treemap.js"></script>
+    <script src="../code/highcharts.js"></script>
+    <script src="../code/modules/heatmap.js"></script>
+    <script src="../code/modules/treemap.js"></script>
 
     <!--   引入图表导出功能相关的文件-->
-    <script src="code/modules/exporting.js"></script>
-    <script src="code/modules/offline-exporting.js"></script>
+    <script src="../code/modules/exporting.js"></script>
+    <script src="../code/modules/offline-exporting.js"></script>
 
-    <link href="map.css" rel="stylesheet">
+    <link href="../map.css" rel="stylesheet">
 
 </head>
 
@@ -46,8 +49,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">主页</a></li>
-                    <li><a href="#">统计分析</a></li>
+                    <li><a href="index.html">主页</a></li>
+                    <li class="active"><a href="#">统计分析</a></li>
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">地图<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -66,7 +69,7 @@
             <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: #2980B9; border-radius: 0px">
-                        <h3 class="panel-title" style="text-align: center"> 柱状图 </h3>
+                        <h3 class="panel-title" style="text-align: center"> 折线图 </h3>
                     </div>
                     <div class="panel-body">
                         <div id="container1" style="width: 100%; height: 400px"></div>
@@ -76,7 +79,7 @@
             <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: #2980B9; border-radius: 0px">
-                        <h3 class="panel-title" style="text-align: center"> 饼 图 </h3>
+                        <h3 class="panel-title" style="text-align: center"> 折线图 </h3>
                     </div>
                     <div class="panel-body">
                         <div id="container2" style="width: 100%; height: 400px"></div>
@@ -104,318 +107,7 @@
     </div>
     </div>
 
-    <script src="Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
-
-    <script src="data.js"></script>
-    <script language="JavaScript">
-        $(function() {
-            // 柱状图
-            Highcharts.chart('container1', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: '上海市各区县待租写字楼数目'
-                },
-                subtitle: {
-                    text: '数据来源: <a href="https://xzl.anjuke.com/zu/?pi=PZ-baidu-pc-all-sydc-zl1">anjuke.com</a>.'
-                },
-                xAxis: {
-                    type: 'category'
-                },
-                yAxis: {
-                    title: {
-                        text: '写字楼数目'
-                    }
-                },
-                legend: {
-                    enabled: false
-                },
-                plotOptions: {
-                    series: {
-                        borderWidth: 0,
-                        dataLabels: {
-                            enabled: true,
-                            format: '{point.y:.0f}'
-                        }
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b><br/>'
-                },
-                series: [{
-                    name: '区/县',
-                    colorByPoint: true,
-                    data: [{
-                        name: '卢湾',
-                        y: 47,
-                    }, {
-                        name: '嘉定',
-                        y: 20,
-                    }, {
-                        name: '宝山',
-                        y: 23,
-                    }, {
-                        name: '徐汇',
-                        y: 146,
-                    }, {
-                        name: '普陀',
-                        y: 91,
-                    }, {
-                        name: '杨浦',
-                        y: 66,
-                    }, {
-                        name: '松江',
-                        y: 13,
-                    }, {
-                        name: '浦东',
-                        y: 224,
-                    }, {
-                        name: '虹口',
-                        y: 62,
-                    }, {
-                        name: '长宁',
-                        y: 98,
-                    }, {
-                        name: '闵行',
-                        y: 102,
-                    }, {
-                        name: '闸北',
-                        y: 55,
-                    }, {
-                        name: '静安',
-                        y: 72,
-                    }, {
-                        name: '黄浦',
-                        y: 72,
-                    }, {
-                        name: '青浦',
-                        y: 3,
-                    }, {
-                        name: '金山',
-                        y: 1,
-                    }]
-                }],
-            });
-
-            // 饼图
-            Highcharts.chart('container2', {
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
-                },
-                title: {
-                    text: '上海市各区县待租写字楼占比'
-                },
-                tooltip: {
-                    headerFormat: '{series.name}<br>',
-                    pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                            style: {
-                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: '写字楼占比',
-                    data: [
-                        ['卢湾', 47],
-                        ['嘉定', 20],
-                        ['宝山', 23],
-                        ['徐汇', 146], {
-                            name: '浦东',
-                            y: 224,
-                            sliced: true,
-                            selected: true
-                        },
-                        ['普陀', 91],
-                        ['杨浦', 66],
-                        ['松江', 13],
-                        ['虹口', 62],
-                        ['长宁', 98],
-                        ['闵行', 102],
-                        ['闸北', 55],
-                        ['静安', 72],
-                        ['黄浦', 72],
-                        ['其他', 4]
-                    ]
-                }]
-            });
-
-            //  矩形树图1
-            var data = tree_data[0];
-            var points = [],
-                region_p,
-                region_val,
-                region_i,
-                country_p,
-                country_i,
-                cause_p,
-                cause_i,
-                cause_name = [];
-            cause_name['Communicable & other Group I'] = 'Communases';
-            cause_name['Noncommdiseases'] = 'Non-communicable diseases';
-            cause_name['Injuries'] = 'Injuries';
-            region_i = 0;
-            for (var region in data) {
-                region_val = 0;
-                region_p = {
-                    id: "id_" + region_i,
-                    name: region,
-                    color: Highcharts.getOptions().colors[region_i]
-                };
-                country_i = 0;
-                for (var country in data[region]) {
-                    country_p = {
-                        id: region_p.id + "_" + country_i,
-                        name: country,
-                        parent: region_p.id
-                    };
-                    points.push(country_p);
-                    cause_i = 0;
-                    for (var cause in data[region][country]) {
-                        cause_p = {
-                            id: cause,
-                            name: cause_name[cause],
-                            parent: country_p.id,
-                            value: Math.round(+data[region][country][cause])
-                        };
-                        region_val += cause_p.value;
-                        points.push(cause_p);
-                        cause_i++;
-                    }
-                    country_i++;
-                }
-                region_p.value = Math.round(region_val);
-                points.push(region_p);
-                region_i++;
-            }
-            var chart = new Highcharts.Chart({
-                chart: {
-                    renderTo: 'container3'
-                },
-                series: [{
-                    type: "treemap",
-                    layoutAlgorithm: 'squarified',
-                    allowDrillToNode: true,
-                    dataLabels: {
-                        enabled: false,
-                        style: {
-                            'fontSize': '15px'
-                        }
-                    },
-                    levelIsConstant: false,
-                    levels: [{
-                        level: 1,
-                        dataLabels: {
-                            enabled: true
-                        },
-                        borderWidth: 2
-                    }],
-                    data: points
-                }],
-                subtitle: {
-                    text: '点击下钻. 数据来源: <a href="https://xzl.anjuke.com/zu/?pi=PZ-baidu-pc-all-sydc-zl1">anjuke.com</a>.'
-                },
-                title: {
-                    text: '上海市各区写字楼出租信息(卢湾 嘉定 宝山 徐汇 普陀 杨浦 松江 虹口)'
-                }
-            });
-
-            //  矩形树图2
-            var data = tree_data[1];
-            var points = [],
-                region_p,
-                region_val,
-                region_i,
-                country_p,
-                country_i,
-                cause_p,
-                cause_i,
-                cause_name = [];
-            cause_name['Communicable & other Group I'] = 'Communases';
-            cause_name['Noncommdiseases'] = 'Non-communicable diseases';
-            cause_name['Injuries'] = 'Injuries';
-            region_i = 0;
-            for (var region in data) {
-                region_val = 0;
-                region_p = {
-                    id: "id_" + region_i,
-                    name: region,
-                    color: Highcharts.getOptions().colors[region_i]
-                };
-                country_i = 0;
-                for (var country in data[region]) {
-                    country_p = {
-                        id: region_p.id + "_" + country_i,
-                        name: country,
-                        parent: region_p.id
-                    };
-                    points.push(country_p);
-                    cause_i = 0;
-                    for (var cause in data[region][country]) {
-                        cause_p = {
-                            id: cause,
-                            name: cause_name[cause],
-                            parent: country_p.id,
-                            value: Math.round(+data[region][country][cause])
-                        };
-                        region_val += cause_p.value;
-                        points.push(cause_p);
-                        cause_i++;
-                    }
-                    country_i++;
-                }
-                region_p.value = Math.round(region_val);
-                points.push(region_p);
-                region_i++;
-            }
-            var chart = new Highcharts.Chart({
-                chart: {
-                    renderTo: 'container4'
-                },
-                series: [{
-                    type: "treemap",
-                    layoutAlgorithm: 'squarified',
-                    allowDrillToNode: true,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    levelIsConstant: false,
-                    levels: [{
-                        level: 1,
-                        dataLabels: {
-                            enabled: true,
-                            style: {
-                                'fontSize': '15px'
-                            }
-                        },
-                        borderWidth: 2
-                    }],
-                    data: points
-                }],
-                subtitle: {
-                    text: '点击下钻. 数据来源: <a href="https://xzl.anjuke.com/zu/?pi=PZ-baidu-pc-all-sydc-zl1">anjuke.com</a>.'
-                },
-                title: {
-                    text: '上海市各区写字楼出租信息(浦东 金山 长宁 闵行 闸北 青浦 静安 黄浦)'
-                }
-            });
-        });
-    </script>
-
+    <script src="js/loadCharts.js"></script>
 
 
 </body>
