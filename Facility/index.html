@@ -199,8 +199,11 @@
     	// 百度地图API功能
         var map = new BMap.Map('mapDiv', {enableMapClick:false});
         map.setMapStyle({style:'midnight'});
-        var poi = new BMap.Point(121.469152,31.241121);
-        map.centerAndZoom(poi, 18);
+        var point = new BMap.Point(121.469152,31.241121);
+        var markerIcon = new BMap.Icon("../imgs/map-marker.png", new BMap.Size(32,32), {        
+            anchor: new BMap.Size(16, 32),        
+        });
+        map.centerAndZoom(point, 18);
         map.enableScrollWheelZoom();
 
         var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
@@ -216,7 +219,7 @@
     			BMAPLIB_TAB_SEARCH   //周边检索
     		]
     	});
-    	var marker = new BMap.Marker(poi); //创建marker对象
+    	var marker = new BMap.Marker(point, {icon: markerIcon}); //创建marker对象
         // marker.enableDragging(); //marker可拖拽
         marker.addEventListener("click", function(e){
     	    searchInfoWindow.open(marker);
