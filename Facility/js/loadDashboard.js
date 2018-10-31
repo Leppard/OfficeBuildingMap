@@ -18,7 +18,8 @@
     // console.log(xLabels);
     Highcharts.chart('container1', {
         chart: {
-            type: 'areaspline'
+            type: 'areaspline',
+            backgroundColor: '#eee'
         },
         title: {
             text: null
@@ -66,7 +67,8 @@
     // console.log(xLabels);
     Highcharts.chart('container2', {
         chart: {
-            type: 'areaspline'
+            type: 'areaspline',
+            backgroundColor: '#eee'
         },
         title: {
             text: null
@@ -151,7 +153,7 @@
 // temp fake data
 Highcharts.chart('container3', {
     chart: {
-            plotBackgroundColor: null,
+            backgroundColor: '#eee',
             plotBorderWidth: null,
             plotShadow: false,
             type: 'pie'
@@ -210,7 +212,8 @@ $.getJSON('http://118.89.200.111:7769/recommendations', function (data) {
 
     var chart = Highcharts.chart('container4', {
         chart: {
-            type: 'column' // varwide 依赖 varwide.js
+            type: 'column',
+            backgroundColor: '#eee'
         },
         title: {
             text: null
