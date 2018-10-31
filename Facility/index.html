@@ -199,42 +199,59 @@
     	// 百度地图API功能
         var map = new BMap.Map('mapDiv', {enableMapClick:false});
         map.setMapStyle({style:'midnight'});
-        var point = new BMap.Point(121.469152,31.241121);
-        var markerIcon = new BMap.Icon("../imgs/map-marker.png", new BMap.Size(32,32), {        
-            anchor: new BMap.Size(16, 32),        
+
+
+        var markerIcon = new BMap.Icon("../imgs/map-marker.png", new BMap.Size(32,32), {
+            anchor: new BMap.Size(16, 32),
         });
-        map.centerAndZoom(point, 18);
+
+        function addClickHandler(content, marker){
+    		marker.addEventListener("click",function(e){
+    			openInfo(content, e, marker)}
+    		);
+    	}
+    	function openInfo(content, e, marker){
+    		var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        	var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content+ " 简介", {
+        		title: content, //标题
+        		// panel : "panel", //检索结果面板
+        		// enableAutoPan : true, //自动平移
+        		searchTypes :[
+        			BMAPLIB_TAB_FROM_HERE, //从这里出发
+        			BMAPLIB_TAB_SEARCH   //周边检索
+        		]
+        	});
+    		searchInfoWindow.open(marker);
+    	}
+        $.getJSON('http://118.89.200.111:7769/facilities', function (data) {
+
+            for(var i = 0; i < data.length; i++) {
+                var name = data[i]["name"];
+                var lat = data[i]["latitude"];
+                var lon = data[i]["longitude"];
+
+                var point = new BMap.Point(lon, lat);
+                // var marker = new BMap.Marker(point, {icon: markerIcon}); //创建marker对象
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);
+                addClickHandler(name, marker);
+            }
+        });
+
+
+        map.centerAndZoom(new BMap.Point(121.469152,31.241121), 11);
         map.enableScrollWheelZoom();
 
-        var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
-                        '<img src="../imgs/bowuguan.jpg" alt="" style="float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;"/>' +
-                        '上海自然博物馆（上海科技馆分馆）坐落于上海市静安雕塑公园内，建筑面积45,257 平方米，展览教育服务面积32,200 平方米，预计年接待观众200万人次，将成为上海市重要的科普教育基地和公众社会文化交流平台。' +
-                      '</div>';
-    	var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
-    		title: "上海自然博物馆", //标题
-    		panel : "panel", //检索结果面板
-    		enableAutoPan : true, //自动平移
-    		searchTypes :[
-    			BMAPLIB_TAB_FROM_HERE, //从这里出发
-    			BMAPLIB_TAB_SEARCH   //周边检索
-    		]
-    	});
-    	var marker = new BMap.Marker(point, {icon: markerIcon}); //创建marker对象
-        // marker.enableDragging(); //marker可拖拽
-        marker.addEventListener("click", function(e){
-    	    searchInfoWindow.open(marker);
-        })
-        map.addOverlay(marker); //在地图中添加marker
-
-        var boundary = new Array();
-        boundary.push(new BMap.Point(121.468332,31.241346));
-        boundary.push(new BMap.Point(121.469279,31.241917));
-        boundary.push(new BMap.Point(121.469588,31.241617));
-        boundary.push(new BMap.Point(121.469928,31.240793));
-        boundary.push(new BMap.Point(121.469511,31.240561));
-        boundary.push(new BMap.Point(121.469089,31.240295));
-        var ply = new BMap.Polygon(boundary, {strokeWeight: 2, strokeColor: "#ffffff", strokeStyle: "dashed"}); //建立多边形覆盖物
-        map.addOverlay(ply);
+        // var boundary = new Array();
+        // boundary.push(new BMap.Point(121.468332,31.241346));
+        // boundary.push(new BMap.Point(121.469279,31.241917));
+        // boundary.push(new BMap.Point(121.469588,31.241617));
+        // boundary.push(new BMap.Point(121.469928,31.240793));
+        // boundary.push(new BMap.Point(121.469511,31.240561));
+        // boundary.push(new BMap.Point(121.469089,31.240295));
+        // var ply = new BMap.Polygon(boundary, {strokeWeight: 2, strokeColor: "#ffffff", strokeStyle: "dashed"}); //建立多边形覆盖物
+        // map.addOverlay(ply);
 
         var panoramaLayer = new BMap.PanoramaCoverageLayer();
         var stCtrl = new BMap.PanoramaControl(); //构造全景控件
