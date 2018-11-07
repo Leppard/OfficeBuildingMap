@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
     <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
     <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
 
     <!--普通图表/热力图/树形图-->
@@ -192,7 +193,6 @@
                         <h4 class="todo-name">
                           <strong>热力图</strong>
                         </h4>
-                        待加入
                       </div>
                     </li>
 
@@ -249,19 +249,15 @@
         	});
     		searchInfoWindow.open(marker);
     	}
+        var facData = [];
+        // eg: [
+        //     {"lng":116.418261,"lat":39.921984,"count":50},
+        //     {"lng":116.423332,"lat":39.916532,"count":51}
+        //     ]
         $.getJSON('http://118.89.200.111:7769/facilities', function (data) {
-
-            for(var i = 0; i < data.length; i++) {
-                var name = data[i]["name"];
-                var lat = data[i]["latitude"];
-                var lon = data[i]["longitude"];
-
-                var point = new BMap.Point(lon, lat);
-                // var marker = new BMap.Marker(point, {icon: markerIcon}); //创建marker对象
-                var marker = new BMap.Marker(point);
-                map.addOverlay(marker);
-                addClickHandler(name, marker);
-            }
+            addMarkers(data);
+            addHeatmapMarkers(data);
+            facData = data;
         });
 
 
@@ -301,6 +297,66 @@
         //添加鼠标绘制工具监听事件，用于获取绘制结果
         drawingManager.addEventListener('overlaycomplete', overlaycomplete);
         $(".BMapLib_Drawing_panel").hide();
+
+        var markers = [];
+        function addMarkers(data) {
+            for(var i = 0; i < data.length; i++) {
+                var name = data[i]["name"];
+                var lat = data[i]["latitude"];
+                var lon = data[i]["longitude"];
+
+                var point = new BMap.Point(lon, lat);
+                var marker = new BMap.Marker(point, {icon: markerIcon}); //创建marker对象
+                var marker = new BMap.Marker(point);
+                markers.push(marker);
+                map.addOverlay(marker);
+                addClickHandler(name, marker);
+            }
+        }
+
+        function cleanMarkers() {
+            for(var i = 0; i < markers.length; i++){
+                map.removeOverlay(markers[i]);
+            }
+        }
+
+        function addHeatmapMarkers(data) {
+            var facList = [];
+            for(var i = 0; i < data.length; i++) {
+                var lat = data[i]["latitude"];
+                var lon = data[i]["longitude"];
+
+                var oneFac = {"lng":lon,"lat":lat,"count":50};
+                facList.push(oneFac);
+            }
+
+            if(!isSupportCanvas()){
+            	alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能')
+            }
+            heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
+        	map.addOverlay(heatmapOverlay);
+            heatmapOverlay.hide();
+        	heatmapOverlay.setDataSet({data:facList, max:100});
+            function setGradient(){
+             	/*格式如下所示:
+        		{
+        	  		0:'rgb(102, 255, 0)',
+        	 	 	.5:'rgb(255, 170, 0)',
+        		  	1:'rgb(255, 0, 0)'
+        		}*/
+             	var gradient = {};
+             	var colors = document.querySelectorAll("input[type='color']");
+             	colors = [].slice.call(colors,0);
+             	colors.forEach(function(ele){
+        			gradient[ele.getAttribute("data-key")] = ele.value;
+             	});
+                heatmapOverlay.setOptions({"gradient":gradient});
+            }
+            function isSupportCanvas(){
+                var elem = document.createElement('canvas');
+                return !!(elem.getContext && elem.getContext('2d'));
+            }
+        }
     </script>
 
 
@@ -323,9 +379,11 @@
         }
         function switchHeatLayer(isOn) {
             if (isOn) {
-
+                cleanMarkers();
+                heatmapOverlay.show();
             } else {
-
+                addMarkers(facData);
+                heatmapOverlay.hide();
             }
         }
         function switchDrawLayer(isOn) {
