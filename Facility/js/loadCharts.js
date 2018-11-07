@@ -133,3 +133,81 @@ $.getJSON('http://118.89.200.111:3000/facility_categories', function (data) {
     });
 });
 
+var data = tree_data[0];
+var points = [],
+    region_p,
+    region_val,
+    region_i,
+    country_p,
+    country_i,
+    cause_p,
+    cause_i,
+    cause_name = [];
+cause_name['Communicable & other Group I'] = 'Communases';
+cause_name['Noncommdiseases'] = 'Non-communicable diseases';
+cause_name['Injuries'] = 'Injuries';
+region_i = 0;
+for (var region in data) {
+    region_val = 0;
+    region_p = {
+        id: "id_" + region_i,
+        name: region,
+    };
+    country_i = 0;
+    for (var country in data[region]) {
+        country_p = {
+            id: region_p.id + "_" + country_i,
+            name: country,
+            parent: region_p.id,
+        };
+        cause_i = 0;
+        for (var cause in data[region][country]) {
+            cause_p = {
+                id: cause,
+                name: cause_name[cause],
+                parent: country_p.id,
+                value: Math.round(+data[region][country][cause]),
+                color: Highcharts.getOptions().colors[cause_i]
+            };
+            region_val += cause_p.value;
+            points.push(cause_p);
+            cause_i++;
+        }
+        country_i++;
+        points.push(country_p);
+    }
+    // region_p.value = Math.round(region_val);
+    points.push(region_p);
+    region_i++;
+}
+var chart = new Highcharts.Chart({
+    chart: {
+        renderTo: 'container4'
+    },
+    series: [{
+        type: "treemap",
+        layoutAlgorithm: 'squarified',
+        allowDrillToNode: true,
+        dataLabels: {
+            enabled: false,
+            style: {
+                'fontSize': '15px'
+            }
+        },
+        levelIsConstant: false,
+        levels: [{
+            level: 1,
+            dataLabels: {
+                enabled: true
+            },
+            borderWidth: 2
+        }],
+        data: points
+    }],
+    subtitle: {
+        text: '点击下钻'
+    },
+    title: {
+        text: '上海市文化设施分布情况'
+    }
+});
