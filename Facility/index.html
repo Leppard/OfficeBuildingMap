@@ -230,15 +230,29 @@
             anchor: new BMap.Size(16, 32),
         });
 
-        function addClickHandler(content, marker){
+        function addClickHandler(id, name, marker){
     		marker.addEventListener("click",function(e){
-    			openInfo(content, e, marker)}
+    			openInfo(id, name, e, marker)}
     		);
     	}
-    	function openInfo(content, e, marker){
+    	function openInfo(id, content, e, marker){
     		var p = e.target;
             var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
-        	var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content+ " 简介", {
+
+            $.getJSON('http://118.89.200.111:7769/facilities?id=eq.'+id, function (data) {
+                var name = data[0]["name"];
+                var desc = data[0]["description"] ? data[0]["description"] : "暂无";
+                var trans = data[0]["traffic_method"];
+                var ticket = data[0]["ticket_fee"] ? data[0]["ticket_fee"] : 0;
+                var img = data[0]["photo_url"]?data[0]["photo_url"]:"../imgs/musium.jpg";
+                var type = data[0]["information"]["type"]?data[0]["information"]["type"]:"暂无";
+                var addr = data[0]["district"] + " " + data[0]["street"] + " " + data[0]["house_number"];
+                var erea = data[0]["construction_area"]?data[0]["construction_area"]:"暂无";
+                var info = '<div style="margin:0;line-height:20px;padding:2px;">' +
+                    '<img src="'+img+'" alt="" style="float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;"/>' + '简介: '+ desc +
+                    '<br/>地址: '+ addr + '<br/>类型: ' + type + '<br/>面积: ' + erea + ' /平方米<br/>票价: ' + ticket +
+                  ' /元</div>';
+                var searchInfoWindow = new BMapLib.SearchInfoWindow(map, info, {
         		title: content, //标题
         		// panel : "panel", //检索结果面板
         		// enableAutoPan : true, //自动平移
@@ -248,6 +262,7 @@
         		]
         	});
     		searchInfoWindow.open(marker);
+            });
     	}
         var facData = [];
         // eg: [
@@ -301,6 +316,7 @@
         var markers = [];
         function addMarkers(data) {
             for(var i = 0; i < data.length; i++) {
+                var id = data[i]["id"];
                 var name = data[i]["name"];
                 var lat = data[i]["latitude"];
                 var lon = data[i]["longitude"];
@@ -310,7 +326,7 @@
                 var marker = new BMap.Marker(point);
                 markers.push(marker);
                 map.addOverlay(marker);
-                addClickHandler(name, marker);
+                addClickHandler(id, name, marker);
             }
         }
 
