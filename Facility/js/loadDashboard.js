@@ -98,108 +98,55 @@
     });
 // });
 
-// 周边文化设施统计
-// $.getJSON('http://118.89.200.111:3000/facility_categories', function (data) {
-//     var arr = []
+//周边文化设施统计
+$.getJSON('http://118.89.200.111:3000/facility_categories', function (data) {
+    var arr = []
 
-//     for(var key in data) {
-//         var tuple = null;
-//         if (key=='文化') {
-//             tuple = {
-//                 name: key,
-//                 y: data[key],
-//                 sliced: true,
-//                 selected: true
-//             }
-//         } else {
-//             tuple = [key, data[key]];
-//         }
-//         arr.push(tuple);
-//     }
-//     Highcharts.chart('container3', {
-//         chart: {
-//             plotBackgroundColor: null,
-//             plotBorderWidth: null,
-//             plotShadow: false
-//         },
-//         title: {
-//             text: null
-//         },
-//         tooltip: {
-//             headerFormat: '{series.name}<br>',
-//             pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
-//         },
-//         plotOptions: {
-//             pie: {
-//                 allowPointSelect: true,
-//                 cursor: 'pointer',
-//                 dataLabels: {
-//                     enabled: true,
-//                     format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-//                     style: {
-//                         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-//                     }
-//                 }
-//             }
-//         },
-//         series: [{
-//             type: 'pie',
-//             name: '文化设施占比',
-//             data: arr
-//         }]
-//     });
-// });
-
-// temp fake data
-Highcharts.chart('container3', {
-    chart: {
-            backgroundColor: '#eee',
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-    },
-    title: {
-            text: null
-    },
-    tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-            pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                            enabled: false
-                    },
-                    showInLegend: true
+    for(var key in data) {
+        var tuple = null;
+        if (key=='文化') {
+            tuple = {
+                name: key,
+                y: data[key],
+                sliced: true,
+                selected: true
             }
-    },
-    series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                    name: '博览类',
-                    y: 61.41,
-                    sliced: true,
-                    selected: true
-            }, {
-                    name: '社会文化类',
-                    y: 11.84
-            }, {
-                    name: '艺术文化类',
-                    y: 10.85
-            }, {
-                    name: '历史文化类',
-                    y: 4.67
-            }, {
-                    name: '文化市场类',
-                    y: 4.18
-            }, {
-                    name: '其他',
-                    y: 7.05
-            }]
-    }]
+        } else {
+            tuple = [key, data[key]];
+        }
+        arr.push(tuple);
+    }
+    Highcharts.chart('container3', {
+        chart: {
+                backgroundColor: '#eee',
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+        },
+        title: {
+                text: null
+        },
+        tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+                pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                                enabled: false
+                        },
+                        showInLegend: true
+                }
+        },
+        series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: arr
+        }]
+    });
 });
+
 
 $.getJSON('http://118.89.200.111:7769/recommendations', function (data) {
     var xLabels = [];

@@ -81,6 +81,80 @@ $.getJSON('http://118.89.200.111:3000/museum_prediction', function (data) {
     });
 });
 
+$.getJSON('http://118.89.200.111:7769/facilities?select=id,name,ticket_fee', function (data) {
+    var xLabels = [];
+    var yLabels = [];
+
+    for(var i = 0; i < data.length; i++) {
+        xLabels.push(data[i]["name"]);
+        var fee = data[i]["ticket_fee"]?data[i]["ticket_fee"]:0;
+        yLabels.push(fee);
+    }
+
+    var chart = Highcharts.chart('container5', {
+        chart: {
+            type: 'column',
+        },
+        title: {
+            text: "票价一览"
+        },
+        xAxis: {
+            categories: xLabels
+        },
+        yAxis: {
+            title: {
+                text: '票价'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' 元'
+        },
+        series: [{
+            name: '票价',
+            colorByPoint: true,
+            data: yLabels,
+            showInLegend: false
+        }]
+    });
+});
+
+$.getJSON('http://118.89.200.111:7769/facilities?select=id,name,construction_area', function (data) {
+    var xLabels = [];
+    var yLabels = [];
+
+    for(var i = 0; i < data.length; i++) {
+        xLabels.push(data[i]["name"]);
+        var area = data[i]["construction_area"]?data[i]["construction_area"]:0;
+        yLabels.push(area);
+    }
+
+    var chart = Highcharts.chart('container6', {
+        chart: {
+            type: 'column',
+        },
+        title: {
+            text: "占地面积一览"
+        },
+        xAxis: {
+            categories: xLabels
+        },
+        yAxis: {
+            title: {
+                text: '面积'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' 平方米'
+        },
+        series: [{
+            name: '面积',
+            colorByPoint: true,
+            data: yLabels,
+            showInLegend: false
+        }]
+    });
+});
+
 // 周边文化设施统计
 $.getJSON('http://118.89.200.111:3000/facility_categories', function (data) {
     var arr = []
