@@ -91,7 +91,7 @@
             }
         },
         series: [{
-            name: '历史人数',
+            name: '预测人数',
             color: '#f7a35c',
             data: yLabels
         }]
@@ -101,10 +101,15 @@
 //周边文化设施统计
 $.getJSON('http://118.89.200.111:3000/facility_categories', function (data) {
     var arr = []
-
+    data = {
+        "剧院": 18,
+        "博物馆": 5,
+        "美术馆": 11,
+        "其他": 8
+      }
     for(var key in data) {
         var tuple = null;
-        if (key=='文化') {
+        if (key=='剧院') {
             tuple = {
                 name: key,
                 y: data[key],
@@ -116,6 +121,7 @@ $.getJSON('http://118.89.200.111:3000/facility_categories', function (data) {
         }
         arr.push(tuple);
     }
+
     Highcharts.chart('container3', {
         chart: {
                 backgroundColor: '#eee',

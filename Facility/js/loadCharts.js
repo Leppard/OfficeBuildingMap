@@ -54,7 +54,7 @@ $.getJSON('http://118.89.200.111:3000/museum_prediction', function (data) {
             type: 'areaspline'
         },
         title: {
-            text: '历史游客人数统计'
+            text: '预测游客人数统计'
         },
         xAxis: {
             categories: xLabels
@@ -74,7 +74,7 @@ $.getJSON('http://118.89.200.111:3000/museum_prediction', function (data) {
             }
         },
         series: [{
-            name: '历史人数',
+            name: '预测人数',
             color: '#f7a35c',
             data: yLabels
         }]

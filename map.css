@@ -49,10 +49,6 @@ hr {
     border-top: 1px solid #eee;
 }
 
-.btn {
-    border-radius: 0px;
-}
-
 .navbar-nav > li > .dropdown-menu {
     border-radius: 0;
 }

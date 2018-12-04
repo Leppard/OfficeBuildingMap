@@ -147,7 +147,7 @@
             <div class="col-lg-6">
                 <div class="panel-primary">
                     <div class="panel-heading" style="background-color: #34495e; border-radius: 5px">
-                        <h3 class="panel-title" style="text-align: center"> 推荐文化设施 </h3>
+                        <h3 class="panel-title" style="text-align: center"> 推荐文化设施（大众点评好评率） </h3>
                     </div>
                     <div class="panel-body">
                         <div id="container4" style="width: 100%; height: 200px"></div>
@@ -162,53 +162,90 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
+              <div class="row">
                 <div class="todo mrm">
-                  <div class="todo-search">
-                    <input class="todo-search-field" type="search" value="" placeholder="搜索周边" />
+                    <div class="todo-search">
+                      <input id="facilitySearch" class="todo-search-field" type="search" value="" placeholder="搜索周边" onsearch="searchFacility()"/>
+                    </div>
+                    <ul>
+                      <li id="panoramaLayer">
+                        <div class="todo-icon fui-man-24"></div>
+                        <div class="todo-content">
+                          <h4 class="todo-name">
+                            <strong>全景图层</strong>
+                          </h4>
+                          查看全景信息
+                        </div>
+                      </li>
+
+                      <li id="trafficLayer">
+                        <div class="todo-icon fui-eye-24"></div>
+                        <div class="todo-content">
+                          <h4 class="todo-name">
+                            <strong>路况图层</strong>
+                          </h4>
+                        </div>
+                      </li>
+
+                      <li id="heatLayer">
+                        <div class="todo-icon fui-time-24"></div>
+                        <div class="todo-content">
+                          <h4 class="todo-name">
+                            <strong>热力图</strong>
+                          </h4>
+                        </div>
+                      </li>
+
+                      <li id="drawLayer">
+                        <div class="todo-icon fui-menu-24"></div>
+                        <div class="todo-content">
+                          <h4 class="todo-name">
+                            <strong>绘制功能</strong>
+                          </h4>
+
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-                  <ul>
-                    <li id="panoramaLayer">
-                      <div class="todo-icon fui-man-24"></div>
-                      <div class="todo-content">
-                        <h4 class="todo-name">
-                          <strong>全景图层</strong>
-                        </h4>
-                        查看全景信息
-                      </div>
-                    </li>
+                </div> <!-- /todo list -->
 
-                    <li id="trafficLayer">
-                      <div class="todo-icon fui-eye-24"></div>
-                      <div class="todo-content">
-                        <h4 class="todo-name">
-                          <strong>路况图层</strong>
-                        </h4>
-                      </div>
-                    </li>
-
-                    <li id="heatLayer">
-                      <div class="todo-icon fui-time-24"></div>
-                      <div class="todo-content">
-                        <h4 class="todo-name">
-                          <strong>热力图</strong>
-                        </h4>
-                      </div>
-                    </li>
-
-                    <li id="drawLayer">
-                      <div class="todo-icon fui-menu-24"></div>
-                      <div class="todo-content">
-                        <h4 class="todo-name">
-                          <strong>绘制功能</strong>
-                        </h4>
-
-                      </div>
-                    </li>
-                  </ul>
+                <div class="row col-lg-15">
+                    <button onclick="cleanMarkers()" class="btn btn-block btn-lg btn-primary">清空</button>
                 </div>
-              </div> <!-- /todo list -->
-            <div class="col-xs-8">
+
+              </div>
+
+              <div class="col-xs-2">
+                    <div class="row">
+                        <h3">类型筛选</h3>
+                        <label class="checkbox" for="checkbox1">
+                            <input type="checkbox" checked="checked" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                            剧院
+                            <div style="background-color:#d81e06;width: 20px; height: 20px;display:inline-block; float:right; border-radius: 5px;"></div>
+                        </label>
+                        <label class="checkbox" for="checkbox2">
+                              <input type="checkbox" checked="checked" value="" id="checkbox2" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                              美术馆
+                              <div style="background-color:#1afa29;width: 20px; height: 20px;display:inline-block; float:right; border-radius: 5px;"></div>
+                        </label>
+                        <label class="checkbox" for="checkbox3">
+                            <input type="checkbox" checked="checked" value="" id="checkbox3" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                            博物馆
+                            <div style="background-color:#1296db;width: 20px; height: 20px;display:inline-block; float:right; border-radius: 5px;"></div>
+                        </label>
+                        <label class="checkbox" for="checkbox4">
+                              <input type="checkbox" checked="checked" value="" id="checkbox4" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                              其他
+                              <div style="background-color:#f4ea2a;width: 20px; height: 20px;display:inline-block; float:right; border-radius: 5px;"></div>
+                        </label>
+                    </div>
+                    <div class="row">
+                            <button onclick="filterPoints()" class="btn btn-block btn-lg btn-primary">筛选</button>
+                    </div>
+              </div>
+
+            <div class="col-xs-7">
                 <div class="mapView" id="mapDiv">
                 </div>
             </div>
@@ -224,11 +261,6 @@
     	// 百度地图API功能
         var map = new BMap.Map('mapDiv', {enableMapClick:false});
         map.setMapStyle({style:'midnight'});
-
-
-        var markerIcon = new BMap.Icon("../imgs/map-marker.png", new BMap.Size(32,32), {
-            anchor: new BMap.Size(16, 32),
-        });
 
         function addClickHandler(id, name, marker){
     		marker.addEventListener("click",function(e){
@@ -315,15 +347,44 @@
 
         var markers = [];
         function addMarkers(data) {
+            var markerIcon;
+
             for(var i = 0; i < data.length; i++) {
                 var id = data[i]["id"];
                 var name = data[i]["name"];
                 var lat = data[i]["latitude"];
                 var lon = data[i]["longitude"];
+                var type = data[i]["type"];
+
+                switch(type) {
+                    case "剧院":
+                        markerIcon = new BMap.Icon("../imgs/marker-red.png", new BMap.Size(32,32), {
+                            anchor: new BMap.Size(14, 28),
+                        });
+                        break;
+                    case "博物馆":
+                        markerIcon = new BMap.Icon("../imgs/marker-blue.png", new BMap.Size(32,32), {
+                            anchor: new BMap.Size(14, 28),
+                        });
+                        break;
+                    case "美术馆":
+                        markerIcon = new BMap.Icon("../imgs/marker-green.png", new BMap.Size(32,32), {
+                            anchor: new BMap.Size(14, 28),
+                        });
+                        break;
+                    case "其他":
+                        markerIcon = new BMap.Icon("../imgs/marker-yellow.png", new BMap.Size(32,32), {
+                            anchor: new BMap.Size(14, 28),
+                        });
+                        break;
+                    default:
+                        break;
+                }
+                markerIcon.setImageSize(new BMap.Size(28, 28));
 
                 var point = new BMap.Point(lon, lat);
                 var marker = new BMap.Marker(point, {icon: markerIcon}); //创建marker对象
-                var marker = new BMap.Marker(point);
+                // var marker = new BMap.Marker(point);
                 markers.push(marker);
                 map.addOverlay(marker);
                 addClickHandler(id, name, marker);
@@ -419,6 +480,31 @@
             }
             overlays.length = 0;
         }
+    </script>
+
+    <script>
+        function searchFacility() {
+           var name = $('#facilitySearch').prop("value");
+           $.getJSON('http://118.89.200.111:7769/facilities?name=eq.'+name, function (data) {
+                cleanMarkers();
+                addMarkers(data);
+                addHeatmapMarkers(data);
+            });
+        }
+
+        function filterPoints() {
+            var theater = $('#checkbox1').prop( "checked") ? "剧院" : "";
+            var gallery = $('#checkbox2').prop( "checked") ? "美术馆" : "";
+            var museum = $('#checkbox3').prop( "checked") ? "博物馆" : "";
+            var other = $('#checkbox4').prop( "checked") ? "其他" : "";
+            var filterStr = 'type=in.(' + theater + ',' + gallery + ',' + museum + ',' + other + ')';
+            $.getJSON('http://118.89.200.111:7769/facilities?'+filterStr, function (data) {
+                cleanMarkers();
+                addMarkers(data);
+                addHeatmapMarkers(data);
+            });
+        }
+
     </script>
 
 </body>
